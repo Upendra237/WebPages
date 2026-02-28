@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mistri Vai Engineering Club — Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'mv-dark':    '#0d0d0d',
+            'mv-darkgray':'#141414',
+            'mv-card':    '#1a1a1a',
+            'mv-border':  '#2a2a2a',
+            'mv-gold':    '#c9a84c',
+            'mv-gold-lt': '#e8c96b',
+            'mv-text':    '#e5e5e5',
+            'mv-muted':   '#888888',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Blueprint grid overlay ── */
+    .blueprint-bg {
+      background-color: #0d0d0d;
+      background-image:
+        linear-gradient(rgba(201,168,76,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    /* ── Architectural corner marks ── */
+    .arch-corner::before,
+    .arch-corner::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-color: #c9a84c;
+      border-style: solid;
+    }
+    .arch-corner::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
+    .arch-corner::after  { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+    /* ── Diagonal stripe accent ── */
+    .stripe-accent {
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        rgba(201,168,76,.08) 4px,
+        rgba(201,168,76,.08) 8px
+      );
+    }
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ── Nav underline ── */
+    .nav-link::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: #c9a84c;
+      transform: scaleX(0);
+      transition: transform .25s ease;
+      transform-origin: left;
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    /* ── Stat counter ── */
+    .counter { font-variant-numeric: tabular-nums; }
+    /* ── Hero text clip ── */
+    .gold-clip {
+      background: linear-gradient(135deg, #c9a84c 0%, #e8c96b 50%, #a07830 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    /* marquee */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 30s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    /* cursor blink */
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .cursor { animation: blink 1s step-end infinite; }
+  </style>
+</head>
+<body class="bg-mv-dark text-mv-text font-sans overflow-x-hidden">
+
+<!-- ══════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="relative w-8 h-8">
+        <div class="absolute inset-0 border-2 border-mv-gold rotate-45 group-hover:rotate-90 transition-transform duration-300"></div>
+        <div class="absolute inset-1.5 bg-mv-gold rotate-45 group-hover:rotate-0 transition-transform duration-300"></div>
+      </div>
+      <span class="text-mv-text font-semibold tracking-widest text-sm uppercase">Mistri<span class="text-mv-gold">Vai</span></span>
+    </a>
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="index.html"    class="nav-link active text-xs uppercase tracking-widest text-mv-gold">Home</a>
+      <a href="about.html"    class="nav-link text-xs uppercase tracking-widest text-mv-muted hover:text-mv-text transition-colors">About</a>
+      <a href="services.html" class="nav-link text-xs uppercase tracking-widest text-mv-muted hover:text-mv-text transition-colors">Services</a>
+      <a href="projects.html" class="nav-link text-xs uppercase tracking-widest text-mv-muted hover:text-mv-text transition-colors">Projects</a>
+      <a href="contact.php"   class="nav-link text-xs uppercase tracking-widest text-mv-muted hover:text-mv-text transition-colors">Contact</a>
+    </div>
+    <!-- CTA -->
+    <a href="contact.php" class="hidden md:flex items-center gap-2 border border-mv-gold text-mv-gold text-xs uppercase tracking-widest px-4 py-2 hover:bg-mv-gold hover:text-mv-dark transition-all duration-200">
+      Start Project
+    </a>
+    <!-- Hamburger -->
+    <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2">
+      <span class="w-5 h-px bg-mv-text block transition-all" id="h1"></span>
+      <span class="w-5 h-px bg-mv-text block transition-all" id="h2"></span>
+      <span class="w-5 h-px bg-mv-text block transition-all" id="h3"></span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-mv-darkgray border-t border-mv-border px-6 py-4 flex flex-col gap-4">
+    <a href="index.html"    class="text-xs uppercase tracking-widest text-mv-gold">Home</a>
+    <a href="about.html"    class="text-xs uppercase tracking-widest text-mv-muted">About</a>
+    <a href="services.html" class="text-xs uppercase tracking-widest text-mv-muted">Services</a>
+    <a href="projects.html" class="text-xs uppercase tracking-widest text-mv-muted">Projects</a>
+    <a href="contact.php"   class="text-xs uppercase tracking-widest text-mv-muted">Contact</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section class="blueprint-bg min-h-screen flex items-center relative overflow-hidden">
+  <!-- Large decorative structural lines -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/4 left-0 right-0 h-px bg-mv-gold opacity-10"></div>
+    <div class="absolute top-3/4 left-0 right-0 h-px bg-mv-gold opacity-10"></div>
+    <div class="absolute top-0 bottom-0 left-1/3 w-px bg-mv-gold opacity-10"></div>
+    <div class="absolute top-0 bottom-0 right-1/3 w-px bg-mv-gold opacity-10"></div>
+    <!-- Diagonal accent -->
+    <div class="absolute -bottom-20 -right-20 w-96 h-96 border border-mv-gold opacity-5 rotate-45"></div>
+    <div class="absolute -bottom-10 -right-10 w-72 h-72 border border-mv-gold opacity-10 rotate-45"></div>
+    <!-- Blueprint node dots -->
+    <div class="absolute top-1/4 left-1/3 w-2 h-2 bg-mv-gold rounded-full opacity-60"></div>
+    <div class="absolute top-3/4 right-1/3 w-2 h-2 bg-mv-gold rounded-full opacity-60"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 border border-mv-gold rounded-full opacity-40"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 pt-24 pb-16 grid md:grid-cols-2 gap-16 items-center">
+    <div>
+      <!-- Label -->
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-8 h-px bg-mv-gold"></div>
+        <span class="text-mv-gold font-mono text-xs tracking-[0.25em] uppercase">Est. Nepal</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-5xl md:text-7xl font-black leading-none tracking-tight mb-6">
+        <span class="block text-mv-text">Build.</span>
+        <span class="block gold-clip">Design.</span>
+        <span class="block text-mv-text">Deliver.</span>
+      </h1>
+
+      <!-- Sub -->
+      <p class="text-mv-muted text-lg leading-relaxed max-w-md mb-10">
+        Mistri Vai Engineering Club — precision civil engineering, architectural design, 
+        and construction consulting rooted in Nepal.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 mb-12">
+        <a href="projects.html" class="relative overflow-hidden group bg-mv-gold text-mv-dark text-xs uppercase tracking-widest font-semibold px-8 py-4 flex items-center gap-3 transition-all">
+          <span class="relative z-10">View Projects</span>
+          <svg class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <div class="absolute inset-0 bg-mv-gold-lt transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+        </a>
+        <a href="contact.php" class="border border-mv-border text-mv-muted hover:border-mv-gold hover:text-mv-gold text-xs uppercase tracking-widest px-8 py-4 transition-all">
+          Get in Touch
+        </a>
+      </div>
+
+      <!-- Inline stats -->
+      <div class="flex gap-8 border-t border-mv-border pt-8">
+        <div>
+          <div class="text-3xl font-black text-mv-gold counter" data-end="150" data-suffix="+">0</div>
+          <div class="text-mv-muted text-xs uppercase tracking-widest mt-1">Projects Done</div>
+        </div>
+        <div class="w-px bg-mv-border self-stretch"></div>
+        <div>
+          <div class="text-3xl font-black text-mv-gold counter" data-end="5" data-suffix="+">0</div>
+          <div class="text-mv-muted text-xs uppercase tracking-widest mt-1">Years Active</div>
+        </div>
+        <div class="w-px bg-mv-border self-stretch"></div>
+        <div>
+          <div class="text-3xl font-black text-mv-gold counter" data-end="100" data-suffix="%">0</div>
+          <div class="text-mv-muted text-xs uppercase tracking-widest mt-1">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — architectural "blueprint card" -->
+    <div class="relative hidden md:block">
+      <div class="relative arch-corner p-8 border border-mv-border stripe-accent">
+        <!-- Axonometric grid sketch (SVG) -->
+        <svg viewBox="0 0 420 380" class="w-full opacity-70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground plane -->
+          <polygon points="210,310 50,240 50,180 210,250" stroke="#c9a84c" stroke-width="0.8" fill="rgba(201,168,76,.04)"/>
+          <polygon points="210,310 370,240 370,180 210,250" stroke="#c9a84c" stroke-width="0.8" fill="rgba(201,168,76,.02)"/>
+          <!-- Building body -->
+          <polygon points="210,80 50,160 50,240 210,160" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,.06)"/>
+          <polygon points="210,80 370,160 370,240 210,160" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,.03)"/>
+          <!-- Roof -->
+          <polygon points="210,40 50,130 210,80 370,130" stroke="#c9a84c" stroke-width="1.2" fill="rgba(201,168,76,.10)"/>
+          <!-- Ridge -->
+          <line x1="210" y1="40" x2="210" y2="80" stroke="#e8c96b" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Windows left face -->
+          <rect x="80"  y="175" width="28" height="36" rx="0" stroke="#c9a84c" stroke-width="0.7" fill="rgba(201,168,76,.12)"/>
+          <rect x="125" y="175" width="28" height="36" rx="0" stroke="#c9a84c" stroke-width="0.7" fill="rgba(201,168,76,.12)"/>
+          <!-- Windows right face -->
+          <rect x="255" y="175" width="28" height="36" rx="0" stroke="#c9a84c" stroke-width="0.7" fill="rgba(201,168,76,.08)"/>
+          <rect x="300" y="175" width="28" height="36" rx="0" stroke="#c9a84c" stroke-width="0.7" fill="rgba(201,168,76,.08)"/>
+          <!-- Door -->
+          <rect x="186" y="215" width="48" height="60" rx="0" stroke="#e8c96b" stroke-width="1" fill="rgba(232,201,107,.1)"/>
+          <!-- Construction lines -->
+          <line x1="30"  y1="40" x2="390" y2="40" stroke="#c9a84c" stroke-width="0.3" stroke-dasharray="3,6" opacity=".4"/>
+          <line x1="30"  y1="80" x2="390" y2="80" stroke="#c9a84c" stroke-width="0.3" stroke-dasharray="3,6" opacity=".4"/>
+          <line x1="30" y1="160" x2="390" y2="160" stroke="#c9a84c" stroke-width="0.3" stroke-dasharray="3,6" opacity=".3"/>
+          <!-- Dim arrows -->
+          <line x1="22" y1="80" x2="22" y2="240" stroke="#888" stroke-width="0.6"/>
+          <line x1="18" y1="80" x2="26" y2="80" stroke="#888" stroke-width="0.6"/>
+          <line x1="18" y1="240" x2="26" y2="240" stroke="#888" stroke-width="0.6"/>
+          <text x="10" y="165" font-size="8" fill="#888" font-family="monospace">H</text>
+          <!-- Annotation dot -->
+          <circle cx="210" cy="40" r="3" fill="#c9a84c"/>
+          <circle cx="50"  cy="160" r="2" fill="#c9a84c" opacity=".5"/>
+          <circle cx="370" cy="160" r="2" fill="#c9a84c" opacity=".5"/>
+          <!-- Label -->
+          <text x="155" y="370" font-size="8" fill="#c9a84c" font-family="monospace" letter-spacing="2">AXONOMETRIC VIEW 1:100</text>
+        </svg>
+
+        <!-- Corner dimensions label -->
+        <div class="absolute bottom-4 right-4 font-mono text-xs text-mv-gold opacity-60">
+          DWG_001 / REV_A
+        </div>
+        <div class="absolute top-4 right-4 font-mono text-xs text-mv-muted opacity-40 text-right leading-4">
+          MISTRI VAI<br/>ENGINEERING CLUB<br/>BHAKTAPUR, NP
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <div class="font-mono text-xs tracking-widest text-mv-muted">SCROLL</div>
+    <div class="w-px h-12 bg-gradient-to-b from-mv-gold to-transparent animate-pulse"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     MARQUEE TICKER — Services
+══════════════════════════════════════════════════ -->
+<div class="border-y border-mv-border bg-mv-darkgray overflow-hidden py-3">
+  <div class="marquee-track flex gap-16 whitespace-nowrap text-mv-muted font-mono text-xs uppercase tracking-widest">
+    <span>Civil Engineering</span><span class="text-mv-gold">✦</span>
+    <span>Structural Design</span><span class="text-mv-gold">✦</span>
+    <span>Architecture</span><span class="text-mv-gold">✦</span>
+    <span>Interior Design</span><span class="text-mv-gold">✦</span>
+    <span>Landscape & Gardens</span><span class="text-mv-gold">✦</span>
+    <span>Construction Consulting</span><span class="text-mv-gold">✦</span>
+    <span>Project Management</span><span class="text-mv-gold">✦</span>
+    <span>Site Supervision</span><span class="text-mv-gold">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>Civil Engineering</span><span class="text-mv-gold">✦</span>
+    <span>Structural Design</span><span class="text-mv-gold">✦</span>
+    <span>Architecture</span><span class="text-mv-gold">✦</span>
+    <span>Interior Design</span><span class="text-mv-gold">✦</span>
+    <span>Landscape & Gardens</span><span class="text-mv-gold">✦</span>
+    <span>Construction Consulting</span><span class="text-mv-gold">✦</span>
+    <span>Project Management</span><span class="text-mv-gold">✦</span>
+    <span>Site Supervision</span><span class="text-mv-gold">✦</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     WHAT WE DO — 3-col feature strip
+══════════════════════════════════════════════════ -->
+<section class="py-24 bg-mv-dark relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section header -->
+    <div class="flex items-center gap-4 mb-16 reveal">
+      <div class="w-12 h-px bg-mv-gold"></div>
+      <span class="font-mono text-xs text-mv-gold tracking-[0.3em] uppercase">What We Do</span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-mv-border">
+      <!-- Card 1 -->
+      <div class="bg-mv-dark p-10 group hover:bg-mv-card transition-colors reveal">
+        <div class="w-10 h-10 border border-mv-gold flex items-center justify-center mb-6 group-hover:bg-mv-gold group-hover:rotate-45 transition-all duration-300">
+          <svg class="w-5 h-5 text-mv-gold group-hover:text-mv-dark group-hover:-rotate-45 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 21h18M3 7v1m0 4v1m0 4v1M21 7v1m0 4v1m0 4v1M6 21V8m4 13V8m4 13V8m4 13V8M9 3h6l3 5H6L9 3z"/>
+          </svg>
+        </div>
+        <h3 class="text-mv-text font-semibold text-lg mb-3">Civil Construction</h3>
+        <p class="text-mv-muted text-sm leading-relaxed">
+          End-to-end construction management from foundation to finish, ensuring structural integrity and timely delivery.
+        </p>
+        <div class="mt-6 flex items-center gap-2 text-mv-gold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
+          <a href="services.html">Learn more</a>
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-mv-dark p-10 group hover:bg-mv-card transition-colors reveal" style="transition-delay:.1s">
+        <div class="w-10 h-10 border border-mv-gold flex items-center justify-center mb-6 group-hover:bg-mv-gold group-hover:rotate-45 transition-all duration-300">
+          <svg class="w-5 h-5 text-mv-gold group-hover:text-mv-dark group-hover:-rotate-45 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.798-1.442 2.798H4.24c-1.472 0-2.441-1.798-1.441-2.798L4.2 15.3"/>
+          </svg>
+        </div>
+        <h3 class="text-mv-text font-semibold text-lg mb-3">Architecture & Design</h3>
+        <p class="text-mv-muted text-sm leading-relaxed">
+          Thoughtful spatial design blending modern aesthetics with functional living — from concept drawings to built form.
+        </p>
+        <div class="mt-6 flex items-center gap-2 text-mv-gold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
+          <a href="services.html">Learn more</a>
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-mv-dark p-10 group hover:bg-mv-card transition-colors reveal" style="transition-delay:.2s">
+        <div class="w-10 h-10 border border-mv-gold flex items-center justify-center mb-6 group-hover:bg-mv-gold group-hover:rotate-45 transition-all duration-300">
+          <svg class="w-5 h-5 text-mv-gold group-hover:text-mv-dark group-hover:-rotate-45 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 3v1m0 16v1M4.22 4.22l.71.71m12.14 12.14l.71.71M3 12h1m16 0h1M4.22 19.78l.71-.71M18.36 5.64l.71-.71M12 7a5 5 0 110 10A5 5 0 0112 7z"/>
+          </svg>
+        </div>
+        <h3 class="text-mv-text font-semibold text-lg mb-3">Landscape & Gardens</h3>
+        <p class="text-mv-muted text-sm leading-relaxed">
+          Bringing the beauty of nature to your space with curated garden designs, water features, and green environments.
+        </p>
+        <div class="mt-6 flex items-center gap-2 text-mv-gold text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
+          <a href="services.html">Learn more</a>
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     ABOUT STRIP
+══════════════════════════════════════════════════ -->
+<section class="py-24 bg-mv-darkgray">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+    <!-- Left — text -->
+    <div class="reveal">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="w-12 h-px bg-mv-gold"></div>
+        <span class="font-mono text-xs text-mv-gold tracking-[0.3em] uppercase">About Us</span>
+      </div>
+      <h2 class="text-4xl font-black text-mv-text leading-tight mb-6">
+        Discover the amazing<br/><span class="gold-clip">potential within you.</span>
+      </h2>
+      <p class="text-mv-muted leading-relaxed mb-6">
+        Mistri Vai Engineering Club is a Nepal-based civil engineering firm headquartered in Liwali, Bhaktapur 
+        with a branch in Dhulikhel-6, Kavre. We combine technical rigor with creative design to deliver 
+        spaces that inspire.
+      </p>
+      <p class="text-mv-muted leading-relaxed mb-10">
+        Founded by engineers and architects who believe every structure tells a story, we are committed 
+        to quality, transparency, and innovation on every project we undertake.
+      </p>
+      <a href="about.html" class="inline-flex items-center gap-3 text-mv-gold text-xs uppercase tracking-widest border-b border-mv-gold pb-1 hover:gap-5 transition-all">
+        Meet the Team
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
+    <!-- Right — mini team cards -->
+    <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay:.15s">
+      <div class="bg-mv-card border border-mv-border p-6 relative overflow-hidden group hover:border-mv-gold transition-colors">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mv-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div class="w-10 h-10 rounded-full bg-mv-gold text-mv-dark flex items-center justify-center font-black text-sm mb-4">NG</div>
+        <div class="text-mv-text font-medium text-sm">Nischit Gajyaju</div>
+        <div class="text-mv-muted text-xs mt-1">CEO & Founder</div>
+      </div>
+      <div class="bg-mv-card border border-mv-border p-6 relative overflow-hidden group hover:border-mv-gold transition-colors mt-4">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mv-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div class="w-10 h-10 rounded-full bg-mv-gold text-mv-dark flex items-center justify-center font-black text-sm mb-4">NM</div>
+        <div class="text-mv-text font-medium text-sm">Nishan Makaju</div>
+        <div class="text-mv-muted text-xs mt-1">Chief Engineering Consultant</div>
+      </div>
+      <div class="bg-mv-card border border-mv-border p-6 relative overflow-hidden group hover:border-mv-gold transition-colors -mt-4">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mv-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div class="w-10 h-10 rounded-full border border-mv-gold text-mv-gold flex items-center justify-center font-black text-sm mb-4">AS</div>
+        <div class="text-mv-text font-medium text-sm">Ayush Singh</div>
+        <div class="text-mv-muted text-xs mt-1">Chief Architect/Designer</div>
+      </div>
+      <div class="bg-mv-card border border-mv-border p-6 relative overflow-hidden group hover:border-mv-gold transition-colors">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-mv-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+        <div class="w-10 h-10 rounded-full border border-mv-gold text-mv-gold flex items-center justify-center font-black text-sm mb-4">SK</div>
+        <div class="text-mv-text font-medium text-sm">Subichhya Khagi</div>
+        <div class="text-mv-muted text-xs mt-1">General Manager</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PROJECT HIGHLIGHT STRIP
+══════════════════════════════════════════════════ -->
+<section class="py-24 bg-mv-dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between mb-16 reveal">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-px bg-mv-gold"></div>
+        <span class="font-mono text-xs text-mv-gold tracking-[0.3em] uppercase">Featured Projects</span>
+      </div>
+      <a href="projects.html" class="text-xs uppercase tracking-widest text-mv-muted hover:text-mv-gold transition-colors flex items-center gap-2">
+        All Projects
+        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Project 1 -->
+      <div class="group relative overflow-hidden border border-mv-border hover:border-mv-gold transition-all duration-300 reveal">
+        <div class="h-64 bg-gradient-to-br from-mv-card to-mv-darkgray stripe-accent flex items-end p-6 relative overflow-hidden">
+          <!-- architectural SVG placeholder -->
+          <svg class="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity" viewBox="0 0 300 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="60" y="80" width="180" height="120" stroke="#c9a84c" stroke-width="0.8"/>
+            <rect x="80" y="60" width="140" height="20" stroke="#c9a84c" stroke-width="0.6"/>
+            <line x1="150" y1="40" x2="60" y2="80" stroke="#c9a84c" stroke-width="0.6"/>
+            <line x1="150" y1="40" x2="240" y2="80" stroke="#c9a84c" stroke-width="0.6"/>
+            <rect x="100" y="140" width="40" height="60" stroke="#c9a84c" stroke-width="0.6" fill="rgba(201,168,76,.1)"/>
+            <rect x="165" y="100" width="35" height="30" stroke="#c9a84c" stroke-width="0.5" fill="rgba(201,168,76,.08)"/>
+          </svg>
+          <div class="relative z-10 font-mono text-xs text-mv-gold opacity-60">PRJ_001</div>
+        </div>
+        <div class="p-6 bg-mv-card">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-mv-text font-semibold">Residential Complex</h4>
+            <span class="font-mono text-xs text-mv-muted">Bhaktapur</span>
+          </div>
+          <p class="text-mv-muted text-xs leading-relaxed">Modern multi-family residential design with sustainable structural systems.</p>
+          <div class="mt-4 flex gap-2">
+            <span class="border border-mv-border text-mv-muted text-xs px-2 py-1">Civil</span>
+            <span class="border border-mv-border text-mv-muted text-xs px-2 py-1">Architecture</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="group relative overflow-hidden border border-mv-border hover:border-mv-gold transition-all duration-300 reveal" style="transition-delay:.1s">
+        <div class="h-64 bg-gradient-to-br from-mv-card to-mv-darkgray stripe-accent flex items-end p-6 relative overflow-hidden">
+          <svg class="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity" viewBox="0 0 300 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="120" width="220" height="90" stroke="#c9a84c" stroke-width="0.8"/>
+            <rect x="60" y="90" width="60" height="30" stroke="#c9a84c" stroke-width="0.6"/>
+            <rect x="140" y="90" width="60" height="30" stroke="#c9a84c" stroke-width="0.6"/>
+            <rect x="120" y="140" width="60" height="70" stroke="#c9a84c" stroke-width="0.6" fill="rgba(201,168,76,.08)"/>
+            <line x1="40" y1="210" x2="260" y2="210" stroke="#c9a84c" stroke-width="1"/>
+            <line x1="40" y1="80" x2="40" y2="210" stroke="#888" stroke-width="0.5" stroke-dasharray="3,4"/>
+          </svg>
+          <div class="relative z-10 font-mono text-xs text-mv-gold opacity-60">PRJ_002</div>
+        </div>
+        <div class="p-6 bg-mv-card">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-mv-text font-semibold">Commercial Office</h4>
+            <span class="font-mono text-xs text-mv-muted">Kavre</span>
+          </div>
+          <p class="text-mv-muted text-xs leading-relaxed">Open-plan commercial space with earthquake-resilient framing and natural ventilation.</p>
+          <div class="mt-4 flex gap-2">
+            <span class="border border-mv-border text-mv-muted text-xs px-2 py-1">Structural</span>
+            <span class="border border-mv-border text-mv-muted text-xs px-2 py-1">Consulting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="group relative overflow-hidden border border-mv-border hover:border-mv-gold transition-all duration-300 reveal" style="transition-delay:.2s">
+        <div class="h-64 bg-gradient-to-br from-mv-card to-mv-darkgray stripe-accent flex items-end p-6 relative overflow-hidden">
+          <svg class="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity" viewBox="0 0 300 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- garden layout -->
+            <ellipse cx="150" cy="130" rx="90" ry="60" stroke="#c9a84c" stroke-width="0.8" fill="none"/>
+            <ellipse cx="150" cy="130" rx="55" ry="35" stroke="#c9a84c" stroke-width="0.5" fill="rgba(201,168,76,.05)"/>
+            <circle cx="150" cy="130" r="18" fill="rgba(201,168,76,.15)" stroke="#c9a84c" stroke-width="0.7"/>
+            <line x1="150" y1="70" x2="150" y2="190" stroke="#c9a84c" stroke-width="0.4" stroke-dasharray="3,4"/>
+            <line x1="60"  y1="130" x2="240" y2="130" stroke="#c9a84c" stroke-width="0.4" stroke-dasharray="3,4"/>
+            <circle cx="150" cy="70"  r="5" fill="#c9a84c" opacity=".5"/>
+            <circle cx="150" cy="190" r="5" fill="#c9a84c" opacity=".5"/>
+            <circle cx="60" cy="130"  r="5" fill="#c9a84c" opacity=".5"/>
+            <circle cx="240" cy="130" r="5" fill="#c9a84c" opacity=".5"/>
+          </svg>
+          <div class="relative z-10 font-mono text-xs text-mv-gold opacity-60">PRJ_003</div>
+        </div>
+        <div class="p-6 bg-mv-card">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-mv-text font-semibold">Garden Estate</h4>
+            <span class="font-mono text-xs text-mv-muted">Bhaktapur</span>
+          </div>
+          <p class="text-mv-muted text-xs leading-relaxed">Curated landscape design merging native flora with formal garden geometry.</p>
+          <div class="mt-4 flex gap-2">
+            <span class="border border-mv-border text-mv-muted text-xs px-2 py-1">Landscape</span>
+            <span class="border border-mv-border text-mv-muted text-xs px-2 py-1">Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════════ -->
+<section class="py-20 bg-mv-gold relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0" style="background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,.04) 10px, rgba(0,0,0,.04) 20px);"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-black opacity-5"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+    <div>
+      <div class="font-mono text-xs tracking-widest text-mv-dark opacity-60 uppercase mb-2">Start Today</div>
+      <h2 class="text-3xl md:text-4xl font-black text-mv-dark leading-tight">
+        Ready to build something<br/>extraordinary?
+      </h2>
+    </div>
+    <div class="flex gap-4 shrink-0">
+      <a href="contact.php" class="bg-mv-dark text-mv-gold text-xs uppercase tracking-widest font-semibold px-8 py-4 hover:bg-mv-darkgray transition-colors">
+        Contact Us
+      </a>
+      <a href="projects.html" class="border-2 border-mv-dark text-mv-dark text-xs uppercase tracking-widest font-semibold px-8 py-4 hover:bg-mv-dark hover:text-mv-gold transition-all">
+        See Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer class="bg-mv-darkgray border-t border-mv-border pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="relative w-8 h-8">
+            <div class="absolute inset-0 border-2 border-mv-gold rotate-45"></div>
+            <div class="absolute inset-1.5 bg-mv-gold rotate-45"></div>
+          </div>
+          <span class="text-mv-text font-semibold tracking-widest text-sm uppercase">Mistri<span class="text-mv-gold">Vai</span></span>
+        </div>
+        <p class="text-mv-muted text-sm leading-relaxed max-w-xs mb-6">
+          Civil engineering, architecture & design solutions from the heart of Nepal.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class="w-8 h-8 border border-mv-border flex items-center justify-center text-mv-muted hover:border-mv-gold hover:text-mv-gold transition-all text-xs">f</a>
+          <a href="#" class="w-8 h-8 border border-mv-border flex items-center justify-center text-mv-muted hover:border-mv-gold hover:text-mv-gold transition-all text-xs">in</a>
+          <a href="#" class="w-8 h-8 border border-mv-border flex items-center justify-center text-mv-muted hover:border-mv-gold hover:text-mv-gold transition-all text-xs">yt</a>
+          <a href="#" class="w-8 h-8 border border-mv-border flex items-center justify-center text-mv-muted hover:border-mv-gold hover:text-mv-gold transition-all text-xs">ig</a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <div class="font-mono text-xs text-mv-gold tracking-widest uppercase mb-6">Pages</div>
+        <ul class="space-y-3">
+          <li><a href="index.html"    class="text-mv-muted text-sm hover:text-mv-text transition-colors">Home</a></li>
+          <li><a href="about.html"    class="text-mv-muted text-sm hover:text-mv-text transition-colors">About</a></li>
+          <li><a href="services.html" class="text-mv-muted text-sm hover:text-mv-text transition-colors">Services</a></li>
+          <li><a href="projects.html" class="text-mv-muted text-sm hover:text-mv-text transition-colors">Projects</a></li>
+          <li><a href="contact.php"   class="text-mv-muted text-sm hover:text-mv-text transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="font-mono text-xs text-mv-gold tracking-widest uppercase mb-6">Contact</div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="w-4 h-4 shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-mv-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </div>
+            <a href="mailto:mistrivai79@gmail.com" class="text-mv-muted text-sm hover:text-mv-text transition-colors">mistrivai79@gmail.com</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-4 h-4 shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-mv-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            </div>
+            <a href="tel:+977984595056" class="text-mv-muted text-sm hover:text-mv-text transition-colors">+977-984595056</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-4 h-4 shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-mv-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            </div>
+            <span class="text-mv-muted text-sm">Liwali, Bhaktapur<br/><span class="text-xs opacity-70">Branch: Dhulikhel-6, Kavre</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-mv-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-mono text-xs text-mv-muted">© 2026 Mistri Vai Engineering Club. All rights reserved.</div>
+      <div class="font-mono text-xs text-mv-muted opacity-40">Liwali, Bhaktapur — NP</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════
+     JS
+══════════════════════════════════════════════════ -->
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('bg-mv-darkgray', 'border-b', 'border-mv-border', 'shadow-lg');
+    } else {
+      navbar.classList.remove('bg-mv-darkgray', 'border-b', 'border-mv-border', 'shadow-lg');
+    }
+  });
+
+  // Mobile menu
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('hidden');
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Counter animation
+  function animateCounter(el) {
+    const end = parseInt(el.dataset.end);
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const step = Math.ceil(end / 60);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, end);
+      el.textContent = current + suffix;
+      if (current >= end) clearInterval(timer);
+    }, 20);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
+</script>
+</body>
+</html>
