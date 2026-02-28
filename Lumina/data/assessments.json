@@ -1,0 +1,210 @@
+{
+  "assessments": [
+    {
+      "id": "life-wheel",
+      "title": "Life Balance Wheel",
+      "description": "Rate your satisfaction across 10 key life domains to visualize where you're thriving and where you need attention.",
+      "instructions": "Rate each area of your life from 1 (very dissatisfied) to 10 (deeply fulfilled). Be honest — this is for your eyes only.",
+      "domains": [
+        {
+          "id": "health",
+          "name": "Physical Health",
+          "icon": "heart",
+          "description": "Energy levels, fitness, nutrition, sleep quality, body care",
+          "questions": [
+            "I have consistent energy throughout the day",
+            "I exercise regularly and enjoy it",
+            "I nourish my body with healthy food",
+            "I get quality sleep most nights",
+            "I feel physically strong and capable"
+          ]
+        },
+        {
+          "id": "mental",
+          "name": "Mental Health",
+          "icon": "brain",
+          "description": "Emotional well-being, stress management, inner peace, resilience",
+          "questions": [
+            "I manage stress effectively",
+            "I feel emotionally balanced most days",
+            "I can sit with difficult emotions without being overwhelmed",
+            "I practice self-compassion regularly",
+            "I feel a general sense of inner peace"
+          ]
+        },
+        {
+          "id": "relationships",
+          "name": "Relationships",
+          "icon": "users",
+          "description": "Quality of connections, intimacy, trust, social fulfillment",
+          "questions": [
+            "I have deep, meaningful relationships in my life",
+            "I feel seen and understood by people close to me",
+            "I communicate openly and honestly",
+            "I maintain healthy boundaries",
+            "I invest time in nurturing my important relationships"
+          ]
+        },
+        {
+          "id": "career",
+          "name": "Career & Work",
+          "icon": "briefcase",
+          "description": "Professional fulfillment, growth, purpose, work-life balance",
+          "questions": [
+            "My work aligns with my values and strengths",
+            "I feel challenged and engaged in my work",
+            "I see a clear path for professional growth",
+            "I maintain a healthy work-life balance",
+            "My work contributes positively to the world"
+          ]
+        },
+        {
+          "id": "finances",
+          "name": "Financial Health",
+          "icon": "wallet",
+          "description": "Financial security, freedom, planning, relationship with money",
+          "questions": [
+            "I feel financially secure",
+            "I have a clear financial plan and goals",
+            "I spend money in alignment with my values",
+            "I am building toward financial freedom",
+            "Money does not cause me significant stress"
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Personal Growth",
+          "icon": "trending-up",
+          "description": "Learning, development, self-improvement, expanding capabilities",
+          "questions": [
+            "I am actively learning and growing",
+            "I regularly step outside my comfort zone",
+            "I read or engage with new ideas frequently",
+            "I reflect on my experiences and extract lessons",
+            "I feel I am becoming a better version of myself"
+          ]
+        },
+        {
+          "id": "purpose",
+          "name": "Purpose & Meaning",
+          "icon": "compass",
+          "description": "Sense of direction, mission, contribution, spiritual fulfillment",
+          "questions": [
+            "I have a clear sense of purpose in my life",
+            "My daily actions align with my deeper values",
+            "I feel my life has meaning beyond just surviving",
+            "I contribute to something larger than myself",
+            "I feel connected to a deeper sense of who I am"
+          ]
+        },
+        {
+          "id": "creativity",
+          "name": "Creativity & Play",
+          "icon": "palette",
+          "description": "Creative expression, fun, hobbies, joyful activities",
+          "questions": [
+            "I regularly engage in creative activities",
+            "I allow myself time for play and fun",
+            "I express myself authentically through some medium",
+            "I feel inspired and curious about the world",
+            "I don't take life too seriously all the time"
+          ]
+        },
+        {
+          "id": "environment",
+          "name": "Physical Environment",
+          "icon": "home",
+          "description": "Living space, surroundings, nature connection, comfort",
+          "questions": [
+            "My living space feels peaceful and organized",
+            "I spend time in nature regularly",
+            "My environment supports my goals and well-being",
+            "I feel safe and comfortable where I live",
+            "My surroundings inspire and energize me"
+          ]
+        },
+        {
+          "id": "contribution",
+          "name": "Contribution & Impact",
+          "icon": "globe",
+          "description": "Giving back, service, positive impact on others and the world",
+          "questions": [
+            "I regularly help or serve others",
+            "I feel I make a positive difference in people's lives",
+            "I contribute to my community in meaningful ways",
+            "I am generous with my time, energy, or resources",
+            "The world is slightly better because I am in it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stress-check",
+      "title": "Stress & Resilience Check",
+      "description": "Assess your current stress levels and resilience capacity to understand where you need support.",
+      "instructions": "For each statement, rate how true it has been for you in the past two weeks (1 = Not at all, 5 = Extremely true).",
+      "questions": [
+        {"id": 1, "text": "I feel overwhelmed by my responsibilities", "type": "stress", "reverse": false},
+        {"id": 2, "text": "I have trouble sleeping due to worry or racing thoughts", "type": "stress", "reverse": false},
+        {"id": 3, "text": "I can bounce back quickly from setbacks", "type": "resilience", "reverse": true},
+        {"id": 4, "text": "I feel tension in my body (shoulders, jaw, stomach)", "type": "stress", "reverse": false},
+        {"id": 5, "text": "I have people I can turn to when I need support", "type": "resilience", "reverse": true},
+        {"id": 6, "text": "I feel like I'm constantly running but getting nowhere", "type": "stress", "reverse": false},
+        {"id": 7, "text": "I maintain perspective when things go wrong", "type": "resilience", "reverse": true},
+        {"id": 8, "text": "I often feel irritable or short-tempered", "type": "stress", "reverse": false},
+        {"id": 9, "text": "I have healthy coping strategies for difficult emotions", "type": "resilience", "reverse": true},
+        {"id": 10, "text": "I struggle to be present — my mind is always elsewhere", "type": "stress", "reverse": false},
+        {"id": 11, "text": "I believe challenges help me grow", "type": "resilience", "reverse": true},
+        {"id": 12, "text": "I use food, alcohol, or screens to numb difficult feelings", "type": "stress", "reverse": false},
+        {"id": 13, "text": "I take time for activities that recharge me", "type": "resilience", "reverse": true},
+        {"id": 14, "text": "I feel anxious about the future", "type": "stress", "reverse": false},
+        {"id": 15, "text": "I can find meaning even in difficult experiences", "type": "resilience", "reverse": true},
+        {"id": 16, "text": "I feel disconnected from the people around me", "type": "stress", "reverse": false},
+        {"id": 17, "text": "I practice self-care without guilt", "type": "resilience", "reverse": true},
+        {"id": 18, "text": "I feel like I'm on autopilot most days", "type": "stress", "reverse": false},
+        {"id": 19, "text": "I face problems head-on rather than avoiding them", "type": "resilience", "reverse": true},
+        {"id": 20, "text": "I have difficulty concentrating on tasks", "type": "stress", "reverse": false}
+      ],
+      "scoring": {
+        "stress": {
+          "low": {"min": 10, "max": 20, "label": "Low Stress", "message": "You're managing well. Your stress levels are healthy. Continue with your current practices and stay mindful of any changes."},
+          "moderate": {"min": 21, "max": 35, "label": "Moderate Stress", "message": "You're experiencing a noticeable level of stress. Consider incorporating daily breathwork, increased physical activity, and dedicated downtime into your routine."},
+          "high": {"min": 36, "max": 50, "label": "High Stress", "message": "Your stress levels are elevated. Prioritize stress management — daily breathing exercises, journaling, physical movement, and consider talking to a trusted person or professional."}
+        },
+        "resilience": {
+          "developing": {"min": 10, "max": 25, "label": "Building Resilience", "message": "Your resilience muscles are developing. Focus on building supportive relationships, practicing gratitude, and developing a growth mindset through small daily challenges."},
+          "moderate": {"min": 26, "max": 38, "label": "Moderate Resilience", "message": "You have a solid foundation of resilience. Strengthen it further through consistent practice — meditation, journaling, and intentional reflection on challenges."},
+          "strong": {"min": 39, "max": 50, "label": "Strong Resilience", "message": "Your resilience is a significant strength. You have effective coping strategies and a healthy relationship with adversity. Share these skills with others and continue refining them."}
+        }
+      }
+    },
+    {
+      "id": "mindset",
+      "title": "Growth Mindset Assessment",
+      "description": "Discover whether you tend toward a fixed or growth mindset — and learn how to cultivate the belief system that underlies all lasting change.",
+      "instructions": "Rate how much you agree with each statement (1 = Strongly Disagree, 5 = Strongly Agree).",
+      "questions": [
+        {"id": 1, "text": "My intelligence and abilities can be developed with effort and practice", "type": "growth"},
+        {"id": 2, "text": "When I fail at something, I see it as a learning opportunity", "type": "growth"},
+        {"id": 3, "text": "I tend to avoid challenges that might make me look incompetent", "type": "fixed"},
+        {"id": 4, "text": "I believe talent is more important than effort", "type": "fixed"},
+        {"id": 5, "text": "Criticism from others helps me improve", "type": "growth"},
+        {"id": 6, "text": "I feel threatened by the success of others", "type": "fixed"},
+        {"id": 7, "text": "I enjoy being challenged and stretched beyond my comfort zone", "type": "growth"},
+        {"id": 8, "text": "When something is hard, I assume it's not meant for me", "type": "fixed"},
+        {"id": 9, "text": "I believe effort is the path to mastery", "type": "growth"},
+        {"id": 10, "text": "I tend to give up when I encounter obstacles", "type": "fixed"},
+        {"id": 11, "text": "I'm inspired by the success of others", "type": "growth"},
+        {"id": 12, "text": "I believe people can fundamentally change who they are", "type": "growth"},
+        {"id": 13, "text": "I avoid trying new things because I might not be good at them", "type": "fixed"},
+        {"id": 14, "text": "The harder I work at something, the better I get", "type": "growth"},
+        {"id": 15, "text": "My core qualities are fixed traits that I can't change much", "type": "fixed"}
+      ],
+      "scoring": {
+        "growth_dominant": {"label": "Growth Mindset", "message": "You predominantly operate from a growth mindset. You see challenges as opportunities, believe in the power of effort, and view failure as feedback. This mindset is the foundation of continuous improvement. Nurture it."},
+        "mixed": {"label": "Mixed Mindset", "message": "Like most people, you show elements of both mindsets. In some areas you embrace growth; in others, fixed beliefs hold you back. Identify the specific domains where fixed thinking limits you and start challenging those beliefs."},
+        "fixed_dominant": {"label": "Fixed Mindset Tendency", "message": "You may be held back by beliefs that your abilities are set in stone. The good news? Mindset itself is changeable. Start by reframing challenges as growth opportunities and celebrating effort over outcomes."}
+      }
+    }
+  ]
+}

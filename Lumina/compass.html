@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Compass — Discover where you are with transformative life assessments. Life Balance Wheel, Stress & Resilience, and Growth Mindset evaluations.">
+  <title>The Compass — Lumina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Georgia','Cambria','serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-8 h-8"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#lg1)" opacity="0.9"/><circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/></svg><span class="text-xl font-bold gradient-text">Lumina</span></a>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Home</a><a href="mirror.html" class="nav-link">Mirror</a><a href="forge.html" class="nav-link">Forge</a><a href="breathe.html" class="nav-link">Breathe</a><a href="vault.html" class="nav-link">Vault</a><a href="compass.html" class="nav-link active">Compass</a><a href="stillness.html" class="nav-link">Stillness</a>
+        </div>
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  <div id="mobileMenu" class="mobile-nav fixed top-0 right-0 w-72 h-full bg-slate-900/95 backdrop-blur-xl z-50 pt-20 px-2">
+    <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="index.html" class="block px-4 py-3 text-lg text-slate-300">Home</a><a href="mirror.html" class="block px-4 py-3 text-lg text-slate-300">The Mirror</a><a href="forge.html" class="block px-4 py-3 text-lg text-slate-300">The Forge</a><a href="breathe.html" class="block px-4 py-3 text-lg text-slate-300">Breathe</a><a href="vault.html" class="block px-4 py-3 text-lg text-slate-300">The Vault</a><a href="compass.html" class="block px-4 py-3 text-lg text-rose-400 font-semibold">The Compass</a><a href="stillness.html" class="block px-4 py-3 text-lg text-slate-300">Stillness</a>
+    <div class="border-t border-white/10 mt-4 pt-4"><a href="about.html" class="block px-4 py-3 text-slate-400">About</a><a href="contact.php" class="block px-4 py-3 text-slate-400">Contact</a></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-28 pb-8 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mx-auto mb-6 animate-fade-in-down">
+        <svg class="w-8 h-8 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 animate-fade-in-up">The Compass</h1>
+      <p class="text-slate-400 text-lg max-w-xl mx-auto animate-fade-in-up delay-200">Self-awareness begins with honest assessment. Choose an assessment to discover where you stand — and where you want to go.</p>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT SELECTOR -->
+  <section class="pb-12 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div id="assessmentPicker" class="grid sm:grid-cols-3 gap-4">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT PANEL -->
+  <section id="assessmentPanel" class="hidden pb-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <!-- Progress bar -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm text-slate-400" id="assessProgress">Question 1 of 50</span>
+          <button onclick="backToSelection()" class="text-sm text-rose-400 hover:text-rose-300 transition-colors">← Choose another</button>
+        </div>
+        <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+          <div id="assessBar" class="h-full bg-gradient-to-r from-rose-500 to-amber-500 rounded-full transition-all duration-500" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Domain Header (for wheel) -->
+      <div id="domainHeader" class="hidden glass rounded-xl p-4 mb-4 text-center">
+        <span class="text-xs font-medium uppercase tracking-wider text-rose-400" id="domainLabel"></span>
+      </div>
+
+      <!-- Question Card -->
+      <div class="glass rounded-2xl p-8" id="questionCard">
+        <p class="text-lg sm:text-xl text-white font-medium mb-8 leading-relaxed" id="questionText"></p>
+        <div id="answersArea" class="space-y-3">
+          <!-- rating UI rendered here -->
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="flex items-center justify-between mt-6">
+        <button onclick="prevQuestion()" id="prevBtn" class="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all text-sm disabled:opacity-30 disabled:pointer-events-none" disabled>← Previous</button>
+        <button onclick="nextQuestion()" id="nextBtn" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-rose-600 to-amber-600 text-white font-medium hover:shadow-lg hover:shadow-rose-500/20 transition-all text-sm">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS PANEL -->
+  <section id="resultsPanel" class="hidden pb-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="glass rounded-2xl p-8 text-center mb-6">
+        <h2 class="text-2xl font-bold text-white mb-2" id="resultTitle">Your Results</h2>
+        <p class="text-slate-400 text-sm" id="resultDate"></p>
+      </div>
+
+      <!-- Overall Score -->
+      <div class="glass rounded-2xl p-8 text-center mb-6">
+        <div class="relative w-36 h-36 mx-auto mb-4">
+          <svg class="w-36 h-36 transform -rotate-90" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="8"/>
+            <circle id="scoreCircle" cx="60" cy="60" r="52" fill="none" stroke="url(#scoreGrad)" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73" style="transition:stroke-dashoffset 1.5s ease"/>
+            <defs><linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient></defs>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span class="text-3xl font-bold text-white" id="overallScore">0</span>
+            <span class="text-xs text-slate-500">out of 100</span>
+          </div>
+        </div>
+        <p class="text-slate-300 font-medium" id="scoreBand"></p>
+        <p class="text-slate-400 text-sm mt-1" id="scoreInsight"></p>
+      </div>
+
+      <!-- Domain Scores (for wheel) -->
+      <div id="domainResults" class="hidden mb-6 space-y-3"></div>
+
+      <!-- Interpretation -->
+      <div id="resultInterpretation" class="glass rounded-2xl p-8 mb-6">
+        <h3 class="text-white font-semibold mb-3">Interpretation</h3>
+        <div id="interpretText" class="text-slate-400 text-sm leading-relaxed space-y-2"></div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-wrap gap-3 justify-center">
+        <button onclick="retakeAssessment()" class="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-all text-sm">↻ Retake</button>
+        <button onclick="backToSelection()" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-rose-600 to-amber-600 text-white font-medium hover:shadow-lg transition-all text-sm">Try another assessment</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-600">
+      <div class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-5 h-5"><defs><linearGradient id="fLg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#fLg)" opacity="0.9"/></svg><span>&copy; 2026 Lumina</span></div>
+      <p class="mt-2 sm:mt-0">Awareness is the first step to transformation.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    let assessments = [];
+    let currentAssess = null;
+    let flatQuestions = [];
+    let answers = {};
+    let currentQ = 0;
+
+    async function init() {
+      const data = await fetchJSON('data/assessments.json');
+      if (data) {
+        assessments = data.assessments;
+        renderPicker();
+      }
+    }
+
+    function renderPicker() {
+      const hist = Store.get('compass_history', []);
+      const icons = ['<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 005 0"/></svg>',
+        '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>'];
+      const colors = [['rose','rose'],['violet','violet'],['amber','amber']];
+
+      document.getElementById('assessmentPicker').innerHTML = assessments.map((a, i) => {
+        const lastResult = hist.filter(h => h.assessId === a.id).pop();
+        return `
+          <div onclick="startAssessment(${i})" class="glass rounded-2xl p-6 cursor-pointer hover-lift group text-center">
+            <div class="w-14 h-14 rounded-xl bg-${colors[i][0]}-500/10 border border-${colors[i][0]}-500/20 flex items-center justify-center mx-auto mb-4 text-${colors[i][1]}-400">
+              ${icons[i]}
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-${colors[i][1]}-300 transition-colors">${a.title}</h3>
+            <p class="text-slate-400 text-sm mb-3">${a.description}</p>
+            <span class="text-xs text-slate-500">${a.totalQuestions} questions · ~${a.estimatedMinutes} min</span>
+            ${lastResult ? `<div class="mt-3 text-xs text-${colors[i][1]}-400">Last score: ${lastResult.score}%</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function startAssessment(idx) {
+      currentAssess = assessments[idx];
+      answers = {};
+      currentQ = 0;
+
+      // Flatten questions
+      if (currentAssess.domains) {
+        flatQuestions = [];
+        currentAssess.domains.forEach(d => {
+          d.questions.forEach(q => {
+            flatQuestions.push({ ...q, domain: d.name, domainId: d.id });
+          });
+        });
+      } else {
+        flatQuestions = currentAssess.questions.map(q => ({ ...q, domain: null }));
+      }
+
+      document.getElementById('assessmentPicker').parentElement.classList.add('hidden');
+      document.getElementById('assessmentPanel').classList.remove('hidden');
+      document.getElementById('resultsPanel').classList.add('hidden');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = flatQuestions[currentQ];
+      const total = flatQuestions.length;
+      document.getElementById('assessProgress').textContent = `Question ${currentQ + 1} of ${total}`;
+      document.getElementById('assessBar').style.width = `${((currentQ + 1) / total) * 100}%`;
+      document.getElementById('questionText').textContent = q.text;
+
+      // Domain header
+      if (q.domain) {
+        document.getElementById('domainHeader').classList.remove('hidden');
+        document.getElementById('domainLabel').textContent = q.domain;
+      } else {
+        document.getElementById('domainHeader').classList.add('hidden');
+      }
+
+      // Rating area
+      const area = document.getElementById('answersArea');
+      const saved = answers[q.id];
+
+      if (currentAssess.scale) {
+        const scale = currentAssess.scale;
+        area.innerHTML = `
+          <div class="flex justify-between text-xs text-slate-500 mb-1">
+            <span>${scale.labels[scale.min]}</span><span>${scale.labels[scale.max]}</span>
+          </div>
+          <input type="range" min="${scale.min}" max="${scale.max}" value="${saved || Math.ceil((scale.max - scale.min) / 2)}" id="ratingSlider" class="w-full accent-rose-500">
+          <div class="text-center mt-3">
+            <span class="text-2xl font-bold text-white" id="ratingDisplay">${saved || Math.ceil((scale.max - scale.min) / 2)}</span>
+            <span class="text-slate-500 text-sm"> / ${scale.max}</span>
+          </div>
+          <p class="text-center text-sm text-slate-400 mt-1" id="ratingLabel">${scale.labels[saved || Math.ceil((scale.max - scale.min) / 2)] || ''}</p>
+        `;
+        const slider = document.getElementById('ratingSlider');
+        slider.addEventListener('input', () => {
+          const v = parseInt(slider.value);
+          document.getElementById('ratingDisplay').textContent = v;
+          document.getElementById('ratingLabel').textContent = scale.labels[v] || '';
+          answers[q.id] = v;
+        });
+        if (saved) answers[q.id] = saved;
+        else answers[q.id] = parseInt(slider.value);
+      } else if (q.options) {
+        area.innerHTML = q.options.map((opt, oi) => `
+          <button onclick="selectOption(${q.id}, ${opt.value})" class="w-full text-left p-4 rounded-xl border transition-all ${saved === opt.value ? 'bg-rose-500/10 border-rose-500/30 text-white' : 'bg-white/3 border-white/5 text-slate-300 hover:bg-white/5 hover:border-white/10'}">
+            <span class="text-sm">${opt.text}</span>
+          </button>
+        `).join('');
+      }
+
+      // Buttons
+      document.getElementById('prevBtn').disabled = currentQ === 0;
+      document.getElementById('nextBtn').textContent = currentQ === total - 1 ? 'See Results' : 'Next →';
+    }
+
+    function selectOption(qId, val) {
+      answers[qId] = val;
+      renderQuestion();
+    }
+
+    function nextQuestion() {
+      const q = flatQuestions[currentQ];
+      if (answers[q.id] === undefined) {
+        showToast('Please answer the question.', 'info');
+        return;
+      }
+      if (currentQ < flatQuestions.length - 1) {
+        currentQ++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQ > 0) {
+        currentQ--;
+        renderQuestion();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('assessmentPanel').classList.add('hidden');
+      document.getElementById('resultsPanel').classList.remove('hidden');
+
+      let totalScore = 0;
+      let maxPossible = 0;
+      let domainScores = {};
+
+      flatQuestions.forEach(q => {
+        const val = answers[q.id] || 0;
+        const max = currentAssess.scale ? currentAssess.scale.max : Math.max(...(q.options || []).map(o => o.value));
+        totalScore += val;
+        maxPossible += max;
+
+        if (q.domain) {
+          if (!domainScores[q.domain]) domainScores[q.domain] = { sum: 0, max: 0, id: q.domainId };
+          domainScores[q.domain].sum += val;
+          domainScores[q.domain].max += max;
+        }
+      });
+
+      const pct = Math.round((totalScore / maxPossible) * 100);
+      document.getElementById('resultTitle').textContent = currentAssess.title + ' — Results';
+      document.getElementById('resultDate').textContent = formatDate(getToday());
+
+      // Animate circle
+      const circumference = 326.73;
+      const offset = circumference - (pct / 100) * circumference;
+      setTimeout(() => {
+        document.getElementById('scoreCircle').style.strokeDashoffset = offset;
+      }, 200);
+      animateNumber(document.getElementById('overallScore'), 0, pct, 1500);
+
+      // Score band
+      let band = '', insight = '';
+      if (pct >= 85) { band = 'Exceptional'; insight = 'You are thriving in this area. Maintain and mentor others.'; }
+      else if (pct >= 70) { band = 'Strong'; insight = 'Great foundation — small refinements will elevate you further.'; }
+      else if (pct >= 50) { band = 'Developing'; insight = 'You are aware and growing. Focus on consistency.'; }
+      else if (pct >= 30) { band = 'Emerging'; insight = 'This is your growth edge. Small steps create big change.'; }
+      else { band = 'Beginning'; insight = 'Every journey starts here. Choose one action today.'; }
+      document.getElementById('scoreBand').textContent = band;
+      document.getElementById('scoreInsight').textContent = insight;
+
+      // Domain breakdown
+      const domainContainer = document.getElementById('domainResults');
+      const domainKeys = Object.keys(domainScores);
+      if (domainKeys.length > 0) {
+        domainContainer.classList.remove('hidden');
+        // Sort by score ascending to show areas needing attention first
+        const sorted = domainKeys.sort((a, b) => (domainScores[a].sum / domainScores[a].max) - (domainScores[b].sum / domainScores[b].max));
+        domainContainer.innerHTML = '<h3 class="text-white font-semibold mb-2">Domain Breakdown</h3>' +
+          sorted.map(d => {
+            const dpct = Math.round((domainScores[d].sum / domainScores[d].max) * 100);
+            const color = dpct >= 70 ? 'emerald' : dpct >= 40 ? 'amber' : 'rose';
+            return `
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm text-white font-medium">${d}</span>
+                  <span class="text-sm text-${color}-400 font-bold">${dpct}%</span>
+                </div>
+                <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                  <div class="h-full bg-${color}-500 rounded-full transition-all duration-1000" style="width:${dpct}%"></div>
+                </div>
+              </div>
+            `;
+          }).join('');
+      } else {
+        domainContainer.classList.add('hidden');
+      }
+
+      // Interpretation from scoring rubric
+      const interpretEl = document.getElementById('interpretText');
+      if (currentAssess.scoring && currentAssess.scoring.rubric) {
+        const rubric = currentAssess.scoring.rubric;
+        const match = rubric.find(r => pct >= r.range[0] && pct <= r.range[1]);
+        if (match) {
+          interpretEl.innerHTML = `<p><strong class="text-white">${match.label}:</strong> ${match.description}</p>`;
+        }
+      }
+
+      // Add weakness/strength insights for domains
+      if (domainKeys.length > 0) {
+        const weakest = domainKeys.sort((a, b) => (domainScores[a].sum / domainScores[a].max) - (domainScores[b].sum / domainScores[b].max))[0];
+        const strongest = domainKeys.sort((a, b) => (domainScores[b].sum / domainScores[b].max) - (domainScores[a].sum / domainScores[a].max))[0];
+        interpretEl.innerHTML += `<p class="mt-3"><strong class="text-emerald-400">Strongest area:</strong> ${strongest}</p>`;
+        interpretEl.innerHTML += `<p><strong class="text-rose-400">Area for growth:</strong> ${weakest}</p>`;
+        interpretEl.innerHTML += `<p class="text-xs text-slate-500 mt-2">Tip: Focus on raising your lowest domain by even 10% — this creates the biggest life impact due to the compounding nature of balance.</p>`;
+      }
+
+      // Save to history
+      const hist = Store.get('compass_history', []);
+      hist.push({
+        assessId: currentAssess.id,
+        title: currentAssess.title,
+        score: pct,
+        date: getToday(),
+        domains: domainKeys.length > 0 ? Object.fromEntries(domainKeys.map(d => [d, Math.round((domainScores[d].sum / domainScores[d].max) * 100)])) : null
+      });
+      Store.set('compass_history', hist);
+    }
+
+    function retakeAssessment() {
+      answers = {};
+      currentQ = 0;
+      document.getElementById('resultsPanel').classList.add('hidden');
+      document.getElementById('assessmentPanel').classList.remove('hidden');
+      renderQuestion();
+    }
+
+    function backToSelection() {
+      document.getElementById('assessmentPanel').classList.add('hidden');
+      document.getElementById('resultsPanel').classList.add('hidden');
+      document.getElementById('assessmentPicker').parentElement.classList.remove('hidden');
+      renderPicker();
+    }
+
+    init();
+  </script>
+</body>
+</html>

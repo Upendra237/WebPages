@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stillness — Guided meditation timer with ambient sounds. Cultivate inner peace with Lumina's mindfulness space.">
+  <title>Stillness — Lumina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Georgia','Cambria','serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+  <style>
+    .meditation-circle { animation: breathe-slow 10s ease-in-out infinite; }
+    @keyframes breathe-slow {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    .ripple { animation: ripple-out 3s ease-out infinite; }
+    @keyframes ripple-out {
+      0% { transform: scale(0.8); opacity: 0.4; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .ripple-delay-1 { animation-delay: 1s; }
+    .ripple-delay-2 { animation-delay: 2s; }
+    .flicker { animation: flicker 4s ease-in-out infinite; }
+    @keyframes flicker {
+      0%, 100% { opacity: 0.3; }
+      30% { opacity: 0.5; }
+      50% { opacity: 0.2; }
+      70% { opacity: 0.6; }
+      90% { opacity: 0.35; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-8 h-8"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#lg1)" opacity="0.9"/><circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/></svg><span class="text-xl font-bold gradient-text">Lumina</span></a>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Home</a><a href="mirror.html" class="nav-link">Mirror</a><a href="forge.html" class="nav-link">Forge</a><a href="breathe.html" class="nav-link">Breathe</a><a href="vault.html" class="nav-link">Vault</a><a href="compass.html" class="nav-link">Compass</a><a href="stillness.html" class="nav-link active">Stillness</a>
+        </div>
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  <div id="mobileMenu" class="mobile-nav fixed top-0 right-0 w-72 h-full bg-slate-900/95 backdrop-blur-xl z-50 pt-20 px-2">
+    <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="index.html" class="block px-4 py-3 text-lg text-slate-300">Home</a><a href="mirror.html" class="block px-4 py-3 text-lg text-slate-300">The Mirror</a><a href="forge.html" class="block px-4 py-3 text-lg text-slate-300">The Forge</a><a href="breathe.html" class="block px-4 py-3 text-lg text-slate-300">Breathe</a><a href="vault.html" class="block px-4 py-3 text-lg text-slate-300">The Vault</a><a href="compass.html" class="block px-4 py-3 text-lg text-slate-300">Compass</a><a href="stillness.html" class="block px-4 py-3 text-lg text-purple-400 font-semibold">Stillness</a>
+    <div class="border-t border-white/10 mt-4 pt-4"><a href="about.html" class="block px-4 py-3 text-slate-400">About</a><a href="contact.php" class="block px-4 py-3 text-slate-400">Contact</a></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-28 pb-6 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto mb-6 animate-fade-in-down">
+        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 animate-fade-in-up">Stillness</h1>
+      <p class="text-slate-400 text-lg max-w-xl mx-auto animate-fade-in-up delay-200">In the silence between thoughts, you find yourself. Set your intention, choose your duration, and simply be.</p>
+    </div>
+  </section>
+
+  <!-- SETUP PANEL -->
+  <section id="setupPanel" class="pb-12 px-4">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Intention -->
+      <div class="glass rounded-2xl p-6 mb-6">
+        <label class="block text-sm font-medium text-slate-300 mb-3">Set an intention <span class="text-slate-500">(optional)</span></label>
+        <input type="text" id="intentionInput" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 text-sm" placeholder="e.g., Cultivate inner calm, Let go of tension...">
+        <div class="flex flex-wrap gap-2 mt-3">
+          <button onclick="setIntention('Peace')" class="text-xs px-3 py-1 rounded-full bg-white/5 text-slate-400 hover:text-white transition-colors">Peace</button>
+          <button onclick="setIntention('Clarity')" class="text-xs px-3 py-1 rounded-full bg-white/5 text-slate-400 hover:text-white transition-colors">Clarity</button>
+          <button onclick="setIntention('Letting go')" class="text-xs px-3 py-1 rounded-full bg-white/5 text-slate-400 hover:text-white transition-colors">Letting go</button>
+          <button onclick="setIntention('Gratitude')" class="text-xs px-3 py-1 rounded-full bg-white/5 text-slate-400 hover:text-white transition-colors">Gratitude</button>
+          <button onclick="setIntention('Self-compassion')" class="text-xs px-3 py-1 rounded-full bg-white/5 text-slate-400 hover:text-white transition-colors">Self-compassion</button>
+          <button onclick="setIntention('Focus')" class="text-xs px-3 py-1 rounded-full bg-white/5 text-slate-400 hover:text-white transition-colors">Focus</button>
+        </div>
+      </div>
+
+      <!-- Duration -->
+      <div class="glass rounded-2xl p-6 mb-6">
+        <label class="block text-sm font-medium text-slate-300 mb-3">Duration</label>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" id="durationBtns">
+          <button onclick="setDuration(1)" class="dur-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">1 min</button>
+          <button onclick="setDuration(3)" class="dur-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">3 min</button>
+          <button onclick="setDuration(5)" class="dur-btn px-3 py-3 rounded-xl text-sm font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">5 min</button>
+          <button onclick="setDuration(10)" class="dur-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">10 min</button>
+          <button onclick="setDuration(15)" class="dur-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">15 min</button>
+          <button onclick="setDuration(20)" class="dur-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">20 min</button>
+        </div>
+      </div>
+
+      <!-- Bell Sound -->
+      <div class="glass rounded-2xl p-6 mb-6">
+        <label class="block text-sm font-medium text-slate-300 mb-3">Bell sound</label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <button onclick="setBell('silence')" class="bell-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">Silence</button>
+          <button onclick="setBell('start')" class="bell-btn px-3 py-3 rounded-xl text-sm font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">Start only</button>
+          <button onclick="setBell('both')" class="bell-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">Start + End</button>
+          <button onclick="setBell('interval')" class="bell-btn px-3 py-3 rounded-xl text-sm font-medium text-slate-400 border border-white/5 hover:bg-white/5 transition-all">Every 5 min</button>
+        </div>
+      </div>
+
+      <!-- Focus Phrase -->
+      <div class="glass rounded-2xl p-6 mb-8">
+        <label class="block text-sm font-medium text-slate-300 mb-3">Focus phrase <span class="text-slate-500">(displayed during meditation)</span></label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <button onclick="setPhrase('Breathe')" class="phrase-btn px-3 py-3 rounded-xl text-sm text-slate-400 border border-white/5 hover:bg-white/5 transition-all">Breathe</button>
+          <button onclick="setPhrase('Let go')" class="phrase-btn px-3 py-3 rounded-xl text-sm bg-purple-500/10 text-purple-400 border border-purple-500/20">Let go</button>
+          <button onclick="setPhrase('I am enough')" class="phrase-btn px-3 py-3 rounded-xl text-sm text-slate-400 border border-white/5 hover:bg-white/5 transition-all">I am enough</button>
+          <button onclick="setPhrase('Be here now')" class="phrase-btn px-3 py-3 rounded-xl text-sm text-slate-400 border border-white/5 hover:bg-white/5 transition-all">Be here now</button>
+          <button onclick="setPhrase('Peace')" class="phrase-btn px-3 py-3 rounded-xl text-sm text-slate-400 border border-white/5 hover:bg-white/5 transition-all">Peace</button>
+          <button onclick="setPhrase('')" class="phrase-btn px-3 py-3 rounded-xl text-sm text-slate-400 border border-white/5 hover:bg-white/5 transition-all">None</button>
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <div class="text-center">
+        <button onclick="startMeditation()" class="px-10 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all hover:scale-105 active:scale-95">
+          Begin Stillness
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDITATION SCREEN -->
+  <section id="meditationScreen" class="hidden fixed inset-0 z-30 bg-slate-950 flex items-center justify-center">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-900/10 rounded-full ripple"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-900/10 rounded-full ripple ripple-delay-1"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-900/10 rounded-full ripple ripple-delay-2"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-6 w-full max-w-lg">
+      <!-- Timer Circle -->
+      <div class="relative w-56 h-56 sm:w-72 sm:h-72 mx-auto mb-8">
+        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="4"/>
+          <circle id="medCircle" cx="100" cy="100" r="90" fill="none" stroke="url(#medGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="565.49" stroke-dashoffset="0" style="transition:stroke-dashoffset 1s linear"/>
+          <defs><linearGradient id="medGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
+        </svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+          <span class="text-5xl sm:text-6xl font-light text-white tracking-wider" id="timerDisplay">5:00</span>
+          <span id="focusPhrase" class="text-purple-300/60 text-sm mt-2 flicker">Let go</span>
+        </div>
+      </div>
+
+      <!-- Intention -->
+      <p id="intentionDisplay" class="text-slate-500 text-sm italic mb-8 hidden"></p>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center space-x-4">
+        <button onclick="togglePause()" id="pauseBtn" class="w-14 h-14 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-all">
+          <svg id="pauseIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </button>
+        <button onclick="stopMeditation()" class="w-14 h-14 rounded-full bg-white/5 border border-white/10 text-slate-400 flex items-center justify-center hover:bg-white/10 hover:text-white transition-all">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLETION SCREEN -->
+  <section id="completeScreen" class="hidden fixed inset-0 z-30 bg-slate-950 flex items-center justify-center">
+    <div class="text-center px-6 max-w-md">
+      <div class="w-20 h-20 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h2 class="text-2xl font-bold text-white mb-3">Session Complete</h2>
+      <p class="text-slate-400 mb-6">You sat in stillness for <span id="completeDuration" class="text-purple-400 font-medium">5 minutes</span>.</p>
+      <p id="completeQuote" class="text-slate-500 italic font-serif text-sm mb-8">"The soul always knows what to do to heal itself. The challenge is to silence the mind." — Caroline Myss</p>
+
+      <!-- Post-session reflection -->
+      <div class="glass rounded-2xl p-6 mb-6 text-left">
+        <label class="block text-sm text-slate-300 mb-2">How do you feel? <span class="text-slate-500">(optional)</span></label>
+        <div class="flex justify-center space-x-4 mb-3" id="postMoodBtns">
+          <button onclick="setPostMood('calm')" class="post-mood text-2xl opacity-50 hover:opacity-100 transition-opacity" title="Calm">🧘</button>
+          <button onclick="setPostMood('peaceful')" class="post-mood text-2xl opacity-50 hover:opacity-100 transition-opacity" title="Peaceful">😌</button>
+          <button onclick="setPostMood('refreshed')" class="post-mood text-2xl opacity-50 hover:opacity-100 transition-opacity" title="Refreshed">✨</button>
+          <button onclick="setPostMood('sleepy')" class="post-mood text-2xl opacity-50 hover:opacity-100 transition-opacity" title="Sleepy">😴</button>
+          <button onclick="setPostMood('restless')" class="post-mood text-2xl opacity-50 hover:opacity-100 transition-opacity" title="Restless">🌀</button>
+        </div>
+        <textarea id="postNote" rows="2" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-purple-500/50 resize-none" placeholder="Any reflections from your practice..."></textarea>
+      </div>
+
+      <div class="flex items-center justify-center space-x-3">
+        <button onclick="saveAndClose()" class="px-6 py-2.5 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium hover:shadow-lg transition-all text-sm">Save & Return</button>
+        <button onclick="closeComplete()" class="px-6 py-2.5 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-all text-sm">Skip</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="pb-6 px-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="grid grid-cols-3 gap-3" id="meditationStats">
+        <div class="glass rounded-xl p-4 text-center">
+          <p class="text-2xl font-bold text-white" id="totalSessions">0</p>
+          <p class="text-xs text-slate-500 mt-1">Sessions</p>
+        </div>
+        <div class="glass rounded-xl p-4 text-center">
+          <p class="text-2xl font-bold text-white" id="totalMinutes">0</p>
+          <p class="text-xs text-slate-500 mt-1">Minutes</p>
+        </div>
+        <div class="glass rounded-xl p-4 text-center">
+          <p class="text-2xl font-bold text-white" id="medStreak">0</p>
+          <p class="text-xs text-slate-500 mt-1">Day streak</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDED MEDITATIONS INFO -->
+  <section class="pb-12 px-4">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-xl font-bold text-white mb-4">Meditation Practices</h2>
+      <div class="space-y-4">
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-lg">🧘</div>
+            <h3 class="text-white font-semibold">Mindfulness Meditation</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">The foundation of all meditation. Simply observe your breath without trying to change it. Notice thoughts arising like clouds — acknowledge them, then let them pass. Return to the breath. Every return is a rep of mental fitness.</p>
+          <p class="text-slate-500 text-xs mt-2">Best for: Beginners, daily practice, stress relief</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400 text-lg">💜</div>
+            <h3 class="text-white font-semibold">Loving-Kindness (Metta)</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">Direct warmth and compassion first toward yourself, then expanding outward: to a loved one, a neutral person, a difficult person, and finally all beings. Repeat silently: "May you be happy. May you be safe. May you be healthy. May you live with ease."</p>
+          <p class="text-slate-500 text-xs mt-2">Best for: Emotional healing, compassion, relationship pain</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-lg">👁️</div>
+            <h3 class="text-white font-semibold">Body Scan</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">Slowly move attention through every part of your body — from the crown of your head to the tips of your toes. Notice sensations without judgment: warmth, tension, tingling, numbness. Where you place awareness, healing follows.</p>
+          <p class="text-slate-500 text-xs mt-2">Best for: Tension release, sleep, chronic pain, body awareness</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-lg">🕯️</div>
+            <h3 class="text-white font-semibold">Open Awareness (Zazen)</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">Rather than focusing on one object, rest in spacious awareness itself. Let sounds, thoughts, sensations arise and dissolve without following any of them. You are the sky — everything else is weather. This is the practice of simply being.</p>
+          <p class="text-slate-500 text-xs mt-2">Best for: Advanced practitioners, existential clarity, deep peace</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 text-lg">🌊</div>
+            <h3 class="text-white font-semibold">Visualization</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">Create a vivid mental sanctuary — a place of complete safety and beauty. It might be a forest clearing, a beach at dawn, or a floating cloud. Engage all senses: feel the warmth, hear the sounds, smell the air. Your nervous system cannot distinguish vivid imagination from reality.</p>
+          <p class="text-slate-500 text-xs mt-2">Best for: Anxiety, performance, creativity, emotional regulation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT SESSIONS -->
+  <section class="pb-12 px-4">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-xl font-bold text-white mb-4">Recent Sessions</h2>
+      <div id="recentSessions" class="space-y-3">
+        <p class="text-slate-500 text-sm">No sessions yet. Begin your first sit above.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-600">
+      <div class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-5 h-5"><defs><linearGradient id="fLg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#fLg)" opacity="0.9"/></svg><span>&copy; 2026 Lumina</span></div>
+      <p class="mt-2 sm:mt-0">Be still, and know.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    let duration = 5; // minutes
+    let bellMode = 'start';
+    let focusPhrase = 'Let go';
+    let isRunning = false;
+    let isPaused = false;
+    let timeLeft = 0;
+    let timerInterval = null;
+    let postMood = '';
+    let sessionStartTime = null;
+
+    const completionQuotes = [
+      '"The soul always knows what to do to heal itself. The challenge is to silence the mind." — Caroline Myss',
+      '"Meditation is not about stopping thoughts, but recognizing that we are more than our thoughts." — Arianna Huffington',
+      '"The present moment is filled with joy and happiness. If you are attentive, you will see it." — Thich Nhat Hanh',
+      '"Silence is the language of God; all else is a poor translation." — Rumi',
+      '"Within you, there is a stillness and a sanctuary to which you can retreat at any time." — Hermann Hesse',
+      '"Your calm mind is the ultimate weapon against your challenges." — Bryant McGill',
+      '"Almost everything will work again if you unplug it for a few minutes, including you." — Anne Lamott',
+      '"In the midst of movement and chaos, keep stillness inside of you." — Deepak Chopra'
+    ];
+
+    function setIntention(text) { document.getElementById('intentionInput').value = text; }
+
+    function setDuration(min) {
+      duration = min;
+      document.querySelectorAll('.dur-btn').forEach(b => {
+        b.classList.remove('bg-purple-500/10', 'text-purple-400', 'border-purple-500/20');
+        b.classList.add('text-slate-400', 'border-white/5');
+      });
+      event.target.classList.add('bg-purple-500/10', 'text-purple-400', 'border-purple-500/20');
+      event.target.classList.remove('text-slate-400', 'border-white/5');
+    }
+
+    function setBell(mode) {
+      bellMode = mode;
+      document.querySelectorAll('.bell-btn').forEach(b => {
+        b.classList.remove('bg-purple-500/10', 'text-purple-400', 'border-purple-500/20');
+        b.classList.add('text-slate-400', 'border-white/5');
+      });
+      event.target.classList.add('bg-purple-500/10', 'text-purple-400', 'border-purple-500/20');
+      event.target.classList.remove('text-slate-400', 'border-white/5');
+    }
+
+    function setPhrase(phrase) {
+      focusPhrase = phrase;
+      document.querySelectorAll('.phrase-btn').forEach(b => {
+        b.classList.remove('bg-purple-500/10', 'text-purple-400', 'border-purple-500/20');
+        b.classList.add('text-slate-400', 'border-white/5');
+      });
+      event.target.classList.add('bg-purple-500/10', 'text-purple-400', 'border-purple-500/20');
+      event.target.classList.remove('text-slate-400', 'border-white/5');
+    }
+
+    function playBell() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(528, ctx.currentTime);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 2.5);
+      } catch (e) {}
+    }
+
+    function startMeditation() {
+      timeLeft = duration * 60;
+      isRunning = true;
+      isPaused = false;
+      sessionStartTime = Date.now();
+
+      document.getElementById('focusPhrase').textContent = focusPhrase;
+      const intention = document.getElementById('intentionInput').value.trim();
+      if (intention) {
+        document.getElementById('intentionDisplay').textContent = `"${intention}"`;
+        document.getElementById('intentionDisplay').classList.remove('hidden');
+      } else {
+        document.getElementById('intentionDisplay').classList.add('hidden');
+      }
+
+      document.getElementById('setupPanel').classList.add('hidden');
+      document.getElementById('meditationStats').parentElement.parentElement.classList.add('hidden');
+      document.getElementById('meditationScreen').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+
+      if (bellMode === 'start' || bellMode === 'both' || bellMode === 'interval') {
+        playBell();
+      }
+
+      updateTimerDisplay();
+      timerInterval = setInterval(tick, 1000);
+    }
+
+    function tick() {
+      if (isPaused) return;
+      timeLeft--;
+      updateTimerDisplay();
+
+      // Interval bell every 5 minutes
+      if (bellMode === 'interval' && timeLeft > 0 && timeLeft % 300 === 0) {
+        playBell();
+      }
+
+      if (timeLeft <= 0) {
+        completeMeditation();
+      }
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(timeLeft / 60);
+      const s = timeLeft % 60;
+      document.getElementById('timerDisplay').textContent = `${m}:${s.toString().padStart(2, '0')}`;
+
+      // Update circle
+      const total = duration * 60;
+      const elapsed = total - timeLeft;
+      const circumference = 565.49;
+      const offset = (elapsed / total) * circumference;
+      document.getElementById('medCircle').style.strokeDashoffset = circumference - offset;
+    }
+
+    function togglePause() {
+      isPaused = !isPaused;
+      const icon = document.getElementById('pauseIcon');
+      if (isPaused) {
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>';
+      } else {
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>';
+      }
+    }
+
+    function stopMeditation() {
+      if (!isRunning) return;
+      clearInterval(timerInterval);
+      isRunning = false;
+      const elapsed = duration * 60 - timeLeft;
+      if (elapsed >= 30) {
+        // Save partial session
+        showComplete(Math.floor(elapsed / 60));
+      } else {
+        closeMeditationScreen();
+      }
+    }
+
+    function completeMeditation() {
+      clearInterval(timerInterval);
+      isRunning = false;
+      if (bellMode === 'both' || bellMode === 'start') {
+        playBell();
+      }
+      showComplete(duration);
+    }
+
+    function showComplete(mins) {
+      document.getElementById('meditationScreen').classList.add('hidden');
+      document.getElementById('completeScreen').classList.remove('hidden');
+      document.getElementById('completeDuration').textContent = `${mins} minute${mins !== 1 ? 's' : ''}`;
+      document.getElementById('completeQuote').textContent = completionQuotes[Math.floor(Math.random() * completionQuotes.length)];
+      postMood = '';
+    }
+
+    function setPostMood(mood) {
+      postMood = mood;
+      document.querySelectorAll('.post-mood').forEach(b => b.classList.add('opacity-50'));
+      event.target.classList.remove('opacity-50');
+      event.target.classList.add('opacity-100');
+    }
+
+    function saveAndClose() {
+      const elapsed = duration * 60 - timeLeft;
+      const mins = Math.max(1, Math.round(elapsed / 60));
+      const sessions = Store.get('meditation_sessions', []);
+      sessions.push({
+        date: getToday(),
+        duration: mins,
+        intention: document.getElementById('intentionInput').value.trim(),
+        mood: postMood,
+        note: document.getElementById('postNote').value.trim(),
+        timestamp: Date.now()
+      });
+      Store.set('meditation_sessions', sessions);
+      showToast(`${mins}-minute session saved.`, 'success');
+      closeComplete();
+    }
+
+    function closeComplete() {
+      document.getElementById('completeScreen').classList.add('hidden');
+      closeMeditationScreen();
+    }
+
+    function closeMeditationScreen() {
+      document.body.classList.remove('overflow-hidden');
+      document.getElementById('meditationScreen').classList.add('hidden');
+      document.getElementById('setupPanel').classList.remove('hidden');
+      document.getElementById('meditationStats').parentElement.parentElement.classList.remove('hidden');
+      updateStats();
+      renderRecentSessions();
+    }
+
+    function updateStats() {
+      const sessions = Store.get('meditation_sessions', []);
+      document.getElementById('totalSessions').textContent = sessions.length;
+      document.getElementById('totalMinutes').textContent = sessions.reduce((a, s) => a + s.duration, 0);
+      const dates = [...new Set(sessions.map(s => s.date))];
+      document.getElementById('medStreak').textContent = calculateStreak(dates);
+    }
+
+    function renderRecentSessions() {
+      const sessions = Store.get('meditation_sessions', []);
+      const container = document.getElementById('recentSessions');
+      if (sessions.length === 0) {
+        container.innerHTML = '<p class="text-slate-500 text-sm">No sessions yet. Begin your first sit above.</p>';
+        return;
+      }
+      const recent = sessions.slice(-10).reverse();
+      container.innerHTML = recent.map(s => `
+        <div class="glass rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <p class="text-sm text-white font-medium">${formatDate(s.date)}</p>
+            <p class="text-xs text-slate-500">${s.intention || 'Silent meditation'} ${s.mood ? '· ' + s.mood : ''}</p>
+          </div>
+          <span class="text-purple-400 font-semibold text-sm">${s.duration} min</span>
+        </div>
+      `).join('');
+    }
+
+    updateStats();
+    renderRecentSessions();
+  </script>
+</body>
+</html>

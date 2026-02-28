@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Lumina — Our mission, philosophy, and the science behind personal transformation.">
+  <title>About — Lumina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Georgia','Cambria','serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-8 h-8"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#lg1)" opacity="0.9"/><circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/></svg><span class="text-xl font-bold gradient-text">Lumina</span></a>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Home</a><a href="mirror.html" class="nav-link">Mirror</a><a href="forge.html" class="nav-link">Forge</a><a href="breathe.html" class="nav-link">Breathe</a><a href="vault.html" class="nav-link">Vault</a><a href="compass.html" class="nav-link">Compass</a><a href="stillness.html" class="nav-link">Stillness</a>
+        </div>
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  <div id="mobileMenu" class="mobile-nav fixed top-0 right-0 w-72 h-full bg-slate-900/95 backdrop-blur-xl z-50 pt-20 px-2">
+    <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="index.html" class="block px-4 py-3 text-lg text-slate-300">Home</a><a href="mirror.html" class="block px-4 py-3 text-lg text-slate-300">The Mirror</a><a href="forge.html" class="block px-4 py-3 text-lg text-slate-300">The Forge</a><a href="breathe.html" class="block px-4 py-3 text-lg text-slate-300">Breathe</a><a href="vault.html" class="block px-4 py-3 text-lg text-slate-300">The Vault</a><a href="compass.html" class="block px-4 py-3 text-lg text-slate-300">Compass</a><a href="stillness.html" class="block px-4 py-3 text-lg text-slate-300">Stillness</a>
+    <div class="border-t border-white/10 mt-4 pt-4"><a href="about.html" class="block px-4 py-3 text-violet-400 font-semibold">About</a><a href="contact.php" class="block px-4 py-3 text-slate-400">Contact</a></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-28 pb-12 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="flex items-center justify-center mb-8">
+        <svg viewBox="0 0 36 36" fill="none" class="w-16 h-16 animate-fade-in-down"><defs><linearGradient id="alg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#alg)" opacity="0.9"/><circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/></svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6 animate-fade-in-up">About Lumina</h1>
+      <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200"><em class="text-slate-300">"Lumina"</em> means light. This platform exists for one purpose: to help you illuminate the parts of yourself you've been too busy — or too afraid — to see.</p>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 sm:p-10">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">Our Mission</h2>
+        <div class="space-y-4 text-slate-300 leading-relaxed">
+          <p>We believe that every human being carries within them the capacity for profound transformation. Not the kind sold in expensive seminars or promised by productivity gurus — but the quiet, real kind that happens when you stop running from yourself and start paying attention.</p>
+          <p>Lumina was built on a simple observation: the most powerful tools for human growth — journaling, meditation, intentional habits, honest self-assessment, curated wisdom — have existed for thousands of years. What's missing isn't another app with gamification and push notifications. What's missing is a space that respects your intelligence, trusts your autonomy, and provides actual substance.</p>
+          <p>This is that space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-white mb-8 text-center">Philosophy</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-4 text-violet-400 text-xl">🔬</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Science-Backed</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Every feature draws from peer-reviewed research in neuroscience, psychology, and behavioral science. Journaling reduces cortisol. Breathing techniques activate the vagus nerve. Habit stacking leverages basal ganglia loops. We don't guess — we build on evidence.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 text-amber-400 text-xl">📜</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Ancient Roots</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Marcus Aurelius journaled. Buddhist monks measured breath. Stoics did daily self-review. The practices here aren't trendy life hacks — they're time-tested protocols that have guided human beings through suffering and toward meaning for millennia.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 text-emerald-400 text-xl">🔒</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Private by Design</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Your journal entries, moods, habits, and meditation logs stay on your device. There are no accounts, no cloud syncing, no tracking pixels, no analytics dashboards watching your emotional states. Your inner world belongs to you alone.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-4 text-rose-400 text-xl">🎯</div>
+          <h3 class="text-lg font-semibold text-white mb-2">Substance Over Style</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">No gamification loops designed to addict. No streaks that punish you for missing a day (pause is part of practice). No upsell. The goal isn't engagement metrics — it's your genuine transformation, even if that means you no longer need this tool.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SIX PILLARS -->
+  <section class="pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-white mb-8 text-center">The Six Pillars</h2>
+      <div class="space-y-4">
+        <div class="glass rounded-xl p-6 flex items-start space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="text-blue-400 text-lg">🪞</span>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">The Mirror — Self-Reflection</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Guided journaling, mood tracking, and gratitude practice. Based on Pennebaker's expressive writing research, which shows that structured self-reflection reduces anxiety, improves immune function, and increases emotional clarity. The daily prompt system ensures you never stare at a blank page.</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-start space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="text-orange-400 text-lg">🔨</span>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">The Forge — Habit Architecture</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Build identity-level habits one day at a time. Inspired by James Clear's atomic habits framework and BJ Fogg's Tiny Habits research. The visual history and streak system leverage the human drive for completion and consistency — without the toxic perfectionism.</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-start space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="text-cyan-400 text-lg">🌬️</span>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">Breathe — Nervous System Mastery</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Five scientifically-validated breathing techniques. Box breathing (used by Navy SEALs), 4-7-8 (Dr. Andrew Weil's sleep protocol), and custom patterns. Each directly modulates your autonomic nervous system, shifting from sympathetic (fight/flight) to parasympathetic (rest/digest) in minutes.</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-start space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="text-emerald-400 text-lg">📚</span>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">The Vault — Curated Wisdom</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Twelve deeply-researched articles spanning Stoic philosophy, neuroscience, positive psychology, and contemplative traditions. Each article is a complete lens through which to see your life differently. Not clickbait listicles — real, transformative knowledge with actionable takeaways.</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-start space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="text-rose-400 text-lg">🧭</span>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">The Compass — Self-Assessment</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Three comprehensive assessments: a Life Balance Wheel (10 domains), Stress & Resilience check, and Growth Mindset evaluation. Each provides not just a score, but a mirror — showing you where you're thriving and where you're surviving. Honest self-assessment is the prerequisite to intentional change.</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-start space-x-4">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="text-purple-400 text-lg">🧘</span>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">Stillness — Meditation</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">A distraction-free meditation timer with intentions, focus phrases, and five different practice guides (Mindfulness, Loving-Kindness, Body Scan, Open Awareness, Visualization). Meditation is the meta-skill — it improves everything else. Even two minutes of daily practice rewires neural pathways for attention and emotional regulation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SCIENCE -->
+  <section class="pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 sm:p-10">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">The Science</h2>
+        <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+          <div>
+            <h3 class="text-white font-semibold mb-1">Neuroplasticity</h3>
+            <p>Your brain physically rewires itself based on what you repeatedly do and think. Every time you journal, meditate, or practice a new habit, you strengthen specific neural pathways. After 66 days (Phillippa Lally's research at UCL), these pathways become automatic. Lumina is designed around this timeline.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">The Vagus Nerve</h3>
+            <p>The vagus nerve is your body's "calm down" highway connecting brain to gut. Deep breathing, especially with extended exhales, stimulates vagal tone. Higher vagal tone correlates with better emotional regulation, reduced inflammation, and improved heart rate variability. The Breathe module targets this directly.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">Expressive Writing</h3>
+            <p>Dr. James Pennebaker's landmark studies at the University of Texas showed that 15-20 minutes of expressive writing about emotional experiences significantly improves physical health, reduces doctor visits, and decreases rumination. The Mirror journaling system is modeled on this research.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">The Default Mode Network</h3>
+            <p>Meditation literally quiets the brain's Default Mode Network — the neural circuit responsible for self-referential thinking, rumination, and the "monkey mind." Regular meditators show reduced DMN activity and increased connectivity between attention networks, resulting in less mind-wandering and more presence.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-1">Gratitude & Well-Being</h3>
+            <p>Dr. Robert Emmons' research at UC Davis demonstrated that regularly recording gratitude increases happiness by 25%, improves sleep quality, strengthens immune response, and builds resilience against stress. The effect is dose-dependent — more practice creates more benefit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="pb-16 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <blockquote class="text-xl sm:text-2xl font-serif italic text-slate-300 leading-relaxed">"Between stimulus and response there is a space. In that space is our freedom and our power to choose our response. In our response lies our growth and our freedom."</blockquote>
+      <p class="text-slate-500 mt-4">— Viktor E. Frankl, <em>Man's Search for Meaning</em></p>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE NOTE -->
+  <section class="pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 text-center">
+        <h3 class="text-white font-bold text-lg mb-3">Built with Care</h3>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-2xl mx-auto">Lumina is handcrafted with HTML, Tailwind CSS, vanilla JavaScript, and PHP. No frameworks. No build tools. No dependency chains. No data collection. Every line of code serves one purpose: your inner growth.<br><br>All data stays in your browser's local storage. Clear it anytime. Export it anytime. You are always in control.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pb-16 px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Ready to Begin?</h2>
+      <p class="text-slate-400 mb-8">Transformation doesn't require a perfect moment. It requires this one.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="mirror.html" class="px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium hover:shadow-lg hover:shadow-violet-500/20 transition-all text-sm">Start Journaling</a>
+        <a href="breathe.html" class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white transition-all text-sm">Try Breathing</a>
+        <a href="stillness.html" class="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white transition-all text-sm">Meditate Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-600">
+      <div class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-5 h-5"><defs><linearGradient id="fLg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#fLg)" opacity="0.9"/></svg><span>&copy; 2026 Lumina</span></div>
+      <p class="mt-2 sm:mt-0">Illuminate your inner world.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lumina — Illuminate your inner world. A personal transformation platform for journaling, breathwork, meditation, habit building, and timeless wisdom.">
+  <meta name="keywords" content="personal growth, mindfulness, meditation, journaling, habits, wisdom, mental health, self-improvement">
+  <meta name="author" content="Lumina">
+  <meta property="og:title" content="Lumina — Illuminate Your Inner World">
+  <meta property="og:description" content="A personal transformation platform for building daily practices that rewire your mind, body, and life.">
+  <meta property="og:type" content="website">
+  <title>Lumina — Illuminate Your Inner World</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['Georgia', 'Cambria', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
+
+  <!-- ======== NAVBAR ======== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-2 group">
+          <svg viewBox="0 0 36 36" fill="none" class="w-8 h-8 transition-transform group-hover:scale-110">
+            <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs>
+            <path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#lg1)" opacity="0.9"/>
+            <path d="M18 11C18 11 13 18 13 23C13 25.8 15.2 28 18 28C20.8 28 23 25.8 23 23C23 18 18 11 18 11Z" fill="white" opacity="0.25"/>
+            <circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/>
+          </svg>
+          <span class="text-xl font-bold gradient-text">Lumina</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="mirror.html" class="nav-link">Mirror</a>
+          <a href="forge.html" class="nav-link">Forge</a>
+          <a href="breathe.html" class="nav-link">Breathe</a>
+          <a href="vault.html" class="nav-link">Vault</a>
+          <a href="compass.html" class="nav-link">Compass</a>
+          <a href="stillness.html" class="nav-link">Stillness</a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a href="about.html" class="hidden sm:inline-block text-sm text-slate-400 hover:text-white transition-colors">About</a>
+          <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white" aria-label="Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  <div id="mobileMenu" class="mobile-nav fixed top-0 right-0 w-72 h-full bg-slate-900/95 backdrop-blur-xl z-50 pt-20 px-2">
+    <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <a href="index.html" class="block px-4 py-3 text-lg text-violet-400 font-semibold">Home</a>
+    <a href="mirror.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white transition-colors">The Mirror</a>
+    <a href="forge.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white transition-colors">The Forge</a>
+    <a href="breathe.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white transition-colors">Breathe</a>
+    <a href="vault.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white transition-colors">The Vault</a>
+    <a href="compass.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white transition-colors">Compass</a>
+    <a href="stillness.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white transition-colors">Stillness</a>
+    <div class="border-t border-white/10 mt-4 pt-4">
+      <a href="about.html" class="block px-4 py-3 text-slate-400 hover:text-white transition-colors">About</a>
+      <a href="contact.php" class="block px-4 py-3 text-slate-400 hover:text-white transition-colors">Contact</a>
+    </div>
+  </div>
+
+  <!-- ======== HERO SECTION ======== -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-600/15 rounded-full blur-3xl animate-float" style="animation-delay:1.5s"></div>
+      <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl animate-float" style="animation-delay:3s"></div>
+    </div>
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+      <!-- Logo Mark -->
+      <div class="mb-8 animate-fade-in-down">
+        <svg viewBox="0 0 36 36" fill="none" class="w-20 h-20 mx-auto mb-6 animate-float">
+          <defs><linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs>
+          <path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#heroGrad)" opacity="0.9"/>
+          <path d="M18 11C18 11 13 18 13 23C13 25.8 15.2 28 18 28C20.8 28 23 25.8 23 23C23 18 18 11 18 11Z" fill="white" opacity="0.25"/>
+          <circle cx="18" cy="20" r="3" fill="white" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-in-up">
+        Illuminate Your <br>
+        <span class="gradient-text">Inner World</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
+        A personal transformation platform. Journal your thoughts, build powerful habits, practice breathwork, explore timeless wisdom, and forge the life you were meant to live.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-400">
+        <a href="mirror.html" class="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-violet-500 hover:to-indigo-500 transition-all hover:shadow-lg hover:shadow-violet-500/25 hover:-translate-y-0.5">
+          Begin Your Journey
+        </a>
+        <a href="#features" class="px-8 py-4 text-slate-300 font-medium rounded-xl border border-white/10 hover:bg-white/5 transition-all hover:-translate-y-0.5">
+          Explore Features
+        </a>
+      </div>
+
+      <!-- Daily Quote -->
+      <div class="mt-16 max-w-xl mx-auto animate-fade-in-up delay-600">
+        <div class="glass rounded-2xl p-6 text-center">
+          <p class="text-sm text-amber-400/80 uppercase tracking-wider mb-3 font-medium">Today's Wisdom</p>
+          <p id="heroQuote" class="text-slate-300 italic font-serif text-lg leading-relaxed">"Loading today's wisdom..."</p>
+          <p id="heroAuthor" class="text-slate-500 mt-3 text-sm">—</p>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== STATS BAR ======== -->
+  <section class="relative py-12 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="reveal">
+          <div class="text-3xl font-bold gradient-text" id="statQuotes">100</div>
+          <div class="text-sm text-slate-500 mt-1">Curated Quotes</div>
+        </div>
+        <div class="reveal">
+          <div class="text-3xl font-bold gradient-text">12</div>
+          <div class="text-sm text-slate-500 mt-1">Wisdom Articles</div>
+        </div>
+        <div class="reveal">
+          <div class="text-3xl font-bold gradient-text">60</div>
+          <div class="text-sm text-slate-500 mt-1">Journal Prompts</div>
+        </div>
+        <div class="reveal">
+          <div class="text-3xl font-bold gradient-text">5</div>
+          <div class="text-sm text-slate-500 mt-1">Breathing Techniques</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FEATURES SECTION ======== -->
+  <section id="features" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16 reveal">
+        <p class="text-violet-400 text-sm uppercase tracking-widest font-medium mb-3">Your Transformation Toolkit</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Six Pillars of Inner Growth</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto">Each tool is designed to address a fundamental dimension of human flourishing — from self-awareness to daily practice to lasting change.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- The Mirror -->
+        <a href="mirror.html" class="glass rounded-2xl p-8 hover-lift group reveal">
+          <div class="w-14 h-14 rounded-xl bg-violet-500/10 flex items-center justify-center mb-5 group-hover:bg-violet-500/20 transition-colors">
+            <svg class="w-7 h-7 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">The Mirror</h3>
+          <p class="text-sm font-medium text-violet-400 mb-3">Guided Journaling & Mood Tracking</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Reflect with guided prompts, track your emotional landscape, practice gratitude, and watch patterns emerge from your inner world.</p>
+        </a>
+
+        <!-- The Forge -->
+        <a href="forge.html" class="glass rounded-2xl p-8 hover-lift group reveal">
+          <div class="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center mb-5 group-hover:bg-amber-500/20 transition-colors">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">The Forge</h3>
+          <p class="text-sm font-medium text-amber-400 mb-3">Habit Building & Streak Tracking</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Build life-changing habits with visual streaks, daily check-ins, and the science of behavior change — one small action at a time.</p>
+        </a>
+
+        <!-- Breathe -->
+        <a href="breathe.html" class="glass rounded-2xl p-8 hover-lift group reveal">
+          <div class="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition-colors">
+            <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75l-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0L3 16.5m15-12.75L16.5 5.25 15 3.75m6 0l-1.5 1.5L18 3.75M3 3.75L4.5 5.25 6 3.75m-3 0L4.5 5.25 6 3.75"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Breathe</h3>
+          <p class="text-sm font-medium text-cyan-400 mb-3">Interactive Breathing Exercises</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Reset your nervous system in minutes with guided breathing techniques used by Navy SEALs, yogis, and neuroscientists.</p>
+        </a>
+
+        <!-- The Vault -->
+        <a href="vault.html" class="glass rounded-2xl p-8 hover-lift group reveal">
+          <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5 group-hover:bg-emerald-500/20 transition-colors">
+            <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">The Vault</h3>
+          <p class="text-sm font-medium text-emerald-400 mb-3">Curated Wisdom Library</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Explore transformative articles spanning Stoicism, neuroscience, psychology, philosophy, and practical wisdom for modern life.</p>
+        </a>
+
+        <!-- Compass -->
+        <a href="compass.html" class="glass rounded-2xl p-8 hover-lift group reveal">
+          <div class="w-14 h-14 rounded-xl bg-rose-500/10 flex items-center justify-center mb-5 group-hover:bg-rose-500/20 transition-colors">
+            <svg class="w-7 h-7 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Compass</h3>
+          <p class="text-sm font-medium text-rose-400 mb-3">Life Balance Assessment</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Map your life across 10 key domains with interactive assessments. Discover where you thrive and where you need attention.</p>
+        </a>
+
+        <!-- Stillness -->
+        <a href="stillness.html" class="glass rounded-2xl p-8 hover-lift group reveal">
+          <div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5 group-hover:bg-purple-500/20 transition-colors">
+            <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Stillness</h3>
+          <p class="text-sm font-medium text-purple-400 mb-3">Meditation Timer & Guides</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Find your calm with customizable meditation timers, guided sessions, ambient soundscapes, and a growing practice log.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== HOW IT WORKS ======== -->
+  <section class="py-24 relative border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-16 reveal">
+        <p class="text-amber-400 text-sm uppercase tracking-widest font-medium mb-3">Your Daily Practice</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Transform in 15 Minutes a Day</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Real change doesn't require hours. It requires consistency. Here's a simple daily ritual that rewires your mind.</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-violet-400">1</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Breathe</h3>
+          <p class="text-slate-400 text-sm">Start with 2 minutes of intentional breathing to center yourself.</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-amber-400">2</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Reflect</h3>
+          <p class="text-slate-400 text-sm">Write in your journal with a guided prompt. Name your emotions.</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-emerald-400">3</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Act</h3>
+          <p class="text-slate-400 text-sm">Check off your daily habits. Small actions, compounded.</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-cyan-400">4</span>
+          </div>
+          <h3 class="font-bold text-white mb-2">Learn</h3>
+          <p class="text-slate-400 text-sm">Read one piece of wisdom. Let it shift your perspective.</p>
+        </div>
+      </div>
+
+      <!-- Connection Lines (visual) -->
+      <div class="hidden md:flex justify-center mt-8 reveal">
+        <div class="flex items-center space-x-2 text-slate-600">
+          <span class="text-sm italic">"Extraordinary is just ordinary, compounded."</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== QUICK BREATHE WIDGET ======== -->
+  <section class="py-24 relative border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="reveal">
+        <p class="text-cyan-400 text-sm uppercase tracking-widest font-medium mb-3">Try It Now</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Take a Breath</h2>
+        <p class="text-slate-400 max-w-lg mx-auto mb-12">Follow the circle. Inhale as it expands, exhale as it contracts. Just 30 seconds can shift your state.</p>
+      </div>
+
+      <div class="reveal flex flex-col items-center">
+        <div id="breatheWidget" class="relative cursor-pointer" onclick="toggleQuickBreathe()">
+          <div class="w-40 h-40 rounded-full bg-gradient-to-br from-cyan-500/20 to-violet-500/20 flex items-center justify-center border border-white/10">
+            <div id="breatheInner" class="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-400/30 to-violet-400/30 flex items-center justify-center transition-all duration-[4000ms] ease-in-out">
+              <span id="breatheText" class="text-sm font-medium text-white/80">Tap to start</span>
+            </div>
+          </div>
+          <div id="breatheRing1" class="absolute inset-0 rounded-full border border-cyan-400/20 hidden animate-breathe-ring"></div>
+          <div id="breatheRing2" class="absolute inset-0 rounded-full border border-violet-400/20 hidden animate-breathe-ring" style="animation-delay:2s"></div>
+        </div>
+        <p class="text-slate-500 text-xs mt-6">Click the circle to begin</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== WISDOM PREVIEW ======== -->
+  <section class="py-24 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16 reveal">
+        <p class="text-emerald-400 text-sm uppercase tracking-widest font-medium mb-3">From The Vault</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Timeless Wisdom for Modern Life</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Carefully curated articles bridging ancient philosophy with modern neuroscience — practical insights you can apply today.</p>
+      </div>
+
+      <div id="wisdomPreview" class="grid md:grid-cols-3 gap-6">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="text-center mt-10 reveal">
+        <a href="vault.html" class="inline-flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+          <span>Explore the full library</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== QUOTE CAROUSEL ======== -->
+  <section class="py-24 relative border-t border-white/5 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+      <div class="reveal">
+        <p class="text-amber-400 text-sm uppercase tracking-widest font-medium mb-8">Words That Transform</p>
+        <div class="glass rounded-2xl p-10">
+          <svg class="w-8 h-8 text-amber-400/40 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <p id="carouselQuote" class="text-xl sm:text-2xl font-serif text-slate-200 italic leading-relaxed mb-6 transition-opacity duration-500">"Loading..."</p>
+          <p id="carouselAuthor" class="text-slate-400 font-medium">—</p>
+          <div class="flex items-center justify-center space-x-4 mt-8">
+            <button onclick="prevQuote()" class="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors text-slate-400 hover:text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <span id="carouselCount" class="text-sm text-slate-500">1 / 100</span>
+            <button onclick="nextQuote()" class="p-2 rounded-full border border-white/10 hover:bg-white/5 transition-colors text-slate-400 hover:text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA SECTION ======== -->
+  <section class="py-24 relative border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="reveal">
+        <div class="glass-strong rounded-3xl p-12 sm:p-16 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+          <div class="relative z-10">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Your Transformation Starts Now</h2>
+            <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">Every master was once a disaster. Every expert was once a beginner. The only difference? They started. No signup required — your data stays on your device, your journey stays yours.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="mirror.html" class="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-violet-500 hover:to-indigo-500 transition-all hover:shadow-lg hover:shadow-violet-500/25">
+                Start Journaling
+              </a>
+              <a href="breathe.html" class="px-8 py-4 text-slate-300 font-medium rounded-xl border border-white/10 hover:bg-white/5 transition-all">
+                Try Breathing Exercise
+              </a>
+            </div>
+            <p class="text-slate-600 text-xs mt-6">100% free. No account needed. All data stored privately on your device.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="border-t border-white/5 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <div class="flex items-center space-x-2 mb-4">
+            <svg viewBox="0 0 36 36" fill="none" class="w-7 h-7">
+              <defs><linearGradient id="fLg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs>
+              <path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#fLg)" opacity="0.9"/>
+              <circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/>
+            </svg>
+            <span class="text-lg font-bold gradient-text">Lumina</span>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">Illuminate your inner world. A free, private platform for personal transformation.</p>
+        </div>
+        <!-- Practice -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Practice</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="mirror.html" class="text-slate-400 hover:text-white transition-colors">The Mirror (Journal)</a></li>
+            <li><a href="forge.html" class="text-slate-400 hover:text-white transition-colors">The Forge (Habits)</a></li>
+            <li><a href="breathe.html" class="text-slate-400 hover:text-white transition-colors">Breathe</a></li>
+            <li><a href="stillness.html" class="text-slate-400 hover:text-white transition-colors">Stillness (Meditation)</a></li>
+          </ul>
+        </div>
+        <!-- Discover -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Discover</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="vault.html" class="text-slate-400 hover:text-white transition-colors">The Vault (Wisdom)</a></li>
+            <li><a href="compass.html" class="text-slate-400 hover:text-white transition-colors">Compass (Assessment)</a></li>
+            <li><a href="about.html" class="text-slate-400 hover:text-white transition-colors">About Lumina</a></li>
+            <li><a href="contact.php" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Philosophy -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Philosophy</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li>Privacy-first design</li>
+            <li>No accounts required</li>
+            <li>All data stays on your device</li>
+            <li>Free forever</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-600">
+        <p>&copy; 2026 Lumina. Illuminate your inner world.</p>
+        <p class="mt-2 sm:mt-0">Built with intention. Powered by curiosity.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    // ---- Load Daily Quote ----
+    let allQuotes = [];
+    let currentQuoteIdx = 0;
+
+    async function loadQuotes() {
+      const data = await fetchJSON('data/quotes.json');
+      if (data && data.quotes) {
+        allQuotes = data.quotes;
+        // Daily quote based on day of year
+        const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+        const dailyQuote = allQuotes[dayOfYear % allQuotes.length];
+        document.getElementById('heroQuote').textContent = `"${dailyQuote.text}"`;
+        document.getElementById('heroAuthor').textContent = `— ${dailyQuote.author}`;
+        // Carousel
+        currentQuoteIdx = Math.floor(Math.random() * allQuotes.length);
+        showCarouselQuote();
+      }
+    }
+
+    function showCarouselQuote() {
+      const q = allQuotes[currentQuoteIdx];
+      if (!q) return;
+      const el = document.getElementById('carouselQuote');
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.textContent = `"${q.text}"`;
+        document.getElementById('carouselAuthor').textContent = `— ${q.author}`;
+        document.getElementById('carouselCount').textContent = `${currentQuoteIdx + 1} / ${allQuotes.length}`;
+        el.style.opacity = '1';
+      }, 300);
+    }
+
+    function nextQuote() {
+      currentQuoteIdx = (currentQuoteIdx + 1) % allQuotes.length;
+      showCarouselQuote();
+    }
+    function prevQuote() {
+      currentQuoteIdx = (currentQuoteIdx - 1 + allQuotes.length) % allQuotes.length;
+      showCarouselQuote();
+    }
+
+    // ---- Load Wisdom Preview ----
+    async function loadWisdomPreview() {
+      const data = await fetchJSON('data/wisdom.json');
+      if (data && data.articles) {
+        const preview = data.articles.slice(0, 3);
+        const container = document.getElementById('wisdomPreview');
+        container.innerHTML = preview.map(a => `
+          <a href="vault.html#article-${a.id}" class="glass rounded-2xl p-6 hover-lift group reveal">
+            <div class="flex items-center space-x-2 mb-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400">${a.category}</span>
+              <span class="text-xs text-slate-500">${a.readTime}</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">${a.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">${a.summary}</p>
+            <div class="mt-4 flex items-center text-emerald-400 text-sm font-medium">
+              <span>Read article</span>
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        `).join('');
+        // Re-init reveal for dynamically added elements
+        document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+          }, { threshold: 0.1 });
+          observer.observe(el);
+        });
+      }
+    }
+
+    // ---- Quick Breathe Widget ----
+    let breatheActive = false;
+    let breatheInterval = null;
+
+    function toggleQuickBreathe() {
+      const inner = document.getElementById('breatheInner');
+      const text = document.getElementById('breatheText');
+      const ring1 = document.getElementById('breatheRing1');
+      const ring2 = document.getElementById('breatheRing2');
+
+      if (breatheActive) {
+        breatheActive = false;
+        clearInterval(breatheInterval);
+        inner.style.transform = 'scale(1)';
+        text.textContent = 'Tap to start';
+        ring1.classList.add('hidden');
+        ring2.classList.add('hidden');
+        return;
+      }
+
+      breatheActive = true;
+      ring1.classList.remove('hidden');
+      ring2.classList.remove('hidden');
+      let phase = 'inhale';
+
+      function cycle() {
+        if (!breatheActive) return;
+        if (phase === 'inhale') {
+          inner.style.transform = 'scale(1.6)';
+          text.textContent = 'Breathe in...';
+          phase = 'exhale';
+        } else {
+          inner.style.transform = 'scale(1)';
+          text.textContent = 'Breathe out...';
+          phase = 'inhale';
+        }
+      }
+
+      cycle();
+      breatheInterval = setInterval(cycle, 4000);
+    }
+
+    // ---- Initialize ----
+    loadQuotes();
+    loadWisdomPreview();
+  </script>
+</body>
+</html>

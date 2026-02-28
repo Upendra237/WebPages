@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Breathe — Interactive breathing exercises to reset your nervous system. Box breathing, 4-7-8, and more. A Lumina wellness tool.">
+  <title>Breathe — Lumina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Georgia','Cambria','serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-8 h-8"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#lg1)" opacity="0.9"/><circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/></svg><span class="text-xl font-bold gradient-text">Lumina</span></a>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Home</a><a href="mirror.html" class="nav-link">Mirror</a><a href="forge.html" class="nav-link">Forge</a><a href="breathe.html" class="nav-link active">Breathe</a><a href="vault.html" class="nav-link">Vault</a><a href="compass.html" class="nav-link">Compass</a><a href="stillness.html" class="nav-link">Stillness</a>
+        </div>
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  <div id="mobileMenu" class="mobile-nav fixed top-0 right-0 w-72 h-full bg-slate-900/95 backdrop-blur-xl z-50 pt-20 px-2">
+    <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="index.html" class="block px-4 py-3 text-lg text-slate-300">Home</a><a href="mirror.html" class="block px-4 py-3 text-lg text-slate-300">The Mirror</a><a href="forge.html" class="block px-4 py-3 text-lg text-slate-300">The Forge</a><a href="breathe.html" class="block px-4 py-3 text-lg text-cyan-400 font-semibold">Breathe</a><a href="vault.html" class="block px-4 py-3 text-lg text-slate-300">The Vault</a><a href="compass.html" class="block px-4 py-3 text-lg text-slate-300">Compass</a><a href="stillness.html" class="block px-4 py-3 text-lg text-slate-300">Stillness</a>
+    <div class="border-t border-white/10 mt-4 pt-4"><a href="about.html" class="block px-4 py-3 text-slate-400">About</a><a href="contact.php" class="block px-4 py-3 text-slate-400">Contact</a></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-28 pb-8 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mx-auto mb-6 animate-fade-in-down">
+        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75l-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0L3 16.5m15-12.75L16.5 5.25 15 3.75m6 0l-1.5 1.5L18 3.75M3 3.75L4.5 5.25 6 3.75m-3 0L4.5 5.25 6 3.75"/></svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 animate-fade-in-up">Breathe</h1>
+      <p class="text-slate-400 text-lg max-w-xl mx-auto animate-fade-in-up delay-200">Your breath is the master remote control for your nervous system. Choose a technique, follow the guide, and feel the shift.</p>
+    </div>
+  </section>
+
+  <!-- TECHNIQUE SELECTOR -->
+  <section class="pb-8 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        <button onclick="selectTechnique('box')" id="tech-box" class="tech-btn glass rounded-xl p-4 text-center hover-lift transition-all border-2 border-cyan-500/30 bg-cyan-500/5">
+          <div class="text-2xl mb-1">⬜</div>
+          <div class="text-xs font-medium text-white">Box Breathing</div>
+          <div class="text-xs text-slate-500">4-4-4-4</div>
+        </button>
+        <button onclick="selectTechnique('relax')" id="tech-relax" class="tech-btn glass rounded-xl p-4 text-center hover-lift transition-all border-2 border-transparent">
+          <div class="text-2xl mb-1">🌊</div>
+          <div class="text-xs font-medium text-white">4-7-8 Relax</div>
+          <div class="text-xs text-slate-500">Dr. Weil</div>
+        </button>
+        <button onclick="selectTechnique('energize')" id="tech-energize" class="tech-btn glass rounded-xl p-4 text-center hover-lift transition-all border-2 border-transparent">
+          <div class="text-2xl mb-1">⚡</div>
+          <div class="text-xs font-medium text-white">Energizing</div>
+          <div class="text-xs text-slate-500">2-1-4-1</div>
+        </button>
+        <button onclick="selectTechnique('calm')" id="tech-calm" class="tech-btn glass rounded-xl p-4 text-center hover-lift transition-all border-2 border-transparent">
+          <div class="text-2xl mb-1">🍃</div>
+          <div class="text-xs font-medium text-white">Deep Calm</div>
+          <div class="text-xs text-slate-500">6-0-6-0</div>
+        </button>
+        <button onclick="selectTechnique('focus')" id="tech-focus" class="tech-btn glass rounded-xl p-4 text-center hover-lift transition-all border-2 border-transparent">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xs font-medium text-white">Focus</div>
+          <div class="text-xs text-slate-500">4-4-6-2</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREATHING EXERCISE -->
+  <section class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+        <!-- Background Ambient -->
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10">
+          <!-- Technique Info -->
+          <h2 id="techTitle" class="text-2xl font-bold text-white mb-2">Box Breathing</h2>
+          <p id="techDesc" class="text-slate-400 text-sm mb-8 max-w-md mx-auto">Used by Navy SEALs and first responders. Equal intervals create a steady rhythm that calms the mind and sharpens focus.</p>
+
+          <!-- Circle -->
+          <div class="flex justify-center mb-8">
+            <div class="relative">
+              <!-- SVG Ring -->
+              <svg id="breatheRingSvg" class="w-56 h-56 sm:w-72 sm:h-72" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4"/>
+                <circle id="breatheProgress" cx="100" cy="100" r="90" fill="none" stroke="url(#breatheGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="565.48" stroke-dashoffset="565.48" transform="rotate(-90 100 100)" style="transition: stroke-dashoffset linear;"/>
+                <defs><linearGradient id="breatheGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#22d3ee"/><stop offset="100%" style="stop-color:#a78bfa"/></linearGradient></defs>
+              </svg>
+              <!-- Inner Circle -->
+              <div id="breatheCircleInner" class="absolute inset-0 flex items-center justify-center">
+                <div id="breatheBall" class="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-400/20 border border-white/10 flex flex-col items-center justify-center transition-all" style="transition: transform 1s ease-in-out;">
+                  <span id="breathePhase" class="text-lg font-semibold text-white">Ready</span>
+                  <span id="breatheCount" class="text-3xl font-bold text-cyan-400 mt-1">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center justify-center space-x-4 mb-6">
+            <button onclick="startBreathing()" id="btnStart" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-violet-400 transition-all text-sm">
+              Start
+            </button>
+            <button onclick="stopBreathing()" id="btnStop" class="px-8 py-3 text-slate-300 font-medium rounded-xl border border-white/10 hover:bg-white/5 transition-all text-sm hidden">
+              Stop
+            </button>
+          </div>
+
+          <!-- Round Settings -->
+          <div class="flex items-center justify-center space-x-6 text-sm">
+            <div class="flex items-center space-x-2">
+              <span class="text-slate-500">Rounds:</span>
+              <button onclick="setRounds(-1)" class="w-7 h-7 rounded-lg border border-white/10 hover:bg-white/5 flex items-center justify-center text-slate-400">−</button>
+              <span id="roundsSetting" class="text-white font-bold w-6 text-center">4</span>
+              <button onclick="setRounds(1)" class="w-7 h-7 rounded-lg border border-white/10 hover:bg-white/5 flex items-center justify-center text-slate-400">+</button>
+            </div>
+            <div class="text-slate-500">
+              Round: <span id="currentRound" class="text-white font-bold">0</span> / <span id="totalRounds" class="text-white">4</span>
+            </div>
+            <div class="text-slate-500">
+              Time: <span id="elapsedTime" class="text-white font-bold">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNIQUE DETAILS -->
+  <section class="pb-24 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-white font-semibold mb-3">How It Works</h3>
+          <div id="techHowItWorks" class="text-slate-400 text-sm leading-relaxed space-y-2">
+            <p><strong class="text-cyan-400">Inhale</strong> — Fill your lungs slowly and steadily through your nose.</p>
+            <p><strong class="text-cyan-400">Hold</strong> — Pause at the top. Let your body absorb the oxygen.</p>
+            <p><strong class="text-cyan-400">Exhale</strong> — Release slowly through your mouth. Let go of tension.</p>
+            <p><strong class="text-cyan-400">Hold</strong> — Pause at the bottom. Rest in the stillness.</p>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-white font-semibold mb-3">The Science</h3>
+          <div id="techScience" class="text-slate-400 text-sm leading-relaxed space-y-2">
+            <p>Extended exhales activate the <strong class="text-white">vagus nerve</strong> — the main highway of your parasympathetic (calming) nervous system.</p>
+            <p>This reduces cortisol, lowers heart rate, relaxes muscles, and shifts your brain from reactive to responsive mode.</p>
+            <p>Research shows just <strong class="text-white">5 minutes</strong> of intentional breathing measurably reduces anxiety and improves focus.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="glass rounded-2xl p-6 mt-6">
+        <h3 class="text-white font-semibold mb-4">Your Breathing Practice</h3>
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <div class="text-2xl font-bold text-cyan-400" id="totalSessions">0</div>
+            <div class="text-xs text-slate-500">Total Sessions</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-violet-400" id="totalMinutes">0</div>
+            <div class="text-xs text-slate-500">Minutes Practiced</div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-amber-400" id="breatheStreak">0</div>
+            <div class="text-xs text-slate-500">Day Streak</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-600">
+      <div class="flex items-center space-x-2"><svg viewBox="0 0 36 36" fill="none" class="w-5 h-5"><defs><linearGradient id="fLg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#fLg)" opacity="0.9"/></svg><span>&copy; 2026 Lumina</span></div>
+      <p class="mt-2 sm:mt-0">Breath is the bridge between body and mind.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    const techniques = {
+      box: { name: 'Box Breathing', desc: 'Used by Navy SEALs and first responders. Equal intervals create a steady rhythm that calms the mind and sharpens focus.', inhale: 4, holdIn: 4, exhale: 4, holdOut: 4 },
+      relax: { name: '4-7-8 Relaxation', desc: 'Developed by Dr. Andrew Weil. The extended exhale activates your parasympathetic nervous system, promoting deep relaxation and sleep.', inhale: 4, holdIn: 7, exhale: 8, holdOut: 0 },
+      energize: { name: 'Energizing Breath', desc: 'Short, powerful intervals that increase alertness and oxygen flow. Perfect for morning wake-ups or afternoon slumps.', inhale: 2, holdIn: 1, exhale: 4, holdOut: 1 },
+      calm: { name: 'Deep Calm', desc: 'Simple equal breathing without holds. The rhythmic in-and-out creates a meditative state. Great for beginners and anxiety relief.', inhale: 6, holdIn: 0, exhale: 6, holdOut: 0 },
+      focus: { name: 'Focus Breath', desc: 'Optimized for concentration. The slightly longer exhale with a brief pause clears the mind and sharpens attention for deep work.', inhale: 4, holdIn: 4, exhale: 6, holdOut: 2 }
+    };
+
+    let currentTech = 'box';
+    let isRunning = false;
+    let breatheTimer = null;
+    let rounds = 4;
+    let currentRoundNum = 0;
+    let startTime = null;
+    let elapsedTimer = null;
+
+    function selectTechnique(tech) {
+      if (isRunning) stopBreathing();
+      currentTech = tech;
+      const t = techniques[tech];
+      document.getElementById('techTitle').textContent = t.name;
+      document.getElementById('techDesc').textContent = t.desc;
+      document.querySelectorAll('.tech-btn').forEach(b => { b.classList.remove('border-cyan-500/30', 'bg-cyan-500/5'); b.classList.add('border-transparent'); });
+      document.getElementById(`tech-${tech}`).classList.add('border-cyan-500/30', 'bg-cyan-500/5');
+      document.getElementById(`tech-${tech}`).classList.remove('border-transparent');
+    }
+
+    function setRounds(delta) {
+      rounds = Math.max(1, Math.min(20, rounds + delta));
+      document.getElementById('roundsSetting').textContent = rounds;
+      document.getElementById('totalRounds').textContent = rounds;
+    }
+
+    function startBreathing() {
+      if (isRunning) return;
+      isRunning = true;
+      currentRoundNum = 0;
+      startTime = Date.now();
+      document.getElementById('btnStart').classList.add('hidden');
+      document.getElementById('btnStop').classList.remove('hidden');
+
+      elapsedTimer = setInterval(() => {
+        const secs = Math.floor((Date.now() - startTime) / 1000);
+        document.getElementById('elapsedTime').textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`;
+      }, 1000);
+
+      runRound();
+    }
+
+    function stopBreathing() {
+      isRunning = false;
+      clearTimeout(breatheTimer);
+      clearInterval(elapsedTimer);
+      document.getElementById('btnStart').classList.remove('hidden');
+      document.getElementById('btnStop').classList.add('hidden');
+      resetVisuals();
+    }
+
+    function resetVisuals() {
+      const ball = document.getElementById('breatheBall');
+      ball.style.transform = 'scale(1)';
+      document.getElementById('breathePhase').textContent = 'Ready';
+      document.getElementById('breatheCount').textContent = '—';
+      document.getElementById('breatheProgress').style.strokeDashoffset = '565.48';
+    }
+
+    function runRound() {
+      if (!isRunning || currentRoundNum >= rounds) {
+        finishSession();
+        return;
+      }
+      currentRoundNum++;
+      document.getElementById('currentRound').textContent = currentRoundNum;
+
+      const t = techniques[currentTech];
+      const phases = [];
+      if (t.inhale > 0) phases.push({ name: 'Breathe In', duration: t.inhale, scale: 1.4 });
+      if (t.holdIn > 0) phases.push({ name: 'Hold', duration: t.holdIn, scale: 1.4 });
+      if (t.exhale > 0) phases.push({ name: 'Breathe Out', duration: t.exhale, scale: 1 });
+      if (t.holdOut > 0) phases.push({ name: 'Hold', duration: t.holdOut, scale: 1 });
+
+      const totalTime = phases.reduce((s, p) => s + p.duration, 0);
+      let elapsed = 0;
+
+      function runPhase(idx) {
+        if (!isRunning || idx >= phases.length) { runRound(); return; }
+        const phase = phases[idx];
+        const ball = document.getElementById('breatheBall');
+        const phaseEl = document.getElementById('breathePhase');
+        const countEl = document.getElementById('breatheCount');
+
+        phaseEl.textContent = phase.name;
+        ball.style.transform = `scale(${phase.scale})`;
+
+        // Progress ring
+        let countdown = phase.duration;
+        countEl.textContent = countdown;
+
+        const progressEl = document.getElementById('breatheProgress');
+        const totalDash = 565.48;
+
+        function tick() {
+          if (!isRunning) return;
+          countdown--;
+          elapsed++;
+          const progress = elapsed / totalTime;
+          progressEl.style.strokeDashoffset = totalDash * (1 - (progress > 1 ? progress % 1 : progress));
+
+          if (countdown > 0) {
+            countEl.textContent = countdown;
+            breatheTimer = setTimeout(tick, 1000);
+          } else {
+            countEl.textContent = '';
+            breatheTimer = setTimeout(() => runPhase(idx + 1), 200);
+          }
+        }
+        breatheTimer = setTimeout(tick, 1000);
+      }
+
+      runPhase(0);
+    }
+
+    function finishSession() {
+      isRunning = false;
+      clearInterval(elapsedTimer);
+      document.getElementById('btnStart').classList.remove('hidden');
+      document.getElementById('btnStop').classList.add('hidden');
+
+      const secs = Math.floor((Date.now() - startTime) / 1000);
+      const mins = Math.round(secs / 60 * 10) / 10;
+
+      // Save session
+      const sessions = Store.get('breathe_sessions', []);
+      sessions.push({ technique: currentTech, rounds: rounds, seconds: secs, date: new Date().toISOString(), dateKey: getToday() });
+      Store.set('breathe_sessions', sessions);
+
+      document.getElementById('breathePhase').textContent = 'Complete';
+      document.getElementById('breatheCount').textContent = '✓';
+      document.getElementById('breatheBall').style.transform = 'scale(1)';
+
+      showToast(`Session complete! ${rounds} rounds in ${Math.floor(secs / 60)}m ${secs % 60}s.`, 'success');
+      updateBreatheStats();
+    }
+
+    function updateBreatheStats() {
+      const sessions = Store.get('breathe_sessions', []);
+      document.getElementById('totalSessions').textContent = sessions.length;
+      const totalSecs = sessions.reduce((s, se) => s + se.seconds, 0);
+      document.getElementById('totalMinutes').textContent = Math.round(totalSecs / 60);
+      const dates = [...new Set(sessions.map(s => s.dateKey))];
+      document.getElementById('breatheStreak').textContent = calculateStreak(dates);
+    }
+
+    document.getElementById('totalRounds').textContent = rounds;
+    updateBreatheStats();
+  </script>
+</body>
+</html>

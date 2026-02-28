@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Mirror — Guided journaling, mood tracking, and gratitude practice. Lumina's space for self-reflection and inner clarity.">
+  <title>The Mirror — Lumina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif'],serif:['Georgia','Cambria','serif']}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center space-x-2 group">
+          <svg viewBox="0 0 36 36" fill="none" class="w-8 h-8"><defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#lg1)" opacity="0.9"/><circle cx="18" cy="20" r="3" fill="white" opacity="0.4"/></svg>
+          <span class="text-xl font-bold gradient-text">Lumina</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="mirror.html" class="nav-link active">Mirror</a>
+          <a href="forge.html" class="nav-link">Forge</a>
+          <a href="breathe.html" class="nav-link">Breathe</a>
+          <a href="vault.html" class="nav-link">Vault</a>
+          <a href="compass.html" class="nav-link">Compass</a>
+          <a href="stillness.html" class="nav-link">Stillness</a>
+        </div>
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </nav>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="toggleMobileMenu()"></div>
+  <div id="mobileMenu" class="mobile-nav fixed top-0 right-0 w-72 h-full bg-slate-900/95 backdrop-blur-xl z-50 pt-20 px-2">
+    <button onclick="toggleMobileMenu()" class="absolute top-5 right-5 text-slate-400 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <a href="index.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white">Home</a>
+    <a href="mirror.html" class="block px-4 py-3 text-lg text-violet-400 font-semibold">The Mirror</a>
+    <a href="forge.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white">The Forge</a>
+    <a href="breathe.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white">Breathe</a>
+    <a href="vault.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white">The Vault</a>
+    <a href="compass.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white">Compass</a>
+    <a href="stillness.html" class="block px-4 py-3 text-lg text-slate-300 hover:text-white">Stillness</a>
+    <div class="border-t border-white/10 mt-4 pt-4">
+      <a href="about.html" class="block px-4 py-3 text-slate-400 hover:text-white">About</a>
+      <a href="contact.php" class="block px-4 py-3 text-slate-400 hover:text-white">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="pt-28 pb-12 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="w-16 h-16 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mx-auto mb-6 animate-fade-in-down">
+        <svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 animate-fade-in-up">The Mirror</h1>
+      <p class="text-slate-400 text-lg max-w-xl mx-auto animate-fade-in-up delay-200">Your private space for guided reflection, mood tracking, and gratitude practice. Name it to tame it — write it to release it.</p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="pb-10 px-4">
+    <div class="max-w-4xl mx-auto grid grid-cols-3 gap-4">
+      <div class="glass rounded-xl p-4 text-center">
+        <div class="text-2xl font-bold text-violet-400" id="totalEntries">0</div>
+        <div class="text-xs text-slate-500 mt-1">Journal Entries</div>
+      </div>
+      <div class="glass rounded-xl p-4 text-center">
+        <div class="text-2xl font-bold text-amber-400" id="journalStreak">0</div>
+        <div class="text-xs text-slate-500 mt-1">Day Streak</div>
+      </div>
+      <div class="glass rounded-xl p-4 text-center">
+        <div class="text-2xl font-bold text-emerald-400" id="gratitudeCount">0</div>
+        <div class="text-xs text-slate-500 mt-1">Gratitude Notes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="pb-24 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Tab Navigation -->
+      <div class="flex space-x-1 mb-8 bg-white/5 rounded-xl p-1 overflow-x-auto">
+        <button onclick="switchTab('journal')" id="tab-journal" class="tab-btn flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all bg-violet-600 text-white">Journal</button>
+        <button onclick="switchTab('mood')" id="tab-mood" class="tab-btn flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">Mood</button>
+        <button onclick="switchTab('gratitude')" id="tab-gratitude" class="tab-btn flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">Gratitude</button>
+        <button onclick="switchTab('history')" id="tab-history" class="tab-btn flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white">History</button>
+      </div>
+
+      <!-- JOURNAL TAB -->
+      <div id="panel-journal" class="tab-panel">
+        <!-- Prompt Card -->
+        <div class="glass rounded-2xl p-6 mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-violet-400 uppercase tracking-wider">Today's Prompt</h3>
+            <button onclick="newPrompt()" class="text-xs text-slate-500 hover:text-white transition-colors flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span>New prompt</span>
+            </button>
+          </div>
+          <p id="currentPrompt" class="text-slate-200 text-lg font-serif italic leading-relaxed">"Loading prompt..."</p>
+          <div id="promptCategory" class="mt-3 inline-block text-xs font-medium px-2 py-1 rounded-full bg-violet-500/10 text-violet-400"></div>
+        </div>
+
+        <!-- Journal Entry -->
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-white font-semibold">&nbsp;</h3>
+            <span class="text-xs text-slate-500" id="charCount">0 characters</span>
+          </div>
+          <textarea id="journalText" class="w-full bg-transparent border border-white/10 rounded-xl p-4 text-slate-200 placeholder-slate-600 resize-none focus:border-violet-500/50 transition-colors" rows="10" placeholder="Write freely. This is your private space. No one else will see this..."></textarea>
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center space-x-3">
+              <span class="text-sm text-slate-500">How are you feeling?</span>
+              <div class="flex space-x-2">
+                <button onclick="setEntryMood('great')" class="mood-btn text-lg" data-mood="great" title="Great">😊</button>
+                <button onclick="setEntryMood('good')" class="mood-btn text-lg" data-mood="good" title="Good">🙂</button>
+                <button onclick="setEntryMood('neutral')" class="mood-btn text-lg" data-mood="neutral" title="Okay">😐</button>
+                <button onclick="setEntryMood('low')" class="mood-btn text-lg" data-mood="low" title="Low">😔</button>
+                <button onclick="setEntryMood('rough')" class="mood-btn text-lg" data-mood="rough" title="Rough">😢</button>
+              </div>
+            </div>
+            <button onclick="saveJournalEntry()" class="px-6 py-2.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-violet-500 hover:to-indigo-500 transition-all">Save Entry</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOOD TAB -->
+      <div id="panel-mood" class="tab-panel hidden">
+        <div class="glass rounded-2xl p-6 mb-6">
+          <h3 class="text-white font-semibold mb-2">Mood Tracker</h3>
+          <p class="text-slate-400 text-sm mb-6">Track your emotional landscape over time. Patterns reveal insights words alone cannot.</p>
+
+          <!-- Mood Selection -->
+          <div class="grid grid-cols-5 gap-3 mb-8">
+            <button onclick="logMood('amazing')" class="flex flex-col items-center p-4 rounded-xl border border-white/5 hover:bg-white/5 transition-all group">
+              <span class="text-3xl mb-2">🤩</span>
+              <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Amazing</span>
+            </button>
+            <button onclick="logMood('good')" class="flex flex-col items-center p-4 rounded-xl border border-white/5 hover:bg-white/5 transition-all group">
+              <span class="text-3xl mb-2">😊</span>
+              <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Good</span>
+            </button>
+            <button onclick="logMood('okay')" class="flex flex-col items-center p-4 rounded-xl border border-white/5 hover:bg-white/5 transition-all group">
+              <span class="text-3xl mb-2">😐</span>
+              <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Okay</span>
+            </button>
+            <button onclick="logMood('low')" class="flex flex-col items-center p-4 rounded-xl border border-white/5 hover:bg-white/5 transition-all group">
+              <span class="text-3xl mb-2">😔</span>
+              <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Low</span>
+            </button>
+            <button onclick="logMood('rough')" class="flex flex-col items-center p-4 rounded-xl border border-white/5 hover:bg-white/5 transition-all group">
+              <span class="text-3xl mb-2">😢</span>
+              <span class="text-xs text-slate-500 group-hover:text-white transition-colors">Rough</span>
+            </button>
+          </div>
+
+          <!-- Optional Note -->
+          <textarea id="moodNote" class="w-full bg-transparent border border-white/10 rounded-xl p-4 text-slate-200 placeholder-slate-600 resize-none focus:border-violet-500/50 transition-colors" rows="3" placeholder="What's behind this feeling? (optional)"></textarea>
+        </div>
+
+        <!-- Mood History (last 14 days) -->
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-white font-semibold mb-4">Last 14 Days</h3>
+          <div id="moodHistory" class="grid grid-cols-7 gap-2">
+            <!-- Populated by JS -->
+          </div>
+          <div class="flex items-center justify-center space-x-4 mt-4 text-xs text-slate-500">
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-emerald-400 mr-1"></span> Amazing</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-green-400 mr-1"></span> Good</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-yellow-400 mr-1"></span> Okay</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-orange-400 mr-1"></span> Low</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-red-400 mr-1"></span> Rough</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRATITUDE TAB -->
+      <div id="panel-gratitude" class="tab-panel hidden">
+        <div class="glass rounded-2xl p-6 mb-6">
+          <h3 class="text-white font-semibold mb-2">Daily Gratitude</h3>
+          <p class="text-slate-400 text-sm mb-6">Research shows writing 3 things you're grateful for daily increases happiness by 25% in just 3 weeks.</p>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3">
+              <span class="text-amber-400 mt-2 text-lg">1.</span>
+              <input type="text" id="grat1" class="flex-1 bg-transparent border border-white/10 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:border-amber-500/50 transition-colors" placeholder="I'm grateful for...">
+            </div>
+            <div class="flex items-start space-x-3">
+              <span class="text-amber-400 mt-2 text-lg">2.</span>
+              <input type="text" id="grat2" class="flex-1 bg-transparent border border-white/10 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:border-amber-500/50 transition-colors" placeholder="I'm grateful for...">
+            </div>
+            <div class="flex items-start space-x-3">
+              <span class="text-amber-400 mt-2 text-lg">3.</span>
+              <input type="text" id="grat3" class="flex-1 bg-transparent border border-white/10 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:border-amber-500/50 transition-colors" placeholder="I'm grateful for...">
+            </div>
+          </div>
+          <div class="mt-6 text-right">
+            <button onclick="saveGratitude()" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-xl hover:from-amber-400 hover:to-orange-400 transition-all">Save Gratitude</button>
+          </div>
+        </div>
+
+        <!-- Gratitude Wall -->
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-white font-semibold mb-4">Your Gratitude Wall</h3>
+          <div id="gratitudeWall" class="space-y-3 max-h-96 overflow-y-auto pr-2">
+            <p class="text-slate-500 text-sm italic">Your gratitude entries will appear here...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORY TAB -->
+      <div id="panel-history" class="tab-panel hidden">
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-white font-semibold">Journal History</h3>
+            <button onclick="exportJournal()" class="text-xs text-slate-400 hover:text-white transition-colors flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>Export to text</span>
+            </button>
+          </div>
+          <div id="journalHistory" class="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+            <p class="text-slate-500 text-sm italic">Your journal entries will appear here...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-slate-600">
+      <div class="flex items-center space-x-2">
+        <svg viewBox="0 0 36 36" fill="none" class="w-5 h-5"><defs><linearGradient id="fLg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#a78bfa"/><stop offset="50%" style="stop-color:#818cf8"/><stop offset="100%" style="stop-color:#fbbf24"/></linearGradient></defs><path d="M18 3C18 3 7 14 7 22C7 28.1 11.9 33 18 33C24.1 33 29 28.1 29 22C29 14 18 3 18 3Z" fill="url(#fLg2)" opacity="0.9"/></svg>
+        <span>&copy; 2026 Lumina</span>
+      </div>
+      <p class="mt-2 sm:mt-0">Your data stays on your device. Always.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    let prompts = [];
+    let currentPromptIdx = 0;
+    let entryMood = '';
+
+    // Tab Switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('bg-violet-600', 'text-white'); b.classList.add('text-slate-400'); });
+      document.getElementById(`panel-${tab}`).classList.remove('hidden');
+      const btn = document.getElementById(`tab-${tab}`);
+      btn.classList.add('bg-violet-600', 'text-white');
+      btn.classList.remove('text-slate-400');
+    }
+
+    // Load Prompts
+    async function loadPrompts() {
+      const data = await fetchJSON('data/prompts.json');
+      if (data && data.prompts) {
+        prompts = data.prompts;
+        newPrompt();
+      }
+    }
+
+    function newPrompt() {
+      if (prompts.length === 0) return;
+      const p = prompts[Math.floor(Math.random() * prompts.length)];
+      document.getElementById('currentPrompt').textContent = `"${p.text}"`;
+      document.getElementById('promptCategory').textContent = p.category;
+    }
+
+    // Mood for journal entry
+    function setEntryMood(mood) {
+      entryMood = mood;
+      document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`.mood-btn[data-mood="${mood}"]`).classList.add('active');
+    }
+
+    // Save Journal Entry
+    function saveJournalEntry() {
+      const text = document.getElementById('journalText').value.trim();
+      if (!text) { showToast('Write something first — even one sentence counts.', 'warning'); return; }
+      const entries = Store.get('journal_entries', []);
+      entries.unshift({
+        id: uid(),
+        text: text,
+        mood: entryMood,
+        prompt: document.getElementById('currentPrompt').textContent,
+        date: new Date().toISOString(),
+        dateKey: getToday()
+      });
+      Store.set('journal_entries', entries);
+      document.getElementById('journalText').value = '';
+      entryMood = '';
+      document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+      showToast('Entry saved. You showed up for yourself today.', 'success');
+      updateStats();
+      renderHistory();
+    }
+
+    // Character count
+    document.getElementById('journalText').addEventListener('input', function() {
+      document.getElementById('charCount').textContent = `${this.value.length} characters`;
+    });
+
+    // Log Mood
+    function logMood(mood) {
+      const note = document.getElementById('moodNote').value.trim();
+      const moods = Store.get('mood_log', []);
+      moods.unshift({ mood, note, date: new Date().toISOString(), dateKey: getToday() });
+      Store.set('mood_log', moods);
+      document.getElementById('moodNote').value = '';
+      showToast('Mood logged. Awareness is the first step.', 'success');
+      renderMoodHistory();
+    }
+
+    // Save Gratitude
+    function saveGratitude() {
+      const items = [
+        document.getElementById('grat1').value.trim(),
+        document.getElementById('grat2').value.trim(),
+        document.getElementById('grat3').value.trim()
+      ].filter(Boolean);
+      if (items.length === 0) { showToast('Write at least one thing you\'re grateful for.', 'warning'); return; }
+      const grats = Store.get('gratitude_log', []);
+      grats.unshift({ items, date: new Date().toISOString(), dateKey: getToday() });
+      Store.set('gratitude_log', grats);
+      document.getElementById('grat1').value = '';
+      document.getElementById('grat2').value = '';
+      document.getElementById('grat3').value = '';
+      showToast('Gratitude saved. Your brain is rewiring already.', 'success');
+      updateStats();
+      renderGratitudeWall();
+    }
+
+    // Render Mood History
+    function renderMoodHistory() {
+      const moods = Store.get('mood_log', []);
+      const container = document.getElementById('moodHistory');
+      const moodColors = { amazing: 'bg-emerald-400', good: 'bg-green-400', okay: 'bg-yellow-400', low: 'bg-orange-400', rough: 'bg-red-400' };
+      let html = '';
+      for (let i = 13; i >= 0; i--) {
+        const d = new Date(); d.setDate(d.getDate() - i);
+        const key = d.toISOString().split('T')[0];
+        const entry = moods.find(m => m.dateKey === key);
+        const dayLabel = d.toLocaleDateString('en-US', { weekday: 'short' });
+        const dayNum = d.getDate();
+        html += `<div class="flex flex-col items-center">
+          <span class="text-xs text-slate-600 mb-1">${dayLabel}</span>
+          <div class="w-8 h-8 rounded-lg ${entry ? moodColors[entry.mood] || 'bg-slate-700' : 'bg-slate-800/50 border border-white/5'} flex items-center justify-center" title="${entry ? entry.mood : 'No entry'}">
+            <span class="text-xs ${entry ? 'text-slate-900 font-bold' : 'text-slate-600'}">${dayNum}</span>
+          </div>
+        </div>`;
+      }
+      container.innerHTML = html;
+    }
+
+    // Render Gratitude Wall
+    function renderGratitudeWall() {
+      const grats = Store.get('gratitude_log', []);
+      const container = document.getElementById('gratitudeWall');
+      if (grats.length === 0) { container.innerHTML = '<p class="text-slate-500 text-sm italic">Your gratitude entries will appear here...</p>'; return; }
+      container.innerHTML = grats.slice(0, 20).map(g => `
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="text-xs text-amber-400/70 mb-2">${formatDate(g.date)}</div>
+          <ul class="space-y-1">
+            ${g.items.map(item => `<li class="text-slate-300 text-sm flex items-start"><span class="text-amber-400 mr-2 mt-0.5">✦</span>${item}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+    }
+
+    // Render Journal History
+    function renderHistory() {
+      const entries = Store.get('journal_entries', []);
+      const container = document.getElementById('journalHistory');
+      if (entries.length === 0) { container.innerHTML = '<p class="text-slate-500 text-sm italic">Your journal entries will appear here...</p>'; return; }
+      const moodEmoji = { great: '😊', good: '🙂', neutral: '😐', low: '😔', rough: '😢' };
+      container.innerHTML = entries.slice(0, 30).map(e => `
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs text-violet-400/70">${formatDate(e.date)}</span>
+            <span class="text-lg">${moodEmoji[e.mood] || ''}</span>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">${e.text}</p>
+          <button onclick="deleteEntry('${e.id}')" class="text-xs text-slate-600 hover:text-red-400 mt-2 transition-colors">Delete</button>
+        </div>
+      `).join('');
+    }
+
+    function deleteEntry(id) {
+      let entries = Store.get('journal_entries', []);
+      entries = entries.filter(e => e.id !== id);
+      Store.set('journal_entries', entries);
+      renderHistory();
+      updateStats();
+      showToast('Entry removed.', 'info');
+    }
+
+    // Export Journal
+    function exportJournal() {
+      const entries = Store.get('journal_entries', []);
+      if (entries.length === 0) { showToast('No entries to export yet.', 'warning'); return; }
+      let text = '=== LUMINA JOURNAL EXPORT ===\n\n';
+      entries.forEach(e => {
+        text += `Date: ${formatDate(e.date)}\nMood: ${e.mood || 'Not set'}\n\n${e.text}\n\n---\n\n`;
+      });
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `lumina-journal-${getToday()}.txt`;
+      a.click();
+      showToast('Journal exported!', 'success');
+    }
+
+    // Update Stats
+    function updateStats() {
+      const entries = Store.get('journal_entries', []);
+      const grats = Store.get('gratitude_log', []);
+      document.getElementById('totalEntries').textContent = entries.length;
+      document.getElementById('gratitudeCount').textContent = grats.length;
+      const dates = entries.map(e => e.dateKey);
+      document.getElementById('journalStreak').textContent = calculateStreak([...new Set(dates)]);
+    }
+
+    // Init
+    loadPrompts();
+    updateStats();
+    renderMoodHistory();
+    renderGratitudeWall();
+    renderHistory();
+  </script>
+</body>
+</html>
