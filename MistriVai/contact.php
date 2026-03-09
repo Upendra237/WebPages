@@ -1,274 +1,216 @@
 ﻿<?php
-$sent = false;
-$error = '';
+$pageTitle = 'Contact Us &mdash; Mistri Vai Engineering Club';
+$pageDesc  = 'Contact Mistri Vai Engineering Club for civil engineering services, quotes, or general enquiries.';
 
+// Process form
+$success = false;
+$error   = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name        = htmlspecialchars(trim($_POST['name'] ?? ''));
-    $email       = htmlspecialchars(trim($_POST['email'] ?? ''));
-    $phone       = htmlspecialchars(trim($_POST['phone'] ?? ''));
-    $service     = htmlspecialchars(trim($_POST['service'] ?? ''));
-    $area_type   = htmlspecialchars(trim($_POST['area_type'] ?? ''));
-    $description = htmlspecialchars(trim($_POST['description'] ?? ''));
-    $message     = htmlspecialchars(trim($_POST['message'] ?? ''));
+    $name    = trim(strip_tags($_POST['name']    ?? ''));
+    $email   = trim(strip_tags($_POST['email']   ?? ''));
+    $phone   = trim(strip_tags($_POST['phone']   ?? ''));
+    $service = trim(strip_tags($_POST['service'] ?? ''));
+    $message = trim(strip_tags($_POST['message'] ?? ''));
 
-    if ($name && $email && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!$name || !$email || !$message) {
+        $error = 'Please fill in all required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address.';
+    } else {
         $to      = 'nischitshrestha18@gmail.com';
-        $subject = 'New Enquiry from MistriVai  ' . $name;
-        $body    = "New project enquiry from the Mistri Vai website.\n\n";
-        $body   .= "Name:        $name\n";
-        $body   .= "Email:       $email\n";
-        $body   .= "Phone:       $phone\n";
-        $body   .= "Service:     $service\n";
-        $body   .= "Area Type:   $area_type\n";
-        $body   .= "Description: $description\n\n";
-        $body   .= "Message:\n$message\n";
-
-        $headers  = "From: mail.mistrivai@gmail.com\r\n";
-        $headers .= "Reply-To: $email\r\n";
-        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $subject = "New Enquiry from $name — Mistri Vai Website";
+        $body    = "Name: $name\nEmail: $email\nPhone: $phone\nService: $service\n\nMessage:\n$message";
+        $headers = "From: noreply@mistrivai.com\r\nReply-To: $email\r\nX-Mailer: PHP/" . phpversion();
 
         if (mail($to, $subject, $body, $headers)) {
-            $sent = true;
+            $success = true;
         } else {
-            $error = 'Mail could not be sent. Please email us directly at mail.mistrivai@gmail.com';
+            $error = 'Message could not be sent. Please try emailing us directly at mail.mistrivai@gmail.com.';
         }
-    } else {
-        $error = 'Please fill in your name and a valid email address.';
     }
 }
+include 'includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Contact Us  Mistri Vai Engineering Club</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css"/>
-</head>
-<body>
-
-<!-- NAV -->
-<nav class="nav" id="navbar">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">
-      <img src="assets/logo.png" alt="Mistri Vai Engineering Club" class="nav__logo-img"/>
-    </a>
-    <div class="nav__links" id="navLinks">
-      <a href="index.html" class="nav__link">Home</a>
-      <a href="about.html" class="nav__link">About</a>
-      <a href="services.html" class="nav__link">Services</a>
-      <a href="projects.html" class="nav__link">Projects</a>
-      <a href="gallery.html" class="nav__link">Gallery</a>
-      <a href="team.html" class="nav__link">Team</a>
-    </div>
-    <a href="contact.php" class="nav__cta nav__cta--active">Contact Us</a>
-    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
 
 <!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero__inner container">
-    <span class="label">Get In Touch</span>
-    <h1 class="t-h1">Contact Us</h1>
-    <p class="page-hero__sub">Have a project, question, or want to join Mistri Vai? We would love to hear from you.</p>
+<section class="bg-[#0D1B2A] py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[.05]"
+       style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:60px 60px;"></div>
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex items-center gap-3 mb-5 reveal">
+      <span class="w-8 h-px bg-[#C8A951]"></span>
+      <span class="font-mono text-[10px] tracking-[.25em] uppercase text-[#C8A951]">Contact</span>
+    </div>
+    <h1 class="font-display text-5xl sm:text-6xl font-bold text-white max-w-2xl leading-tight reveal">
+      Get In Touch
+    </h1>
+    <p class="mt-5 text-white/50 text-lg max-w-xl reveal">
+      Have a project? A question? We are glad to hear from you. We reply within 24 hours.
+    </p>
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
-<section class="section bg-white">
-  <div class="container">
-    <div class="contact-grid">
+<!-- CONTACT LAYOUT -->
+<section class="py-24 bg-[#F6F5F1]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-5 gap-16">
 
-      <!-- FORM -->
-      <div class="contact-form-wrap reveal">
-        <span class="label">Send a Message</span>
-        <h2 class="t-h3" style="margin-bottom:1.5rem;">Tell us about your project</h2>
+    <!-- Info column -->
+    <div class="lg:col-span-2 reveal">
+      <h2 class="font-display text-2xl font-bold text-[#0D1B2A] mb-8">Contact Information</h2>
 
-        <?php if ($sent): ?>
-        <div class="form-success">
-          <strong>Message sent!</strong> We will get back to you within 24 hours at <strong><?= htmlspecialchars($_POST['email'] ?? '') ?></strong>.
-        </div>
-        <?php elseif ($error): ?>
-        <div class="form-error"><?= $error ?></div>
-        <?php endif; ?>
+      <ul class="space-y-7">
+        <li class="flex items-start gap-5">
+          <div class="w-10 h-10 bg-[#0D1B2A] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#C8A951]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-widest text-[#0D1B2A]/40 mb-1">Phone</div>
+            <a href="tel:+9779860590678" class="text-[#0D1B2A] font-semibold hover:text-[#C8A951] transition-colors duration-200">
+              +977-9860590678
+            </a>
+          </div>
+        </li>
 
-        <form method="POST" class="contact-form" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="name">Full Name *</label>
-              <input class="form-input" type="text" id="name" name="name" placeholder="Hari Bahadur Shrestha" required value="<?= htmlspecialchars($_POST['name'] ?? '') ?>"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Email Address *</label>
-              <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"/>
-            </div>
+        <li class="flex items-start gap-5">
+          <div class="w-10 h-10 bg-[#0D1B2A] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#C8A951]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="phone">Phone Number</label>
-              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+977-98XXXXXXXX" value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="service">Service Required</label>
-              <select class="form-input form-select" id="service" name="service">
-                <option value="" disabled selected>Select a service</option>
-                <option value="Civil Construction">Civil Construction</option>
-                <option value="Architectural Design">Architectural Design</option>
-                <option value="Structural Engineering">Structural Engineering</option>
-                <option value="Interior Design">Interior Design</option>
-                <option value="Landscape & Garden">Landscape &amp; Garden Design</option>
-                <option value="Construction Consulting">Construction Consulting</option>
-                <option value="Surveying & Site Analysis">Surveying &amp; Site Analysis</option>
-                <option value="Water Supply & Sanitation">Water Supply &amp; Sanitation</option>
-                <option value="Other">Other / General Enquiry</option>
-              </select>
-            </div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-widest text-[#0D1B2A]/40 mb-1">Email</div>
+            <a href="mailto:mail.mistrivai@gmail.com" class="text-[#0D1B2A] font-semibold hover:text-[#C8A951] transition-colors duration-200">
+              mail.mistrivai@gmail.com
+            </a>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="area_type">Area / Property Type</label>
-              <input class="form-input" type="text" id="area_type" name="area_type" placeholder="e.g. Residential, Commercial, Community" value="<?= htmlspecialchars($_POST['area_type'] ?? '') ?>"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="description">House / Building Description</label>
-              <input class="form-input" type="text" id="description" name="description" placeholder="e.g. 2-storey, 3-bedroom, Bhaktapur" value="<?= htmlspecialchars($_POST['description'] ?? '') ?>"/>
-            </div>
+        </li>
+
+        <li class="flex items-start gap-5">
+          <div class="w-10 h-10 bg-[#0D1B2A] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#C8A951]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
           </div>
-          <div class="form-group form-group--full">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-input form-textarea" id="message" name="message" rows="5" placeholder="Tell us more about your requirements, location, timeline, or any specific questions"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-widest text-[#0D1B2A]/40 mb-1">Head Office</div>
+            <p class="text-[#0D1B2A] font-semibold leading-relaxed">
+              Liwali, Bhaktapur<br/>
+              <span class="font-normal text-sm text-[#0D1B2A]/60">Bagmati Province, Nepal</span>
+            </p>
           </div>
-          <button type="submit" class="btn btn--primary btn--full">Send Message </button>
-        </form>
+        </li>
+
+        <li class="flex items-start gap-5">
+          <div class="w-10 h-10 bg-[#0D1B2A] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#C8A951]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-widest text-[#0D1B2A]/40 mb-1">Branch Office</div>
+            <p class="text-[#0D1B2A] font-semibold leading-relaxed">
+              Dhulikhel-6, Kavrepalanchok<br/>
+              <span class="font-normal text-sm text-[#0D1B2A]/60">Bagmati Province, Nepal</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="mt-10 pt-8 border-t border-[#0D1B2A]/8">
+        <div class="font-mono text-[10px] uppercase tracking-widest text-[#0D1B2A]/30 mb-4">Registration</div>
+        <p class="text-[#0D1B2A]/50 text-sm">Regd. No. 15648/082/083 &nbsp;&bull;&nbsp; PAN 133885297</p>
       </div>
-
-      <!-- CONTACT INFO -->
-      <div class="contact-info reveal">
-        <span class="label">Our Details</span>
-        <h2 class="t-h3" style="margin-bottom:1.5rem;">Find us</h2>
-
-        <div class="contact-info__items">
-          <div class="contact-info__item">
-            <div class="contact-info__icon"></div>
-            <div>
-              <div class="contact-info__il">Email</div>
-              <a href="mailto:mail.mistrivai@gmail.com" class="contact-info__val">mail.mistrivai@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-info__item">
-            <div class="contact-info__icon"></div>
-            <div>
-              <div class="contact-info__il">Phone</div>
-              <a href="tel:+9779860590678" class="contact-info__val">+977-9860590678</a>
-            </div>
-          </div>
-          <div class="contact-info__item">
-            <div class="contact-info__icon"></div>
-            <div>
-              <div class="contact-info__il">Head Office</div>
-              <span class="contact-info__val">Liwali, Bhaktapur, Nepal</span>
-            </div>
-          </div>
-          <div class="contact-info__item">
-            <div class="contact-info__icon"></div>
-            <div>
-              <div class="contact-info__il">Branch Office</div>
-              <span class="contact-info__val">Dhulikhel-6, Kavrepalanchok</span>
-            </div>
-          </div>
-          <div class="contact-info__item">
-            <div class="contact-info__icon"></div>
-            <div>
-              <div class="contact-info__il">Registration</div>
-              <span class="contact-info__val">Regd. No. 15648/082/083</span>
-            </div>
-          </div>
-          <div class="contact-info__item">
-            <div class="contact-info__icon"></div>
-            <div>
-              <div class="contact-info__il">PAN</div>
-              <span class="contact-info__val">133885297</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-info__social">
-          <div class="contact-info__il" style="margin-bottom:.75rem;">Follow Us</div>
-          <div class="social-links">
-            <a href="https://www.instagram.com/mistrivai" target="_blank" rel="noopener" class="social-link">Instagram</a>
-            <a href="https://mistrivai.odoo.com/" target="_blank" rel="noopener" class="social-link">Website</a>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Form column -->
+    <div class="lg:col-span-3 reveal">
+
+      <?php if ($success): ?>
+      <div class="bg-[#0D1B2A] border border-[#C8A951]/30 p-8 mb-8">
+        <div class="text-[#C8A951] font-mono text-[10px] uppercase tracking-widest mb-3">Message Sent</div>
+        <p class="text-white/80 text-base">Thank you! We have received your message and will get back to you within 24 hours.</p>
+      </div>
+      <?php endif; ?>
+
+      <?php if ($error): ?>
+      <div class="bg-red-900/20 border border-red-500/30 p-5 mb-8">
+        <p class="text-red-400 text-sm"><?= htmlspecialchars($error) ?></p>
+      </div>
+      <?php endif; ?>
+
+      <form method="POST" action="contact.php" class="space-y-6">
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block font-mono text-[10px] uppercase tracking-[.2em] text-[#0D1B2A]/50 mb-2" for="name">
+              Full Name <span class="text-[#C8A951]">*</span>
+            </label>
+            <input type="text" id="name" name="name" required
+                   value="<?= htmlspecialchars($_POST['name'] ?? '') ?>"
+                   class="w-full bg-white border border-[#0D1B2A]/15 px-4 py-3 text-sm text-[#0D1B2A] placeholder:text-[#0D1B2A]/30 focus:outline-none focus:border-[#C8A951] transition-colors duration-200"
+                   placeholder="Aarav Shrestha"/>
+          </div>
+          <div>
+            <label class="block font-mono text-[10px] uppercase tracking-[.2em] text-[#0D1B2A]/50 mb-2" for="email">
+              Email Address <span class="text-[#C8A951]">*</span>
+            </label>
+            <input type="email" id="email" name="email" required
+                   value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                   class="w-full bg-white border border-[#0D1B2A]/15 px-4 py-3 text-sm text-[#0D1B2A] placeholder:text-[#0D1B2A]/30 focus:outline-none focus:border-[#C8A951] transition-colors duration-200"
+                   placeholder="you@example.com"/>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block font-mono text-[10px] uppercase tracking-[.2em] text-[#0D1B2A]/50 mb-2" for="phone">
+              Phone Number
+            </label>
+            <input type="tel" id="phone" name="phone"
+                   value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
+                   class="w-full bg-white border border-[#0D1B2A]/15 px-4 py-3 text-sm text-[#0D1B2A] placeholder:text-[#0D1B2A]/30 focus:outline-none focus:border-[#C8A951] transition-colors duration-200"
+                   placeholder="+977-XXXXXXXXXX"/>
+          </div>
+          <div>
+            <label class="block font-mono text-[10px] uppercase tracking-[.2em] text-[#0D1B2A]/50 mb-2" for="service">
+              Service Required
+            </label>
+            <select id="service" name="service"
+                    class="w-full bg-white border border-[#0D1B2A]/15 px-4 py-3 text-sm text-[#0D1B2A] focus:outline-none focus:border-[#C8A951] transition-colors duration-200 appearance-none">
+              <option value="">Select a service&hellip;</option>
+              <?php
+              $opts = ['Structural Design','Architectural Drawing','Construction Consulting','Surveying & Mapping','Water Supply & Sanitation','Cost Estimation & BOQ','General Enquiry'];
+              foreach ($opts as $opt) {
+                $sel = (($_POST['service'] ?? '') === $opt) ? ' selected' : '';
+                echo '<option value="'.htmlspecialchars($opt).'"'.$sel.'>'.htmlspecialchars($opt).'</option>';
+              }
+              ?>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono text-[10px] uppercase tracking-[.2em] text-[#0D1B2A]/50 mb-2" for="message">
+            Your Message <span class="text-[#C8A951]">*</span>
+          </label>
+          <textarea id="message" name="message" rows="6" required
+                    class="w-full bg-white border border-[#0D1B2A]/15 px-4 py-3 text-sm text-[#0D1B2A] placeholder:text-[#0D1B2A]/30 focus:outline-none focus:border-[#C8A951] transition-colors duration-200 resize-none"
+                    placeholder="Tell us about your project, location, size, and what kind of help you need&hellip;"><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+        </div>
+
+        <button type="submit"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#0D1B2A] hover:bg-[#172840] text-white text-sm font-bold tracking-widest uppercase px-12 py-4 transition-colors duration-200">
+          Send Message
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-band">
-  <div class="cta-band__inner container">
-    <div>
-      <span class="label" style="color:var(--navy);opacity:.6;">Join the Club</span>
-      <h2 class="t-h2" style="color:var(--navy);">Want to be a part of MistriVai?</h2>
-    </div>
-    <div class="cta-band__actions">
-      <a href="about.html" class="btn btn--dark">Learn About Us</a>
-      <a href="team.html" class="btn btn--outline-dark">Meet the Team</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer__inner container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <img src="assets/logo.png" alt="Mistri Vai" class="footer__logo"/>
-        <p>Student-led engineering club from Nepal  learning, designing, and building together.</p>
-        <div class="footer__reg">
-          <span>Regd. No. 15648/082/083</span>
-          <span>PAN: 133885297</span>
-        </div>
-      </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Pages</div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="team.html">Team</a>
-      </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Contact</div>
-        <a href="mailto:mail.mistrivai@gmail.com">mail.mistrivai@gmail.com</a>
-        <a href="tel:+9779860590678">+977-9860590678</a>
-        <span>Liwali, Bhaktapur</span>
-        <span>Dhulikhel-6, Kavre</span>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span> 2082 BS Mistri Vai Engineering Club. All rights reserved.</span>
-      <span>Regd. No. 15648/082/083  PAN 133885297</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const nb = document.getElementById('navbar');
-  window.addEventListener('scroll', () => nb.classList.toggle('nav--scrolled', window.scrollY > 40));
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('nav__links--open');
-  });
-  const ro = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-</script>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>
