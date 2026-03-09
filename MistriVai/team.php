@@ -1,104 +1,132 @@
 <?php
-$pageTitle = 'Our Team &mdash; Mistri Vai Engineering Club';
-$pageDesc  = 'Meet the student civil engineers behind Mistri Vai Engineering Club.';
+$pageTitle = 'Team — Mistri Vai Engineering Club';
+$pageDesc  = 'Meet the engineering team behind Mistri Vai — qualified civil engineering professionals from Nepal.';
 include 'includes/header.php';
 ?>
 
-<!-- PAGE HERO -->
-<section class="bg-[#0D1B2A] py-24 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-[.05]"
-       style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:60px 60px;"></div>
-  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="flex items-center gap-3 mb-5 reveal">
-      <span class="w-8 h-px bg-[#C8A951]"></span>
-      <span class="font-mono text-[10px] tracking-[.25em] uppercase text-[#C8A951]">Team</span>
-    </div>
-    <h1 class="font-display text-5xl sm:text-6xl font-bold text-white max-w-2xl leading-tight reveal">
-      Meet the Team
-    </h1>
-    <p class="mt-5 text-white/50 text-lg max-w-xl reveal">
-      15+ passionate civil engineering students united by one goal &mdash; to build Nepal better.
-    </p>
-  </div>
-</section>
-
-<!-- LEADERSHIP -->
-<section class="py-24 bg-[#F6F5F1]">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-    <div class="mb-14 reveal">
-      <span class="font-mono text-[10px] tracking-[.25em] uppercase text-[#C8A951] block mb-3">Leadership</span>
-      <h2 class="font-display text-4xl font-bold text-[#0D1B2A]">Executive Committee</h2>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <?php
-      $leaders = [
-        ['President',       'Nischit Shrestha',    'Structural design lead, project coordination, and club operations.'],
-        ['Vice President',  'To Be Updated',       ''],
-        ['Secretary',       'To Be Updated',       ''],
-        ['Treasurer',       'To Be Updated',       ''],
-        ['Technical Head',  'To Be Updated',       ''],
-        ['Creative Head',   'To Be Updated',       ''],
-      ];
-      foreach ($leaders as [$role, $name, $bio]) {
-        $hasInfo = $name !== 'To Be Updated';
-        echo '<div class="bg-white border border-[#0D1B2A]/8 p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal">';
-        echo '<div class="w-16 h-16 bg-[#0D1B2A] mb-5 flex items-center justify-center">'; 
-        echo '<span class="font-display text-2xl font-bold text-[#C8A951]">'.htmlspecialchars(mb_substr($name, 0, 1)).'</span>';
-        echo '</div>';
-        echo '<div class="font-mono text-[10px] uppercase tracking-[.2em] text-[#C8A951] mb-2">'.htmlspecialchars($role).'</div>';
-        if ($hasInfo) {
-          echo '<h3 class="font-display text-xl font-bold text-[#0D1B2A] mb-2">'.htmlspecialchars($name).'</h3>';
-          if ($bio) echo '<p class="text-[#0D1B2A]/50 text-sm leading-relaxed">'.htmlspecialchars($bio).'</p>';
-        } else {
-          echo '<p class="text-[#0D1B2A]/30 text-sm italic">Details coming soon</p>';
-        }
-        echo '</div>';
-      }
-      ?>
-    </div>
-  </div>
-</section>
-
-<!-- ALL MEMBERS -->
-<section class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-    <div class="mb-14 reveal">
-      <span class="font-mono text-[10px] tracking-[.25em] uppercase text-[#C8A951] block mb-3">Members</span>
-      <h2 class="font-display text-4xl font-bold text-[#0D1B2A]">Our Members</h2>
-      <p class="mt-3 text-[#0D1B2A]/50 text-base max-w-lg">
-        Full member profiles are being updated. Reach out to learn more about our team.
-      </p>
-    </div>
-
-    <!-- Count honourable mention -->
-    <div class="border border-[#0D1B2A]/8 p-10 flex flex-col sm:flex-row items-center gap-10 reveal">
-      <div class="text-center sm:text-left shrink-0">
-        <div class="font-display text-7xl font-bold text-[#C8A951]">15+</div>
-        <div class="font-mono text-xs uppercase tracking-widest text-[#0D1B2A]/40 mt-2">Active Members</div>
-      </div>
-      <div class="w-px bg-[#0D1B2A]/8 self-stretch hidden sm:block"></div>
-      <p class="text-[#0D1B2A]/60 text-base leading-relaxed">
-        Mistri Vai has grown from a small group of passionate students into a 15+ member club. Our members come from different colleges and backgrounds, united by their focus on civil engineering and a genuine desire to contribute to Nepal's development. Full team details will be published here soon.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- JOIN US -->
-<section class="py-24 bg-[#0D1B2A] relative overflow-hidden">
+<!-- ═══════════════════  PAGE HERO  ═══════════════════ -->
+<section class="bg-[#0D1B2A] py-20 lg:py-28 relative overflow-hidden">
   <div class="absolute inset-0 opacity-[.04]"
-       style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:60px 60px;"></div>
-  <div class="relative max-w-7xl mx-auto px-5 lg:px-8 text-center reveal">
-    <span class="font-mono text-[10px] uppercase tracking-[.25em] text-[#C8A951] block mb-4">Join Us</span>
-    <h2 class="font-display text-4xl sm:text-5xl font-bold text-white mb-5">Want to be Part of the Team?</h2>
-    <p class="text-white/45 text-lg max-w-lg mx-auto mb-10">
-      We welcome motivated civil engineering students who want to gain real-world experience while contributing to Nepal.
+       style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:48px 48px"></div>
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">The Team</p>
+    <h1 class="font-display text-5xl lg:text-6xl font-bold text-white leading-tight max-w-2xl">
+      Qualified Engineers.<br/>Shared Purpose.
+    </h1>
+  </div>
+</section>
+
+
+<!-- ═══════════════════  INTRO  ═══════════════════ -->
+<section class="py-14 bg-[#F6F5F1]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="max-w-2xl text-gray-500 leading-relaxed text-lg">
+      Mistri Vai is led by a team of five qualified civil engineering professionals — 
+      each bringing expertise across structural design, architectural planning, 
+      construction management, and technology.
     </p>
-    <a href="contact.php" class="inline-flex items-center gap-2 bg-[#C8A951] hover:bg-[#DFC06A] text-[#0D1B2A] text-sm font-bold tracking-widest uppercase px-10 py-4 transition-colors duration-200">
-      Get in Touch &rarr;
+  </div>
+</section>
+
+
+<!-- ═══════════════════  TEAM GRID  ═══════════════════ -->
+<section class="pb-20 lg:pb-28 bg-[#F6F5F1]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <?php
+      $team = [
+        [
+          'Nischit Gajyaju',
+          'Founder &amp; President',
+          'Leads the club\'s vision, operations, and client relationships. Oversees project delivery and maintains quality standards across all engagements.',
+          '#0D1B2A',
+          'NG',
+        ],
+        [
+          'Nishan Makaju',
+          'Chief Engineering Consultant &amp; MD',
+          'Heads all technical engineering work — structural analysis, design review, and construction supervision protocols.',
+          '#172840',
+          'NM',
+        ],
+        [
+          'Subichhya Khagi',
+          'General Manager',
+          'Manages internal operations, documentation, client onboarding, and team coordination across active projects.',
+          '#1E3353',
+          'SK',
+        ],
+        [
+          'Ayush Singh',
+          'Chief Architect',
+          'Responsible for all architectural design work — space planning, elevations, 3D visualisations, and aesthetic direction.',
+          '#0D1B2A',
+          'AS',
+        ],
+        [
+          'Milan Suncheuri',
+          'Chief Technology Officer',
+          'Manages CAD workflows, digital documentation systems, and technology tools that support the engineering team.',
+          '#172840',
+          'MS',
+        ],
+      ];
+      foreach ($team as [$name, $role, $bio, $bg, $initials]): ?>
+      <div class="bg-white border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
+        <!-- Avatar area -->
+        <div class="h-36 flex items-center justify-center" style="background-color:<?= $bg ?>">
+          <div class="w-16 h-16 rounded-full border-2 border-[#C8A951]/50 flex items-center justify-center">
+            <span class="font-display text-xl font-bold text-[#C8A951]"><?= $initials ?></span>
+          </div>
+        </div>
+        <!-- Content -->
+        <div class="p-6">
+          <h3 class="font-display text-lg font-semibold text-[#0D1B2A] group-hover:text-[#C8A951] transition-colors">
+            <?= $name ?>
+          </h3>
+          <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mt-1 mb-3">
+            <?= $role ?>
+          </p>
+          <p class="text-sm text-gray-500 leading-relaxed"><?= $bio ?></p>
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════  CULTURE STRIP  ═══════════════════ -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid sm:grid-cols-3 gap-6 text-center">
+      <?php
+      $culture = [
+        ['5', 'Core Team Members'],
+        ['2', 'Districts Served'],
+        ['2082', 'Established (B.S.)'],
+      ];
+      foreach ($culture as [$n, $l]): ?>
+      <div class="border border-gray-100 py-10">
+        <p class="font-display text-4xl font-bold text-[#0D1B2A]"><?= $n ?></p>
+        <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mt-2"><?= $l ?></p>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════  CTA  ═══════════════════ -->
+<section class="bg-[#C8A951] py-14">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div>
+      <h2 class="font-display text-2xl font-bold text-[#0D1B2A]">Work with our team.</h2>
+      <p class="text-[#0D1B2A]/60 text-sm mt-1">Reach out and discuss your project today.</p>
+    </div>
+    <a href="contact.php"
+       class="shrink-0 bg-[#0D1B2A] hover:bg-[#172840] text-white font-bold text-xs tracking-[.16em] uppercase px-8 py-4 rounded-sm transition-colors">
+      Contact Us
     </a>
   </div>
 </section>

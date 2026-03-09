@@ -1,69 +1,109 @@
 <?php
-$pageTitle = 'Gallery &mdash; Mistri Vai Engineering Club';
-$pageDesc  = 'Photo gallery of Mistri Vai Engineering Club activities, site visits, and project work across Nepal.';
+$pageTitle = 'Gallery — Mistri Vai Engineering Club';
+$pageDesc  = 'Photo gallery of Mistri Vai Engineering Club project sites, design work, and team activities across Nepal.';
 include 'includes/header.php';
 ?>
 
-<!-- PAGE HERO -->
-<section class="bg-[#0D1B2A] py-24 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-[.05]"
-       style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:60px 60px;"></div>
+<!-- ═══════════════════  PAGE HERO  ═══════════════════ -->
+<section class="bg-[#0D1B2A] py-20 lg:py-28 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[.04]"
+       style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:48px 48px"></div>
   <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="flex items-center gap-3 mb-5 reveal">
-      <span class="w-8 h-px bg-[#C8A951]"></span>
-      <span class="font-mono text-[10px] tracking-[.25em] uppercase text-[#C8A951]">Gallery</span>
-    </div>
-    <h1 class="font-display text-5xl sm:text-6xl font-bold text-white max-w-2xl leading-tight reveal">
-      Work in Progress
+    <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">Gallery</p>
+    <h1 class="font-display text-5xl lg:text-6xl font-bold text-white leading-tight">
+      Our Work in Pictures
     </h1>
-    <p class="mt-5 text-white/50 text-lg max-w-xl reveal">
-      A visual record of our site visits, design sessions, and community engagements.
-    </p>
   </div>
 </section>
 
-<!-- COMING SOON  -->
-<section class="py-32 bg-[#F6F5F1]">
+
+<!-- ═══════════════════  GALLERY GRID  ═══════════════════ -->
+<section class="py-20 lg:py-28 bg-[#F6F5F1]">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
 
-    <div class="text-center mb-16 reveal">
-      <span class="font-mono text-[10px] tracking-[.25em] uppercase text-[#C8A951] block mb-3">Visual Archive</span>
-      <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0D1B2A]">Gallery Coming Soon</h2>
-      <p class="mt-4 text-[#0D1B2A]/50 text-base max-w-md mx-auto">
-        We are curating site photography and project documentation. Check back soon &mdash; or follow us on Instagram for the latest updates.
-      </p>
+    <!-- Filter tabs (static labels, JS-driven if needed) -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      <?php
+      $tabs = ['All', 'Site Work', 'Design &amp; Drawings', 'Team'];
+      foreach ($tabs as $i => $tab): ?>
+      <button
+        class="gallery-tab font-mono text-[9.5px] tracking-[.18em] uppercase px-4 py-2 border transition-colors
+               <?= $i === 0
+                   ? 'border-[#C8A951] text-[#0D1B2A] bg-[#C8A951]'
+                   : 'border-gray-300 text-gray-500 hover:border-[#0D1B2A] hover:text-[#0D1B2A] bg-white' ?>"
+        data-filter="<?= strtolower(strip_tags($tab)) ?>">
+        <?= $tab ?>
+      </button>
+      <?php endforeach; ?>
     </div>
 
-    <!-- Placeholder tiles -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-      <?php for ($i = 0; $i < 8; $i++): ?>
-      <div class="bg-[#0D1B2A] aspect-square flex items-center justify-center relative overflow-hidden reveal group">
-        <div class="absolute inset-0 opacity-[.06]"
-             style="background-image:linear-gradient(#C8A951 1px,transparent 1px),linear-gradient(90deg,#C8A951 1px,transparent 1px);background-size:30px 30px;"></div>
-        <svg class="w-10 h-10 text-white/10 group-hover:text-[#C8A951]/30 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-        </svg>
+    <!-- Placeholder grid (replace bg divs with <img> tags when photos are ready) -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="galleryGrid">
+      <?php
+      $cells = [
+        ['#0D1B2A', 'Site Work',              'Nawadurga Devghad — excavation phase'],
+        ['#172840', 'Design &amp; Drawings',  'Structural drawings prepared'],
+        ['#1E3353', 'Site Work',              'Foundation layout, Bhaktapur'],
+        ['#0D1B2A', 'Team',                   'Site visit — core team'],
+        ['#172840', 'Site Work',              'Column reinforcement inspection'],
+        ['#1E3353', 'Design &amp; Drawings',  'Architectural elevation'],
+        ['#0D1B2A', 'Team',                   'BOQ review session'],
+        ['#172840', 'Site Work',              'Kera Ghari site survey'],
+        ['#1E3353', 'Design &amp; Drawings',  'Floor plan — Kera Ghari'],
+        ['#0D1B2A', 'Site Work',              'Slab formwork preparation'],
+        ['#172840', 'Team',                   'Registration day — 2082 Fagun 8'],
+        ['#1E3353', 'Design &amp; Drawings',  'BOQ documentation'],
+      ];
+      foreach ($cells as [$bg, $category, $caption]): ?>
+      <div class="group relative aspect-square overflow-hidden cursor-pointer"
+           data-category="<?= strtolower(strip_tags($category)) ?>">
+        <!-- Replace this div with <img src="..." /> when photos are available -->
+        <div class="w-full h-full flex flex-col items-center justify-center"
+             style="background-color:<?= $bg ?>;">
+          <div class="w-8 h-[2px] bg-[#C8A951] mb-2"></div>
+          <p class="font-mono text-[8px] tracking-[.15em] uppercase text-[#C8A951] text-center px-2"><?= $category ?></p>
+        </div>
+        <!-- Hover overlay -->
+        <div class="absolute inset-0 bg-[#0D1B2A]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white text-xs leading-snug"><?= $caption ?></p>
+        </div>
       </div>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </div>
+
+    <p class="mt-8 text-center text-sm text-gray-400">
+      More photos coming soon. Follow us on
+      <a href="https://www.instagram.com/mistrivai" target="_blank" rel="noreferrer"
+         class="text-[#C8A951] hover:underline">@mistrivai</a>
+      on Instagram.
+    </p>
+
   </div>
 </section>
 
-<!-- INSTAGRAM CTA -->
-<section class="py-20 bg-[#0D1B2A]">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center reveal">
-    <span class="font-mono text-[10px] uppercase tracking-[.25em] text-[#C8A951] block mb-5">Follow Our Work</span>
-    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-6">
-      See Us in Action on Instagram
-    </h2>
-    <a href="https://www.instagram.com/mistrivai" target="_blank" rel="noopener"
-       class="inline-flex items-center gap-3 bg-gradient-to-r from-[#C8A951] to-[#DFC06A] text-[#0D1B2A] text-sm font-bold tracking-widest uppercase px-10 py-4 transition-opacity hover:opacity-90">
-      @mistrivai
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-      </svg>
-    </a>
-  </div>
-</section>
+<script>
+(function(){
+  const tabs  = document.querySelectorAll('.gallery-tab');
+  const cards = document.querySelectorAll('#galleryGrid > div');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const filter = tab.dataset.filter;
+      // Style tabs
+      tabs.forEach(t => {
+        t.classList.remove('border-[#C8A951]','text-[#0D1B2A]','bg-[#C8A951]');
+        t.classList.add('border-gray-300','text-gray-500','bg-white');
+      });
+      tab.classList.add('border-[#C8A951]','text-[#0D1B2A]','bg-[#C8A951]');
+      tab.classList.remove('border-gray-300','text-gray-500','bg-white');
+      // Filter cards
+      cards.forEach(card => {
+        const cat = card.dataset.category || '';
+        const show = filter === 'all' || cat.includes(filter);
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
 
 <?php include 'includes/footer.php'; ?>

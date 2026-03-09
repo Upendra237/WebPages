@@ -1,13 +1,12 @@
 /* ============================================================
-   MISTRI VAI — Custom CSS utilities
-   Fonts & Tailwind config loaded via includes/header.php
+   MISTRI VAI ENGINEERING CLUB
+   Design System: Corporate Minimalism + Flat 2.0 + Editorial Flair
+   Palette: Navy Authority + Gold Accent
    ============================================================ */
 
-/* ── Scroll reveal animation ── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
-/* ── Legacy/unused CSS below — kept for reference only ── */
+/* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body { font-family: 'Inter', sans-serif; background: #F6F5F1; color: #0D1B2A; line-height: 1.65; -webkit-font-smoothing: antialiased; }
@@ -49,7 +48,6 @@ ul { list-style: none; }
 .t-body    { font-size: 1rem; color: var(--text-mid); line-height: 1.75; }
 .t-small   { font-size: .85rem; color: var(--text-muted); }
 .t-mono    { font-family: 'DM Mono', monospace; font-size: .8rem; }
-
 /* ── Layout ── */
 .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
 .section   { padding: 6rem 0; }
