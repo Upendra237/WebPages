@@ -34,39 +34,12 @@ include 'includes/header.php';
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <?php
-      $services = [
-        [
-          'Civil &amp; Structural Design',
-          'Structural analysis and design for buildings, retaining walls, bridges, and infrastructure using modern Nepalese building codes (NBC) and international standards.',
-          ['Structural analysis', 'Foundation design', 'Retaining walls', 'Reinforcement detailing', 'Earthquake-resistant design'],
-        ],
-        [
-          'Architectural Design',
-          'Thoughtful floor plans, elevations, and 3D visualisations that balance functionality, aesthetics, and the client\'s vision — from residential homes to community buildings.',
-          ['Floor plan design', 'Elevation drawings', '3D visualisation', 'Interior layout planning', 'Material specification'],
-        ],
-        [
-          'Construction Supervision',
-          'On-site resident engineering and quality control from excavation to finishing — ensuring every stage matches the approved design and specification.',
-          ['Quality control', 'Schedule monitoring', 'Site inspections', 'Progress reporting', 'Variation management'],
-        ],
-        [
-          'Soil &amp; Site Analysis',
-          'Geotechnical investigation, soil testing, and site feasibility studies to inform safe foundation and substructure design.',
-          ['Soil bearing capacity', 'Site feasibility report', 'Topographic survey', 'Geological assessment', 'Foundation recommendation'],
-        ],
-        [
-          'Cost Estimation &amp; BOQ',
-          'Detailed bill of quantities, rate analysis, and cost plans prepared to enable transparent budgeting and accurate tendering.',
-          ['Bill of quantities', 'Rate analysis', 'Budget planning', 'Tender documentation', 'Value engineering'],
-        ],
-        [
-          'Documentation &amp; Approvals',
-          'Municipal submission drawings, legal building permits, and all regulatory documentation managed on your behalf for a smooth approval process.',
-          ['Municipality drawings', 'Building permit support', 'Structural certificate', 'Completion certificate', 'Legal compliance'],
-        ],
-      ];
-      foreach ($services as [$title, $desc, $bullets]): ?>
+      $services = json_decode(file_get_contents(__DIR__ . '/data/services.json'), true) ?? [];
+      foreach ($services as $svc):
+        $title   = htmlspecialchars($svc['title']);
+        $desc    = htmlspecialchars($svc['description']);
+        $bullets = $svc['bullets'] ?? [];
+      ?>
       <div class="bg-white border border-gray-100 p-7 hover:shadow-md transition-shadow duration-200 flex flex-col">
         <div class="w-8 h-[2px] bg-[#C8A951] mb-5"></div>
         <h3 class="font-display text-xl font-semibold text-[#0D1B2A] mb-3"><?= $title ?></h3>

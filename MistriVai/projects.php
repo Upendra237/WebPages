@@ -42,40 +42,45 @@ include 'includes/header.php';
 <section class="py-20 lg:py-28 bg-[#F6F5F1]">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
 
-    <!-- Project 1 -->
+    <?php
+    $projects = json_decode(file_get_contents(__DIR__ . '/data/projects.json'), true) ?? [];
+    foreach ($projects as $p):
+      $title    = htmlspecialchars($p['title']);
+      $desc     = htmlspecialchars($p['description']);
+      $cat      = htmlspecialchars($p['category']);
+      $status   = htmlspecialchars($p['status']);
+      $loc      = htmlspecialchars($p['location']);
+      $type     = htmlspecialchars($p['type']);
+      $services = htmlspecialchars($p['services']);
+      $bg       = $p['accent'];
+      $district = htmlspecialchars($p['district_label']);
+      $extraKey = isset($p['contract_date']) ? 'Contract Date' : 'Services';
+      $extraVal = isset($p['contract_date']) ? htmlspecialchars($p['contract_date']) : $services;
+    ?>
     <div class="bg-white border border-gray-100 mb-8 overflow-hidden hover:shadow-md transition-shadow">
       <div class="grid lg:grid-cols-5">
-        <!-- Image placeholder -->
-        <div class="lg:col-span-2 bg-[#0D1B2A] min-h-[240px] flex items-center justify-center">
+        <div class="lg:col-span-2 min-h-[240px] flex items-center justify-center" style="background-color:<?= $bg ?>">
           <div class="text-center px-8">
             <div class="w-12 h-[3px] bg-[#C8A951] mx-auto mb-4"></div>
-            <p class="font-mono text-[9.5px] tracking-[.2em] uppercase text-[#C8A951]">Bhaktapur</p>
+            <p class="font-mono text-[9.5px] tracking-[.2em] uppercase text-[#C8A951]"><?= $district ?></p>
           </div>
         </div>
-        <!-- Content -->
         <div class="lg:col-span-3 p-8 lg:p-10">
           <div class="flex flex-wrap items-center gap-3 mb-4">
-            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-white bg-[#C8A951] px-2.5 py-1">Community</span>
-            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Active</span>
+            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-white bg-[#C8A951] px-2.5 py-1"><?= $cat ?></span>
+            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]"><?= $status ?></span>
           </div>
-          <h2 class="font-display text-2xl lg:text-3xl font-bold text-[#0D1B2A] mb-4">
-            Nawadurga Devghad Bhaban
-          </h2>
-          <p class="text-gray-500 leading-relaxed mb-6">
-            A community hall and cultural building project in Bhaktapur — designed
-            for ceremony, civic gatherings, and community pride. Mistri Vai provided
-            full structural design, architectural drawings, BOQ preparation, and
-            on-site construction supervision.
-          </p>
+          <h2 class="font-display text-2xl lg:text-3xl font-bold text-[#0D1B2A] mb-4"><?= $title ?></h2>
+          <p class="text-gray-500 leading-relaxed mb-6"><?= $desc ?></p>
           <div class="grid sm:grid-cols-2 gap-4 mt-4">
             <?php
-            $details1 = [
-              ['Location',  'Bhaktapur, Bagmati Province'],
-              ['Type',      'Community / Cultural Building'],
-              ['Services',  'Design, Supervision &amp; Documentation'],
-              ['Status',    'In Progress'],
+            $details = [
+              ['Location', $loc],
+              ['Type',     $type],
+              [$extraKey,  $extraVal],
+              ['Status',   'In Progress'],
             ];
-            foreach ($details1 as [$k, $v]): ?>
+            foreach ($details as [$k, $v]): ?>
             <div>
               <p class="font-mono text-[9px] tracking-[.2em] uppercase text-[#C8A951] mb-0.5"><?= $k ?></p>
               <p class="text-sm font-medium text-[#0D1B2A]"><?= $v ?></p>
@@ -85,50 +90,7 @@ include 'includes/header.php';
         </div>
       </div>
     </div>
-
-    <!-- Project 2 -->
-    <div class="bg-white border border-gray-100 mb-8 overflow-hidden hover:shadow-md transition-shadow">
-      <div class="grid lg:grid-cols-5">
-        <!-- Image placeholder -->
-        <div class="lg:col-span-2 bg-[#172840] min-h-[240px] flex items-center justify-center">
-          <div class="text-center px-8">
-            <div class="w-12 h-[3px] bg-[#C8A951] mx-auto mb-4"></div>
-            <p class="font-mono text-[9.5px] tracking-[.2em] uppercase text-[#C8A951]">Kavre</p>
-          </div>
-        </div>
-        <!-- Content -->
-        <div class="lg:col-span-3 p-8 lg:p-10">
-          <div class="flex flex-wrap items-center gap-3 mb-4">
-            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-white bg-[#C8A951] px-2.5 py-1">Residential</span>
-            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Signed 2082 Kartik</span>
-          </div>
-          <h2 class="font-display text-2xl lg:text-3xl font-bold text-[#0D1B2A] mb-4">
-            Kera Ghari Residential Building
-          </h2>
-          <p class="text-gray-500 leading-relaxed mb-6">
-            A multi-storey residential building project signed in 2082 Kartik 14.
-            Mistri Vai is responsible for structural design, architectural plans,
-            and full construction supervision — delivering comfortable, code-compliant
-            modern housing in Kavre district.
-          </p>
-          <div class="grid sm:grid-cols-2 gap-4 mt-4">
-            <?php
-            $details2 = [
-              ['Location',    'Dhulikhel-6, Kavre'],
-              ['Type',        'Residential Multi-storey'],
-              ['Contract Date', '2082 Kartik 14 (B.S.)'],
-              ['Status',      'In Progress'],
-            ];
-            foreach ($details2 as [$k, $v]): ?>
-            <div>
-              <p class="font-mono text-[9px] tracking-[.2em] uppercase text-[#C8A951] mb-0.5"><?= $k ?></p>
-              <p class="text-sm font-medium text-[#0D1B2A]"><?= $v ?></p>
-            </div>
-            <?php endforeach; ?>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
 
   </div>
 </section>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "civil-structural",
+    "title": "Civil & Structural Design",
+    "description": "Structural analysis and design for buildings, retaining walls, bridges, and infrastructure using modern Nepalese building codes (NBC) and international standards.",
+    "bullets": [
+      "Structural analysis",
+      "Foundation design",
+      "Retaining walls",
+      "Reinforcement detailing",
+      "Earthquake-resistant design"
+    ]
+  },
+  {
+    "id": "architectural",
+    "title": "Architectural Design",
+    "description": "Thoughtful floor plans, elevations, and 3D visualisations that balance functionality, aesthetics, and the client's vision — from residential homes to community buildings.",
+    "bullets": [
+      "Floor plan design",
+      "Elevation drawings",
+      "3D visualisation",
+      "Interior layout planning",
+      "Material specification"
+    ]
+  },
+  {
+    "id": "construction-supervision",
+    "title": "Construction Supervision",
+    "description": "On-site resident engineering and quality control from excavation to finishing — ensuring every stage matches the approved design and specification.",
+    "bullets": [
+      "Quality control",
+      "Schedule monitoring",
+      "Site inspections",
+      "Progress reporting",
+      "Variation management"
+    ]
+  },
+  {
+    "id": "soil-site",
+    "title": "Soil & Site Analysis",
+    "description": "Geotechnical investigation, soil testing, and site feasibility studies to inform safe foundation and substructure design.",
+    "bullets": [
+      "Soil bearing capacity",
+      "Site feasibility report",
+      "Topographic survey",
+      "Geological assessment",
+      "Foundation recommendation"
+    ]
+  },
+  {
+    "id": "cost-estimation",
+    "title": "Cost Estimation & BOQ",
+    "description": "Detailed bill of quantities, rate analysis, and cost plans prepared to enable transparent budgeting and accurate tendering.",
+    "bullets": [
+      "Bill of quantities",
+      "Rate analysis",
+      "Budget planning",
+      "Tender documentation",
+      "Value engineering"
+    ]
+  },
+  {
+    "id": "documentation",
+    "title": "Documentation & Approvals",
+    "description": "Municipal submission drawings, legal building permits, and all regulatory documentation managed on your behalf for a smooth approval process.",
+    "bullets": [
+      "Municipality drawings",
+      "Building permit support",
+      "Structural certificate",
+      "Completion certificate",
+      "Legal compliance"
+    ]
+  }
+]

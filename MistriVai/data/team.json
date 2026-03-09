@@ -1,0 +1,42 @@
+[
+  {
+    "id": "nischit-gajyaju",
+    "name": "Nischit Gajyaju",
+    "role": "Founder & President",
+    "initials": "NG",
+    "bio": "Leads the club's vision, operations, and client relationships. Oversees project delivery and maintains quality standards across all engagements.",
+    "bg": "#0D1B2A"
+  },
+  {
+    "id": "nishan-makaju",
+    "name": "Nishan Makaju",
+    "role": "Chief Engineering Consultant & MD",
+    "initials": "NM",
+    "bio": "Heads all technical engineering work — structural analysis, design review, and construction supervision protocols.",
+    "bg": "#172840"
+  },
+  {
+    "id": "subichhya-khagi",
+    "name": "Subichhya Khagi",
+    "role": "General Manager",
+    "initials": "SK",
+    "bio": "Manages internal operations, documentation, client onboarding, and team coordination across active projects.",
+    "bg": "#1E3353"
+  },
+  {
+    "id": "ayush-singh",
+    "name": "Ayush Singh",
+    "role": "Chief Architect",
+    "initials": "AS",
+    "bio": "Responsible for all architectural design work — space planning, elevations, 3D visualisations, and aesthetic direction.",
+    "bg": "#0D1B2A"
+  },
+  {
+    "id": "milan-suncheuri",
+    "name": "Milan Suncheuri",
+    "role": "Chief Technology Officer",
+    "initials": "MS",
+    "bio": "Manages CAD workflows, digital documentation systems, and technology tools that support the engineering team.",
+    "bg": "#172840"
+  }
+]

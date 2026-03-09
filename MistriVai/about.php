@@ -1,6 +1,6 @@
 <?php
-$pageTitle = 'About — Mistri Vai Engineering Club';
-$pageDesc  = 'Learn about Mistri Vai Engineering Club — our mission, story, team milestones, and registered consultancy information.';
+$pageTitle = 'About — Mistri Vai Engineering Co.';
+$pageDesc  = 'Learn about Mistri Vai Engineering Co. — our mission, story, team milestones, and registered consultancy information.';
 include 'includes/header.php';
 ?>
 
@@ -11,7 +11,7 @@ include 'includes/header.php';
   <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
     <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">About Us</p>
     <h1 class="font-display text-5xl lg:text-6xl font-bold text-white leading-tight max-w-2xl">
-      Engineering Club<br/>with a Purpose
+      Engineering Co.<br/>with a Purpose
     </h1>
   </div>
 </section>
@@ -28,8 +28,8 @@ include 'includes/header.php';
           Precision-built for Nepal's future.
         </h2>
         <p class="text-gray-500 leading-relaxed mb-5">
-          Mistri Vai Engineering Club was founded by a group of civil engineering graduates
-          determined to bridge the gap between qualified technical knowledge and Nepal's
+          Mistri Vai Engineering Co. was founded by a group of civil engineering graduates
+          determined to bridge the gap between qualified technical knowledge and Nepal&#39;s
           growing construction needs — especially in communities often overlooked by
           larger consultancies.
         </p>
@@ -44,10 +44,10 @@ include 'includes/header.php';
       <div class="grid grid-cols-2 gap-4">
         <?php
         $values = [
-          ['Safety First',      'No shortcuts. Every design meets or exceeds Nepal's building code standards.'],
-          ['Community-Centred', 'We serve local clients, understand local terrain, and build for local lives.'],
-          ['Young Professionals','Led by qualified engineers who combine fresh education with genuine care.'],
-          ['Fully Registered',  'Regd. No. 15648/082/083 | PAN 133885297 — transparent and accountable.'],
+          ['Safety First',       "No shortcuts. Every design meets or exceeds Nepal's building code standards."],
+          ['Community-Centred',  "We serve local clients, understand local terrain, and build for local lives."],
+          ['Young Professionals', "Led by qualified engineers who combine fresh education with genuine care."],
+          ['Fully Registered',   "Regd. No. 15648/082/083 | PAN 133885297 — transparent and accountable."],
         ];
         foreach ($values as [$h, $t]): ?>
         <div class="bg-white border border-gray-100 p-6">
@@ -73,7 +73,7 @@ include 'includes/header.php';
     <ol class="relative border-l border-[#C8A951]/30 space-y-10">
       <?php
       $timeline = [
-        ['2081 Fagun',    'Concept &amp; Formation',       'Founding members meet and begin planning the engineering club concept.'],
+        ['2081 Fagun',    'Concept &amp; Formation',       'Founding members meet and begin planning the engineering consultancy concept.'],
         ['2081 Chaitra',  'Core Team Assembly',            'The five founding members formalise roles and responsibilities.'],
         ['2082 Baisakh',  'First Site Survey',             'Preliminary site survey conducted for the Nawadurga Devghad Bhaban project in Bhaktapur.'],
         ['2082 Jestha',   'Design Phase Begins',          'Structural and architectural design work commences on the community project.'],
@@ -82,9 +82,9 @@ include 'includes/header.php';
         ['2082 Bhadra',   'Second Project Signed',        'Kera Ghari Residential Building contract signed — expanding the project portfolio.'],
         ['2082 Ashwin',   'Team Expansion',               'Additional engineering consultants and support staff onboarded.'],
         ['2082 Kartik 14','Kera Ghari Contract',          'Formal agreement signed for the Kera Ghari multi-storey residential building project.'],
-        ['2082 Mangsir',  'Registration Process',         'Application for official club and consultancy registration submitted to authorities.'],
+        ['2082 Mangsir',  'Registration Process',         'Application for official co. and consultancy registration submitted to authorities.'],
         ['2082 Poush',    'Documentation Complete',       'All legal, financial, and technical documentation prepared and verified.'],
-        ['2082 Fagun 8',  'Official Registration',        'Mistri Vai Engineering Club officially registered — Regd. No. 15648/082/083, PAN 133885297.'],
+        ['2082 Fagun 8',  'Official Registration',        'Mistri Vai Engineering Co. officially registered — Regd. No. 15648/082/083, PAN 133885297.'],
       ];
       foreach ($timeline as [$date, $heading, $desc]): ?>
       <li class="ml-6">
@@ -105,7 +105,7 @@ include 'includes/header.php';
     <div class="grid sm:grid-cols-3 gap-6 text-center">
       <?php
       $reg = [
-        ['Registered Club',     'Regd. No. 15648/082/083'],
+        ['Registered Co.',    'Regd. No. 15648/082/083'],
         ['PAN Number',          '133885297'],
         ['Registered Since',    '2082 Fagun 8 (B.S.)'],
       ];

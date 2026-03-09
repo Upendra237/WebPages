@@ -79,7 +79,7 @@ function navItem(string $page, string $label, string $href = ''): string {
           </div>
           <div class="leading-none hidden sm:block">
             <p class="text-white font-semibold text-[13px] tracking-wide leading-none">Mistri Vai</p>
-            <p class="text-[#C8A951] font-mono text-[9.5px] tracking-[.18em] uppercase mt-[3px]">Engineering Club</p>
+            <p class="text-[#C8A951] font-mono text-[9.5px] tracking-[.18em] uppercase mt-[3px]">Engineering Co.</p>
           </div>
         </a>
 
@@ -137,8 +137,9 @@ function navItem(string $page, string $label, string $href = ''): string {
   </div>
 </header>
 
-<!-- Spacer so content doesn't hide under fixed header -->
-<div class="h-[66px]"></div>
+<!-- Spacer so content doesn't hide under fixed header —
+     bg-[#0D1B2A] prevents offwhite flash before dark-hero pages -->
+<div class="h-[66px] bg-[#0D1B2A]"></div>
 
 <script>
 (function(){

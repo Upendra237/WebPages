@@ -40,21 +40,12 @@ include 'includes/header.php';
     <!-- Placeholder grid (replace bg divs with <img> tags when photos are ready) -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="galleryGrid">
       <?php
-      $cells = [
-        ['#0D1B2A', 'Site Work',              'Nawadurga Devghad — excavation phase'],
-        ['#172840', 'Design &amp; Drawings',  'Structural drawings prepared'],
-        ['#1E3353', 'Site Work',              'Foundation layout, Bhaktapur'],
-        ['#0D1B2A', 'Team',                   'Site visit — core team'],
-        ['#172840', 'Site Work',              'Column reinforcement inspection'],
-        ['#1E3353', 'Design &amp; Drawings',  'Architectural elevation'],
-        ['#0D1B2A', 'Team',                   'BOQ review session'],
-        ['#172840', 'Site Work',              'Kera Ghari site survey'],
-        ['#1E3353', 'Design &amp; Drawings',  'Floor plan — Kera Ghari'],
-        ['#0D1B2A', 'Site Work',              'Slab formwork preparation'],
-        ['#172840', 'Team',                   'Registration day — 2082 Fagun 8'],
-        ['#1E3353', 'Design &amp; Drawings',  'BOQ documentation'],
-      ];
-      foreach ($cells as [$bg, $category, $caption]): ?>
+      $cells = json_decode(file_get_contents(__DIR__ . '/data/gallery.json'), true) ?? [];
+      foreach ($cells as $cell):
+        $bg       = $cell['bg'];
+        $category = $cell['label'];
+        $caption  = htmlspecialchars($cell['caption']);
+      ?>
       <div class="group relative aspect-square overflow-hidden cursor-pointer"
            data-category="<?= strtolower(strip_tags($category)) ?>">
         <!-- Replace this div with <img src="..." /> when photos are available -->

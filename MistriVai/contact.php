@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$pageTitle = 'Contact - Mistri Vai Engineering Club';
-$pageDesc  = 'Get in touch with Mistri Vai Engineering Club for civil engineering, architectural design, or construction queries.';
+$pageTitle = 'Contact - Mistri Vai Engineering Co.';
+$pageDesc  = 'Get in touch with Mistri Vai Engineering Co. for civil engineering, architectural design, or construction queries.';
 include 'includes/header.php';
 ?>
 

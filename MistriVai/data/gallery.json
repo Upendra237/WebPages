@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "category": "site-work",
+    "caption": "Nawadurga Devghad — excavation phase",
+    "label": "Site Work",
+    "bg": "#0D1B2A",
+    "image": null
+  },
+  {
+    "id": 2,
+    "category": "design-drawings",
+    "caption": "Structural drawings prepared",
+    "label": "Design & Drawings",
+    "bg": "#172840",
+    "image": null
+  },
+  {
+    "id": 3,
+    "category": "site-work",
+    "caption": "Foundation layout, Bhaktapur",
+    "label": "Site Work",
+    "bg": "#1E3353",
+    "image": null
+  },
+  {
+    "id": 4,
+    "category": "team",
+    "caption": "Site visit — core team",
+    "label": "Team",
+    "bg": "#0D1B2A",
+    "image": null
+  },
+  {
+    "id": 5,
+    "category": "site-work",
+    "caption": "Column reinforcement inspection",
+    "label": "Site Work",
+    "bg": "#172840",
+    "image": null
+  },
+  {
+    "id": 6,
+    "category": "design-drawings",
+    "caption": "Architectural elevation",
+    "label": "Design & Drawings",
+    "bg": "#1E3353",
+    "image": null
+  },
+  {
+    "id": 7,
+    "category": "team",
+    "caption": "BOQ review session",
+    "label": "Team",
+    "bg": "#0D1B2A",
+    "image": null
+  },
+  {
+    "id": 8,
+    "category": "site-work",
+    "caption": "Kera Ghari site survey",
+    "label": "Site Work",
+    "bg": "#172840",
+    "image": null
+  },
+  {
+    "id": 9,
+    "category": "design-drawings",
+    "caption": "Floor plan — Kera Ghari",
+    "label": "Design & Drawings",
+    "bg": "#1E3353",
+    "image": null
+  },
+  {
+    "id": 10,
+    "category": "site-work",
+    "caption": "Slab formwork preparation",
+    "label": "Site Work",
+    "bg": "#0D1B2A",
+    "image": null
+  },
+  {
+    "id": 11,
+    "category": "team",
+    "caption": "Registration day — 2082 Fagun 8",
+    "label": "Team",
+    "bg": "#172840",
+    "image": null
+  },
+  {
+    "id": 12,
+    "category": "design-drawings",
+    "caption": "BOQ documentation",
+    "label": "Design & Drawings",
+    "bg": "#1E3353",
+    "image": null
+  }
+]

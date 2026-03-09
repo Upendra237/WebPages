@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Mistri Vai Engineering Club — Civil Engineering & Architecture, Nepal';
+$pageTitle = 'Mistri Vai Engineering Co. — Civil Engineering & Architecture, Nepal';
 $pageDesc  = 'Registered civil engineering, architectural design and construction consultancy rooted in Nepal. Precision-built from Bhaktapur & Kavre.';
 include 'includes/header.php';
 ?>
@@ -15,64 +15,98 @@ include 'includes/header.php';
   <div class="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full
               bg-[#C8A951] opacity-[.05] blur-[120px] pointer-events-none"></div>
 
-  <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-24 lg:py-32">
-    <div class="max-w-3xl">
-      <!-- eyebrow -->
-      <p class="font-mono text-[#C8A951] text-[10px] tracking-[.3em] uppercase mb-5 animate-fade-up">
-        Civil Engineering &amp; Architecture
-      </p>
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-24 lg:py-32 w-full">
+    <div class="grid lg:grid-cols-2 items-center gap-16">
 
-      <!-- headline -->
-      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] mb-6 animate-fade-up [animation-delay:.08s]">
-        Built on<br/>
-        <span class="text-[#C8A951]">Precision.</span><br/>
-        Driven by<br/>Purpose.
-      </h1>
-
-      <!-- sub -->
-      <p class="text-white/55 text-lg max-w-xl leading-relaxed mb-10 animate-fade-up [animation-delay:.16s]">
-        Mistri Vai is a registered engineering consultancy delivering civil engineering,
-        architectural design, and construction solutions across Nepal — with rigour and care.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-wrap gap-4 animate-fade-up [animation-delay:.24s]">
-        <a href="projects.php"
-           class="bg-[#C8A951] hover:bg-[#DFC06A] text-[#0D1B2A] font-bold text-xs tracking-[.16em] uppercase px-7 py-4 rounded-sm transition-colors">
-          View Projects
-        </a>
-        <a href="contact.php"
-           class="border border-white/20 hover:border-[#C8A951] hover:text-[#C8A951] text-white/70 font-semibold text-xs tracking-[.16em] uppercase px-7 py-4 rounded-sm transition-colors">
-          Get in Touch
-        </a>
+      <!-- Left: text -->
+      <div>
+        <p class="font-mono text-[#C8A951] text-[10px] tracking-[.3em] uppercase mb-5 animate-fade-up">
+          Civil Engineering &amp; Architecture
+        </p>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] mb-6 animate-fade-up [animation-delay:.08s]">
+          Built on<br/>
+          <span class="text-[#C8A951]">Precision.</span><br/>
+          Driven by<br/>Purpose.
+        </h1>
+        <p class="text-white/55 text-lg max-w-xl leading-relaxed mb-10 animate-fade-up [animation-delay:.16s]">
+          Mistri Vai is a registered engineering consultancy delivering civil engineering,
+          architectural design, and construction solutions across Nepal — with rigour and care.
+        </p>
+        <div class="flex flex-wrap gap-4 animate-fade-up [animation-delay:.24s]">
+          <a href="projects.php"
+             class="bg-[#C8A951] hover:bg-[#DFC06A] text-[#0D1B2A] font-bold text-xs tracking-[.16em] uppercase px-7 py-4 rounded-sm transition-colors">
+            View Projects
+          </a>
+          <a href="contact.php"
+             class="bg-[#172840] hover:bg-[#1E3353] text-white font-bold text-xs tracking-[.16em] uppercase px-7 py-4 rounded-sm transition-colors border border-white/15">
+            Get in Touch
+          </a>
+        </div>
       </div>
+
+      <!-- Right: logo display -->
+      <div class="hidden lg:flex items-center justify-center animate-fade-up [animation-delay:.32s]">
+        <div class="relative">
+          <div class="absolute -inset-8 rounded-full border border-[#C8A951]/12"></div>
+          <div class="absolute -inset-16 rounded-full border border-[#C8A951]/06"></div>
+          <div class="flex items-center justify-center w-60 h-60 bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <img src="assets/logo.png" alt="Mistri Vai" class="w-52 h-52 object-contain block" loading="eager"/>
+          </div>
+          <div class="absolute -bottom-4 -right-4 bg-[#C8A951] text-[#0D1B2A] font-mono text-[9px] tracking-[.15em] uppercase px-3 py-2 rounded-sm shadow-lg">
+            Est. 2082 B.S.
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <!-- bottom fade -->
-  <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#F6F5F1] to-transparent pointer-events-none"></div>
 </section>
 
 
 <!-- ═══════════════════  STATS STRIP  ═══════════════════ -->
-<section class="bg-white border-y border-gray-100">
+<section class="bg-white border-y border-gray-100" id="statsSection">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="grid grid-cols-3 divide-x divide-gray-100">
-      <?php
-      $stats = [
-        ['2+',    'Projects Delivered'],
-        ['2082',  'Founded (B.S.)'],
-        ['99%',   'Client Satisfaction'],
-      ];
-      foreach ($stats as [$num, $lbl]): ?>
       <div class="flex flex-col items-center py-10 gap-1">
-        <span class="font-display text-4xl font-bold text-[#0D1B2A]"><?= $num ?></span>
-        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]"><?= $lbl ?></span>
+        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="2" data-suffix="+">2+</span>
+        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Projects Delivered</span>
       </div>
-      <?php endforeach; ?>
+      <div class="flex flex-col items-center py-10 gap-1">
+        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="2082" data-suffix="">2082</span>
+        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Founded (B.S.)</span>
+      </div>
+      <div class="flex flex-col items-center py-10 gap-1">
+        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="99" data-suffix="%">99%</span>
+        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Client Satisfaction</span>
+      </div>
     </div>
   </div>
 </section>
+<script>
+(function(){
+  const nums = document.querySelectorAll('.stat-num');
+  if (!nums.length) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || e.target.dataset.done) return;
+      e.target.dataset.done = '1';
+      const target = parseInt(e.target.dataset.count, 10);
+      const suffix = e.target.dataset.suffix || '';
+      const dur = 1400;
+      const t0 = performance.now();
+      function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        e.target.textContent = Math.floor(ease * target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else e.target.textContent = target + suffix;
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.6 });
+  nums.forEach(n => io.observe(n));
+})();
+</script>
 
 
 <!-- ═══════════════════  WHAT WE DO  ═══════════════════ -->
@@ -87,24 +121,17 @@ include 'includes/header.php';
       </h2>
     </div>
 
-    <!-- service cards grid -->
+    <!-- service cards grid — loaded from data/services.json -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <?php
-      $services = [
-        ['Civil &amp; Structural Design', 'Comprehensive structural analysis and design for buildings, retaining walls, and infrastructure using modern codes.'],
-        ['Architectural Design', 'Thoughtful space planning, façade design, and working drawings blending function with aesthetic sensitivity.'],
-        ['Construction Supervision', 'On-site quality control, schedule monitoring, and technical oversight to ensure build fidelity.'],
-        ['Soil &amp; Site Analysis', 'Geotechnical investigation, soil testing, and site feasibility reports for safe foundation design.'],
-        ['Cost Estimation &amp; BOQ', 'Detailed bill of quantities and cost plans enabling transparent budgeting from concept to completion.'],
-        ['Documentation &amp; Approvals', 'Municipal submission drawings, legal compliance documents, and project permit support.'],
-      ];
-      foreach ($services as [$title, $desc]): ?>
+      $services = json_decode(file_get_contents(__DIR__ . '/data/services.json'), true) ?? [];
+      foreach ($services as $svc):
+        $title = htmlspecialchars($svc['title']);
+        $desc  = htmlspecialchars($svc['description']); ?>
       <div class="bg-white border border-gray-100 p-7 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
         <!-- gold rule -->
         <div class="w-8 h-[2px] bg-[#C8A951] mb-5"></div>
-        <h3 class="font-display text-lg font-semibold text-[#0D1B2A] mb-3 group-hover:text-[#C8A951] transition-colors">
-          <?= $title ?>
-        </h3>
+        <h3 class="font-display text-lg font-semibold text-[#0D1B2A] mb-3 group-hover:text-[#C8A951] transition-colors"><?= $title ?></h3>
         <p class="text-sm text-gray-500 leading-relaxed"><?= $desc ?></p>
       </div>
       <?php endforeach; ?>
@@ -192,7 +219,7 @@ include 'includes/header.php';
         </p>
         <a href="about.php"
            class="inline-flex items-center gap-2 bg-[#0D1B2A] hover:bg-[#172840] text-white font-bold text-xs tracking-[.16em] uppercase px-7 py-4 rounded-sm transition-colors">
-          About the Club
+          About Us
         </a>
       </div>
 

@@ -34,44 +34,14 @@ include 'includes/header.php';
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <?php
-      $team = [
-        [
-          'Nischit Gajyaju',
-          'Founder &amp; President',
-          'Leads the club\'s vision, operations, and client relationships. Oversees project delivery and maintains quality standards across all engagements.',
-          '#0D1B2A',
-          'NG',
-        ],
-        [
-          'Nishan Makaju',
-          'Chief Engineering Consultant &amp; MD',
-          'Heads all technical engineering work — structural analysis, design review, and construction supervision protocols.',
-          '#172840',
-          'NM',
-        ],
-        [
-          'Subichhya Khagi',
-          'General Manager',
-          'Manages internal operations, documentation, client onboarding, and team coordination across active projects.',
-          '#1E3353',
-          'SK',
-        ],
-        [
-          'Ayush Singh',
-          'Chief Architect',
-          'Responsible for all architectural design work — space planning, elevations, 3D visualisations, and aesthetic direction.',
-          '#0D1B2A',
-          'AS',
-        ],
-        [
-          'Milan Suncheuri',
-          'Chief Technology Officer',
-          'Manages CAD workflows, digital documentation systems, and technology tools that support the engineering team.',
-          '#172840',
-          'MS',
-        ],
-      ];
-      foreach ($team as [$name, $role, $bio, $bg, $initials]): ?>
+      $team = json_decode(file_get_contents(__DIR__ . '/data/team.json'), true) ?? [];
+      foreach ($team as $m):
+        $name     = htmlspecialchars($m['name']);
+        $role     = htmlspecialchars($m['role']);
+        $bio      = htmlspecialchars($m['bio']);
+        $bg       = $m['bg'];
+        $initials = $m['initials'];
+      ?>
       <div class="bg-white border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
         <!-- Avatar area -->
         <div class="h-36 flex items-center justify-center" style="background-color:<?= $bg ?>">
@@ -81,12 +51,8 @@ include 'includes/header.php';
         </div>
         <!-- Content -->
         <div class="p-6">
-          <h3 class="font-display text-lg font-semibold text-[#0D1B2A] group-hover:text-[#C8A951] transition-colors">
-            <?= $name ?>
-          </h3>
-          <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mt-1 mb-3">
-            <?= $role ?>
-          </p>
+          <h3 class="font-display text-lg font-semibold text-[#0D1B2A] group-hover:text-[#C8A951] transition-colors"><?= $name ?></h3>
+          <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mt-1 mb-3"><?= $role ?></p>
           <p class="text-sm text-gray-500 leading-relaxed"><?= $bio ?></p>
         </div>
       </div>
