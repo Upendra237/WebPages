@@ -1,6 +1,6 @@
 <?php
-$pageTitle = 'Projects — Mistri Vai Engineering Club';
-$pageDesc  = 'Explore civil engineering and architectural projects delivered by Mistri Vai Engineering Club across Nepal.';
+$pageTitle = 'Projects — Mistri Vai Engineering';
+$pageDesc  = 'Explore civil engineering and architectural projects delivered by Mistri Vai Engineering across Nepal.';
 include 'includes/header.php';
 ?>
 

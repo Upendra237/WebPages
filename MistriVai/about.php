@@ -1,6 +1,6 @@
 <?php
-$pageTitle = 'About — Mistri Vai Engineering Co.';
-$pageDesc  = 'Learn about Mistri Vai Engineering Co. — our mission, story, team milestones, and registered consultancy information.';
+$pageTitle = 'About — Mistri Vai Engineering';
+$pageDesc  = 'Learn about Mistri Vai Engineering — our mission, story, team milestones, and registered consultancy information.';
 include 'includes/header.php';
 ?>
 
@@ -11,7 +11,7 @@ include 'includes/header.php';
   <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
     <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">About Us</p>
     <h1 class="font-display text-5xl lg:text-6xl font-bold text-white leading-tight max-w-2xl">
-      Engineering Co.<br/>with a Purpose
+      Engineering<br/>with a Purpose
     </h1>
   </div>
 </section>
@@ -28,7 +28,7 @@ include 'includes/header.php';
           Precision-built for Nepal's future.
         </h2>
         <p class="text-gray-500 leading-relaxed mb-5">
-          Mistri Vai Engineering Co. was founded by a group of civil engineering graduates
+          Mistri Vai Engineering was founded by a group of civil engineering graduates
           determined to bridge the gap between qualified technical knowledge and Nepal&#39;s
           growing construction needs — especially in communities often overlooked by
           larger consultancies.
@@ -84,7 +84,7 @@ include 'includes/header.php';
         ['2082 Kartik 14','Kera Ghari Contract',          'Formal agreement signed for the Kera Ghari multi-storey residential building project.'],
         ['2082 Mangsir',  'Registration Process',         'Application for official co. and consultancy registration submitted to authorities.'],
         ['2082 Poush',    'Documentation Complete',       'All legal, financial, and technical documentation prepared and verified.'],
-        ['2082 Fagun 8',  'Official Registration',        'Mistri Vai Engineering Co. officially registered — Regd. No. 15648/082/083, PAN 133885297.'],
+        ['2082 Fagun 8',  'Official Registration',        'Mistri Vai Engineering officially registered — Regd. No. 15648/082/083, PAN 133885297.'],
       ];
       foreach ($timeline as [$date, $heading, $desc]): ?>
       <li class="ml-6">

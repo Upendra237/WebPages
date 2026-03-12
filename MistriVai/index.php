@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Mistri Vai Engineering Co. — Civil Engineering & Architecture, Nepal';
+$pageTitle = 'Mistri Vai Engineering — Civil Engineering & Architecture, Nepal';
 $pageDesc  = 'Registered civil engineering, architectural design and construction consultancy rooted in Nepal. Precision-built from Bhaktapur & Kavre.';
 include 'includes/header.php';
 ?>
@@ -15,7 +15,7 @@ include 'includes/header.php';
   <div class="absolute top-1/3 right-1/4 w-[600px] h-[600px] rounded-full
               bg-[#C8A951] opacity-[.05] blur-[120px] pointer-events-none"></div>
 
-  <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-24 lg:py-32 w-full">
+  <div class="relative max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-24 w-full">
     <div class="grid lg:grid-cols-2 items-center gap-16">
 
       <!-- Left: text -->
@@ -24,11 +24,11 @@ include 'includes/header.php';
           Civil Engineering &amp; Architecture
         </p>
         <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] mb-6 animate-fade-up [animation-delay:.08s]">
-          Built on<br/>
-          <span class="text-[#C8A951]">Precision.</span><br/>
-          Driven by<br/>Purpose.
+          Built on Precision,<br/>
+          <span class="text-[#C8A951]">Driven by Purpose.</span><br/>
+          Crafted for Nepal.
         </h1>
-        <p class="text-white/55 text-lg max-w-xl leading-relaxed mb-10 animate-fade-up [animation-delay:.16s]">
+        <p class="text-white/70 text-lg max-w-xl leading-relaxed mb-10 animate-fade-up [animation-delay:.16s]">
           Mistri Vai is a registered engineering consultancy delivering civil engineering,
           architectural design, and construction solutions across Nepal — with rigour and care.
         </p>
@@ -47,10 +47,15 @@ include 'includes/header.php';
       <!-- Right: logo display -->
       <div class="hidden lg:flex items-center justify-center animate-fade-up [animation-delay:.32s]">
         <div class="relative">
-          <div class="absolute -inset-8 rounded-full border border-[#C8A951]/12"></div>
-          <div class="absolute -inset-16 rounded-full border border-[#C8A951]/06"></div>
-          <div class="flex items-center justify-center w-60 h-60 bg-white rounded-2xl shadow-2xl overflow-hidden">
-            <img src="assets/logo.png" alt="Mistri Vai" class="w-52 h-52 object-contain block" loading="eager"/>
+          <!-- Architectural corner brackets -->
+          <div class="absolute -top-5 -left-5 w-8 h-8 border-t-2 border-l-2 border-[#C8A951]/40"></div>
+          <div class="absolute -top-5 -right-5 w-8 h-8 border-t-2 border-r-2 border-[#C8A951]/40"></div>
+          <div class="absolute -bottom-5 -left-5 w-8 h-8 border-b-2 border-l-2 border-[#C8A951]/40"></div>
+          <div class="absolute -bottom-5 -right-5 w-8 h-8 border-b-2 border-r-2 border-[#C8A951]/40"></div>
+          <!-- Subtle outer frame -->
+          <div class="absolute -inset-10 border border-[#C8A951]/[.08] rounded-2xl"></div>
+          <div class="flex items-center justify-center w-72 h-72 bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <img src="assets/logo.png" alt="Mistri Vai" class="w-64 h-64 object-contain block" loading="eager"/>
           </div>
           <div class="absolute -bottom-4 -right-4 bg-[#C8A951] text-[#0D1B2A] font-mono text-[9px] tracking-[.15em] uppercase px-3 py-2 rounded-sm shadow-lg">
             Est. 2082 B.S.
@@ -64,20 +69,20 @@ include 'includes/header.php';
 
 
 <!-- ═══════════════════  STATS STRIP  ═══════════════════ -->
-<section class="bg-white border-y border-gray-100" id="statsSection">
+<section class="bg-[#0D1B2A] border-t border-white/[.07]" id="statsSection">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="grid grid-cols-3 divide-x divide-gray-100">
-      <div class="flex flex-col items-center py-10 gap-1">
-        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="2" data-suffix="+">2+</span>
-        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Projects Delivered</span>
+    <div class="grid grid-cols-3 divide-x divide-white/[.07]">
+      <div class="flex flex-col items-center py-10 gap-1.5 px-2">
+        <span class="font-display text-4xl font-bold text-white stat-num" data-count="2" data-suffix="+">2+</span>
+        <span class="font-mono text-[9px] tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Projects Delivered</span>
       </div>
-      <div class="flex flex-col items-center py-10 gap-1">
-        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="2082" data-suffix="">2082</span>
-        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Founded (B.S.)</span>
+      <div class="flex flex-col items-center py-10 gap-1.5 px-2">
+        <span class="font-display text-4xl font-bold text-white stat-num" data-count="2082" data-suffix="">2082</span>
+        <span class="font-mono text-[9px] tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Founded (B.S.)</span>
       </div>
-      <div class="flex flex-col items-center py-10 gap-1">
-        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="99" data-suffix="%">99%</span>
-        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]">Client Satisfaction</span>
+      <div class="flex flex-col items-center py-10 gap-1.5 px-2">
+        <span class="font-display text-4xl font-bold text-white stat-num" data-count="99" data-suffix="%">99%</span>
+        <span class="font-mono text-[9px] tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Client Satisfaction</span>
       </div>
     </div>
   </div>
@@ -132,7 +137,7 @@ include 'includes/header.php';
         <!-- gold rule -->
         <div class="w-8 h-[2px] bg-[#C8A951] mb-5"></div>
         <h3 class="font-display text-lg font-semibold text-[#0D1B2A] mb-3 group-hover:text-[#C8A951] transition-colors"><?= $title ?></h3>
-        <p class="text-sm text-gray-500 leading-relaxed"><?= $desc ?></p>
+        <p class="text-sm text-gray-600 leading-relaxed"><?= $desc ?></p>
       </div>
       <?php endforeach; ?>
     </div>
@@ -166,7 +171,7 @@ include 'includes/header.php';
         <h3 class="font-display text-xl font-semibold text-white mb-3 group-hover:text-[#C8A951] transition-colors">
           Nawadurga Devghad Bhaban
         </h3>
-        <p class="text-white/50 text-sm leading-relaxed mb-6">
+        <p class="text-white/65 text-sm leading-relaxed mb-6">
           A community hall and cultural space in Bhaktapur — designed for
           durability, ceremony, and civic pride.
         </p>
@@ -180,7 +185,7 @@ include 'includes/header.php';
         <h3 class="font-display text-xl font-semibold text-white mb-3 group-hover:text-[#C8A951] transition-colors">
           Kera Ghari Residential Building
         </h3>
-        <p class="text-white/50 text-sm leading-relaxed mb-6">
+        <p class="text-white/65 text-sm leading-relaxed mb-6">
           A multi-storey residential project signed in 2082 Kartik — combining
           structural efficiency with comfortable modern living.
         </p>

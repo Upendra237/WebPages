@@ -1,6 +1,6 @@
 <?php
-$pageTitle = 'Services — Mistri Vai Engineering Club';
-$pageDesc  = 'Civil engineering, architectural design, structural analysis, construction supervision and more — delivered by Mistri Vai Engineering Club, Nepal.';
+$pageTitle = 'Services — Mistri Vai Engineering';
+$pageDesc  = 'Civil engineering, architectural design, structural analysis, construction supervision and more — delivered by Mistri Vai Engineering, Nepal.';
 include 'includes/header.php';
 ?>
 

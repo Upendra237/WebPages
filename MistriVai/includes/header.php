@@ -8,7 +8,7 @@ function navItem(string $page, string $label, string $href = ''): string {
     $slug  = basename($page, '.php');
     $active = $currentPage === $slug;
     $base  = 'relative text-[11px] font-semibold tracking-[.14em] uppercase transition-colors duration-200 py-1';
-    $color = $active ? 'text-[#C8A951]' : 'text-white/65 hover:text-white';
+    $color = $active ? 'text-[#C8A951]' : 'text-white/75 hover:text-white';
     $bar   = $active
         ? '<span class="absolute -bottom-[2px] left-0 right-0 h-[2px] bg-[#C8A951] rounded-full"></span>'
         : '';
@@ -20,8 +20,8 @@ function navItem(string $page, string $label, string $href = ''): string {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title><?= $pageTitle ?? 'Mistri Vai Engineering Club' ?></title>
-  <meta name="description" content="<?= $pageDesc ?? 'Mistri Vai Engineering Club  civil engineering, architectural design and construction consulting rooted in Nepal.' ?>"/>
+  <title><?= $pageTitle ?? 'Mistri Vai Engineering' ?></title>
+  <meta name="description" content="<?= $pageDesc ?? 'Mistri Vai Engineering — civil engineering, architectural design and construction consulting rooted in Nepal.' ?>"/>
   <link rel="icon" type="image/png" href="assets/logo.png"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -77,9 +77,14 @@ function navItem(string $page, string $label, string $href = ''): string {
               loading="eager"
             />
           </div>
-          <div class="leading-none hidden sm:block">
-            <p class="text-white font-semibold text-[13px] tracking-wide leading-none">Mistri Vai</p>
-            <p class="text-[#C8A951] font-mono text-[9.5px] tracking-[.18em] uppercase mt-[3px]">Engineering Co.</p>
+          <div class="leading-none">
+            <!-- Mobile: single line -->
+            <p class="sm:hidden text-white font-semibold text-[12px] tracking-wide whitespace-nowrap leading-none">Mistri Vai Engineering</p>
+            <!-- sm+: two stacked lines -->
+            <div class="hidden sm:block">
+              <p class="text-white font-semibold text-[13px] tracking-wide leading-none">Mistri Vai</p>
+              <p class="text-[#C8A951] font-mono text-[9.5px] tracking-[.18em] uppercase mt-[3px]">Engineering</p>
+            </div>
           </div>
         </a>
 
@@ -122,7 +127,7 @@ function navItem(string $page, string $label, string $href = ''): string {
       ];
       foreach ($mobileLinks as [$page, $lbl]):
         $a = $currentPage === $page;
-        $c = $a ? 'text-[#C8A951] font-semibold' : 'text-white/65';
+        $c = $a ? 'text-[#C8A951] font-semibold' : 'text-white/75';
       ?>
       <a href="<?= $page ?>.php"
          class="<?= $c ?> text-sm tracking-wide py-3 border-b border-white/[.06] last:border-0">

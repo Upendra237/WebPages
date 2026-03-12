@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Team — Mistri Vai Engineering Club';
+$pageTitle = 'Team — Mistri Vai Engineering';
 $pageDesc  = 'Meet the engineering team behind Mistri Vai — qualified civil engineering professionals from Nepal.';
 include 'includes/header.php';
 ?>
