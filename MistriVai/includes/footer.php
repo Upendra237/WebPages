@@ -88,7 +88,7 @@
           <li><a href="projects.php" class="hover:text-[#C8A951] transition-colors">Projects</a></li>
           <li><a href="gallery.php"  class="hover:text-[#C8A951] transition-colors">Gallery</a></li>
           <li><a href="team.php"     class="hover:text-[#C8A951] transition-colors">Team</a></li>
-          <li><a href="contact.php"  class="hover:text-[#C8A951] transition-colors">Contact</a></li>
+          <!-- <li><a href="contact.php"  class="hover:text-[#C8A951] transition-colors">Contact</a></li> -->
         </ul>
       </div>
 

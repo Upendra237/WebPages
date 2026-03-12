@@ -49,9 +49,9 @@ include 'includes/header.php';
           $hasImg  = $imgFile && file_exists(__DIR__ . '/' . $imgFile);
         ?>
         <?php if ($hasImg): ?>
-        <div class="h-64 overflow-hidden">
+        <div class="aspect-[4/5] bg-[#8B1A1A] overflow-hidden flex items-center justify-center">
           <img src="<?= htmlspecialchars($imgFile) ?>" alt="<?= $name ?>"
-               class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"/>
+               class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"/>
         </div>
         <?php else: ?>
         <div class="h-44 flex items-center justify-center" style="background-color:<?= $bg ?>">
