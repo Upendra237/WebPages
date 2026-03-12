@@ -62,7 +62,7 @@ include 'includes/header.php';
 <!-- ═══════════════════  PROCESS  ═══════════════════ -->
 <section class="py-20 lg:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">How We Work</p>
+    <p class="font-mono text-[#C8A951] text-[11px] font-semibold tracking-[.22em] uppercase mb-3">How We Work</p>
     <h2 class="font-display text-4xl font-bold text-[#0D1B2A] mb-12 max-w-xl">
       A clear, transparent process from day one.
     </h2>

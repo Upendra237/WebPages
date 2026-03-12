@@ -1,4 +1,22 @@
 ﻿
+<!-- ═══════════════════  CTA BANNER  ═══════════════════ -->
+<section class="bg-[#C8A951]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div>
+      <h2 class="font-display text-2xl lg:text-3xl font-bold text-[#0D1B2A]">
+        Ready to start your project?
+      </h2>
+      <p class="text-[#0D1B2A]/65 text-sm mt-1">
+        Get a free consultation from our engineering team today.
+      </p>
+    </div>
+    <a href="contact.php"
+       class="shrink-0 bg-[#0D1B2A] hover:bg-[#172840] text-white font-bold text-xs tracking-[.16em] uppercase px-8 py-4 rounded-sm transition-colors">
+      Contact Us Now
+    </a>
+  </div>
+</section>
+
 <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•  FOOTER  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <footer class="bg-[#0D1B2A] text-white/70">
 
@@ -63,15 +81,9 @@
       <!-- Quick links -->
       <div>
         <h4 class="text-white text-[10px] font-mono tracking-[.2em] uppercase mb-4">Pages</h4>
-        <ul class="grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
-          <li><a href="index.php"    class="hover:text-[#C8A951] transition-colors">Home</a></li>
-          <li><a href="about.php"    class="hover:text-[#C8A951] transition-colors">About</a></li>
-          <li><a href="services.php" class="hover:text-[#C8A951] transition-colors">Services</a></li>
-          <li><a href="projects.php" class="hover:text-[#C8A951] transition-colors">Projects</a></li>
-          <li><a href="gallery.php"  class="hover:text-[#C8A951] transition-colors">Gallery</a></li>
-          <li><a href="team.php"     class="hover:text-[#C8A951] transition-colors">Team</a></li>
-          <li><a href="contact.php"  class="hover:text-[#C8A951] transition-colors">Contact</a></li>
-        </ul>
+        <div class="text-sm leading-relaxed">
+          <a href="index.php"    class="hover:text-[#C8A951] transition-colors">Home</a><span class="text-white/20 mx-2">&middot;</span><a href="about.php"    class="hover:text-[#C8A951] transition-colors">About</a><span class="text-white/20 mx-2">&middot;</span><a href="services.php" class="hover:text-[#C8A951] transition-colors">Services</a><span class="text-white/20 mx-2">&middot;</span><a href="projects.php" class="hover:text-[#C8A951] transition-colors">Projects</a><span class="text-white/20 mx-2">&middot;</span><a href="gallery.php"  class="hover:text-[#C8A951] transition-colors">Gallery</a><span class="text-white/20 mx-2">&middot;</span><a href="team.php"     class="hover:text-[#C8A951] transition-colors">Team</a><span class="text-white/20 mx-2">&middot;</span><a href="contact.php"  class="hover:text-[#C8A951] transition-colors">Contact</a>
+        </div>
       </div>
 
       <!-- Contact -->
@@ -101,8 +113,8 @@
   <!-- Bottom bar -->
   <div class="border-t border-white/[.07]">
     <div class="max-w-7xl mx-auto px-5 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px]">
-      <span>Â© <?= date('Y') ?> Mistri Vai Engineering. All rights reserved.</span>
-      <span class="text-white/35">Regd. No. 15648/082/083 &nbsp;Â·&nbsp; PAN 133885297</span>
+      <span>&copy; <?= date('Y') ?> Mistri Vai Engineering. All rights reserved.</span>
+      <span class="text-white/35">Regd. No. 15648/082/083 &nbsp;&middot;&nbsp; PAN 133885297</span>
     </div>
   </div>
 

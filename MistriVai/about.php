@@ -23,7 +23,7 @@ include 'includes/header.php';
     <div class="grid lg:grid-cols-2 gap-16 items-start">
 
       <div>
-        <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">Our Mission</p>
+        <p class="font-mono text-[#C8A951] text-[11px] font-semibold tracking-[.22em] uppercase mb-3">Our Mission</p>
         <h2 class="font-display text-4xl font-bold text-[#0D1B2A] leading-tight mb-6">
           Precision-built for Nepal's future.
         </h2>
@@ -66,7 +66,7 @@ include 'includes/header.php';
 <!-- ═══════════════════  TIMELINE  ═══════════════════ -->
 <section class="py-20 lg:py-28 bg-white">
   <div class="max-w-4xl mx-auto px-5 lg:px-8">
-    <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">Our Journey</p>
+    <p class="font-mono text-[#C8A951] text-[11px] font-semibold tracking-[.22em] uppercase mb-3">Our Journey</p>
     <h2 class="font-display text-4xl font-bold text-[#0D1B2A] mb-12">From idea to institution.</h2>
 
     <!-- Timeline list -->
@@ -89,7 +89,7 @@ include 'includes/header.php';
       foreach ($timeline as [$date, $heading, $desc]): ?>
       <li class="ml-6">
         <span class="absolute -left-[5px] flex h-2.5 w-2.5 rounded-full bg-[#C8A951]"></span>
-        <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mb-1"><?= $date ?></p>
+        <p class="font-mono text-[11px] font-medium tracking-[.15em] uppercase text-[#C8A951] mb-1"><?= $date ?></p>
         <h3 class="font-semibold text-[#0D1B2A] text-base mb-1"><?= $heading ?></h3>
         <p class="text-sm text-gray-500 leading-relaxed"><?= $desc ?></p>
       </li>

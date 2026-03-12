@@ -43,17 +43,28 @@ include 'includes/header.php';
         $initials = $m['initials'];
       ?>
       <div class="bg-white border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
-        <!-- Avatar area -->
-        <div class="h-36 flex items-center justify-center" style="background-color:<?= $bg ?>">
+        <!-- Photo / avatar area -->
+        <?php
+          $imgFile = !empty($m['image']) ? $m['image'] : null;
+          $hasImg  = $imgFile && file_exists(__DIR__ . '/' . $imgFile);
+        ?>
+        <?php if ($hasImg): ?>
+        <div class="h-52 overflow-hidden">
+          <img src="<?= htmlspecialchars($imgFile) ?>" alt="<?= $name ?>"
+               class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"/>
+        </div>
+        <?php else: ?>
+        <div class="h-44 flex items-center justify-center" style="background-color:<?= $bg ?>">
           <div class="w-16 h-16 rounded-full border-2 border-[#C8A951]/50 flex items-center justify-center">
             <span class="font-display text-xl font-bold text-[#C8A951]"><?= $initials ?></span>
           </div>
         </div>
+        <?php endif; ?>
         <!-- Content -->
         <div class="p-6">
           <h3 class="font-display text-lg font-semibold text-[#0D1B2A] group-hover:text-[#C8A951] transition-colors"><?= $name ?></h3>
-          <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mt-1 mb-3"><?= $role ?></p>
-          <p class="text-sm text-gray-500 leading-relaxed"><?= $bio ?></p>
+          <p class="font-mono text-[11px] font-medium tracking-[.15em] uppercase text-[#C8A951] mt-1 mb-3"><?= $role ?></p>
+          <p class="text-sm text-gray-600 leading-relaxed"><?= $bio ?></p>
         </div>
       </div>
       <?php endforeach; ?>
@@ -75,7 +86,7 @@ include 'includes/header.php';
       foreach ($culture as [$n, $l]): ?>
       <div class="border border-gray-100 py-10">
         <p class="font-display text-4xl font-bold text-[#0D1B2A]"><?= $n ?></p>
-        <p class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951] mt-2"><?= $l ?></p>
+        <p class="font-mono text-[11px] font-medium tracking-[.15em] uppercase text-[#C8A951] mt-2"><?= $l ?></p>
       </div>
       <?php endforeach; ?>
     </div>

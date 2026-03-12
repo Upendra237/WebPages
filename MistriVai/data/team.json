@@ -5,7 +5,8 @@
     "role": "Founder & President",
     "initials": "NG",
     "bio": "Leads the club's vision, operations, and client relationships. Oversees project delivery and maintains quality standards across all engagements.",
-    "bg": "#0D1B2A"
+    "bg": "#0D1B2A",
+    "image": "assets/team/nischit-gajyaju.png"
   },
   {
     "id": "nishan-makaju",
@@ -13,7 +14,8 @@
     "role": "Chief Engineering Consultant & MD",
     "initials": "NM",
     "bio": "Heads all technical engineering work — structural analysis, design review, and construction supervision protocols.",
-    "bg": "#172840"
+    "bg": "#172840",
+    "image": "assets/team/nishan-makaju.png"
   },
   {
     "id": "subichhya-khagi",
@@ -21,7 +23,8 @@
     "role": "General Manager",
     "initials": "SK",
     "bio": "Manages internal operations, documentation, client onboarding, and team coordination across active projects.",
-    "bg": "#1E3353"
+    "bg": "#1E3353",
+    "image": "assets/team/subicchya-khagi.png"
   },
   {
     "id": "ayush-singh",
@@ -29,7 +32,8 @@
     "role": "Chief Architect",
     "initials": "AS",
     "bio": "Responsible for all architectural design work — space planning, elevations, 3D visualisations, and aesthetic direction.",
-    "bg": "#0D1B2A"
+    "bg": "#0D1B2A",
+    "image": "assets/team/ayush-singh.png"
   },
   {
     "id": "milan-suncheuri",
@@ -37,6 +41,7 @@
     "role": "Chief Technology Officer",
     "initials": "MS",
     "bio": "Manages CAD workflows, digital documentation systems, and technology tools that support the engineering team.",
-    "bg": "#172840"
+    "bg": "#172840",
+    "image": null
   }
 ]

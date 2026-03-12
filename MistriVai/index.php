@@ -1,6 +1,7 @@
 <?php
 $pageTitle = 'Mistri Vai Engineering — Civil Engineering & Architecture, Nepal';
 $pageDesc  = 'Registered civil engineering, architectural design and construction consultancy rooted in Nepal. Precision-built from Bhaktapur & Kavre.';
+$extraCss  = '<style>@media(min-width:1024px){.hero-title{font-size:clamp(2.6rem,3.8vw,4.5rem)!important;line-height:1.08}}</style>';
 include 'includes/header.php';
 ?>
 
@@ -23,7 +24,7 @@ include 'includes/header.php';
         <p class="font-mono text-[#C8A951] text-[10px] tracking-[.3em] uppercase mb-5 animate-fade-up">
           Civil Engineering &amp; Architecture
         </p>
-        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] mb-6 animate-fade-up [animation-delay:.08s]">
+        <h1 class="hero-title font-display text-5xl sm:text-6xl font-bold text-white leading-[1.08] mb-6 animate-fade-up [animation-delay:.08s]">
           Built on Precision,<br/>
           <span class="text-[#C8A951]">Driven by Purpose.</span><br/>
           Crafted for Nepal.
@@ -69,20 +70,20 @@ include 'includes/header.php';
 
 
 <!-- ═══════════════════  STATS STRIP  ═══════════════════ -->
-<section class="bg-[#0D1B2A] border-t border-white/[.07]" id="statsSection">
+<section class="bg-white border-t-4 border-[#C8A951] border-b border-b-gray-100" id="statsSection">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="grid grid-cols-3 divide-x divide-white/[.07]">
+    <div class="grid grid-cols-3 divide-x divide-gray-100">
       <div class="flex flex-col items-center py-10 gap-1.5 px-2">
-        <span class="font-display text-4xl font-bold text-white stat-num" data-count="2" data-suffix="+">2+</span>
-        <span class="font-mono text-[9px] tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Projects Delivered</span>
+        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="2" data-suffix="+">2+</span>
+        <span class="font-mono text-[10px] font-semibold tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Projects Delivered</span>
       </div>
       <div class="flex flex-col items-center py-10 gap-1.5 px-2">
-        <span class="font-display text-4xl font-bold text-white stat-num" data-count="2082" data-suffix="">2082</span>
-        <span class="font-mono text-[9px] tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Founded (B.S.)</span>
+        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="2082" data-suffix="">2082</span>
+        <span class="font-mono text-[10px] font-semibold tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Founded (B.S.)</span>
       </div>
       <div class="flex flex-col items-center py-10 gap-1.5 px-2">
-        <span class="font-display text-4xl font-bold text-white stat-num" data-count="99" data-suffix="%">99%</span>
-        <span class="font-mono text-[9px] tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Client Satisfaction</span>
+        <span class="font-display text-4xl font-bold text-[#0D1B2A] stat-num" data-count="99" data-suffix="%">99%</span>
+        <span class="font-mono text-[10px] font-semibold tracking-[.15em] uppercase text-[#C8A951] text-center leading-tight">Client Satisfaction</span>
       </div>
     </div>
   </div>
@@ -120,7 +121,7 @@ include 'includes/header.php';
 
     <!-- header -->
     <div class="max-w-xl mb-14">
-      <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">What We Do</p>
+      <p class="font-mono text-[#C8A951] text-[11px] font-semibold tracking-[.25em] uppercase mb-3">What We Do</p>
       <h2 class="font-display text-4xl lg:text-5xl font-bold text-[#0D1B2A] leading-tight">
         End-to-End Engineering Services
       </h2>
@@ -213,7 +214,7 @@ include 'includes/header.php';
 
       <!-- Text -->
       <div>
-        <p class="font-mono text-[#C8A951] text-[10px] tracking-[.28em] uppercase mb-3">Why Mistri Vai</p>
+        <p class="font-mono text-[#C8A951] text-[11px] font-semibold tracking-[.25em] uppercase mb-3">Why Mistri Vai</p>
         <h2 class="font-display text-4xl lg:text-5xl font-bold text-[#0D1B2A] leading-tight mb-6">
           Technical Rigour.<br/>Local Understanding.
         </h2>
@@ -252,21 +253,6 @@ include 'includes/header.php';
 
 
 <!-- ═══════════════════  CTA BANNER  ═══════════════════ -->
-<section class="bg-[#C8A951]">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14 flex flex-col sm:flex-row items-center justify-between gap-6">
-    <div>
-      <h2 class="font-display text-2xl lg:text-3xl font-bold text-[#0D1B2A]">
-        Ready to start your project?
-      </h2>
-      <p class="text-[#0D1B2A]/60 text-sm mt-1">
-        Get a free consultation from our engineering team today.
-      </p>
-    </div>
-    <a href="contact.php"
-       class="shrink-0 bg-[#0D1B2A] hover:bg-[#172840] text-white font-bold text-xs tracking-[.16em] uppercase px-8 py-4 rounded-sm transition-colors">
-      Contact Us Now
-    </a>
-  </div>
-</section>
+<!-- CTA is now in footer.php for all pages -->
 
 <?php include 'includes/footer.php'; ?>

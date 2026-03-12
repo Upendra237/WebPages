@@ -30,7 +30,7 @@ include 'includes/header.php';
       foreach ($stats as [$n, $l]): ?>
       <div class="flex flex-col items-center py-10 gap-1">
         <span class="font-display text-4xl font-bold text-[#0D1B2A]"><?= $n ?></span>
-        <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]"><?= $l ?></span>
+        <span class="font-mono text-[11px] font-medium tracking-[.15em] uppercase text-[#C8A951]"><?= $l ?></span>
       </div>
       <?php endforeach; ?>
     </div>
@@ -59,16 +59,28 @@ include 'includes/header.php';
     ?>
     <div class="bg-white border border-gray-100 mb-8 overflow-hidden hover:shadow-md transition-shadow">
       <div class="grid lg:grid-cols-5">
-        <div class="lg:col-span-2 min-h-[240px] flex items-center justify-center" style="background-color:<?= $bg ?>">
-          <div class="text-center px-8">
-            <div class="w-12 h-[3px] bg-[#C8A951] mx-auto mb-4"></div>
-            <p class="font-mono text-[9.5px] tracking-[.2em] uppercase text-[#C8A951]"><?= $district ?></p>
+        <?php $imgFile = !empty($p['image']) ? $p['image'] : null; $hasImg = $imgFile && file_exists(__DIR__ . '/' . $imgFile); ?>
+        <div class="lg:col-span-2 min-h-[280px] overflow-hidden relative" style="background-color:<?= $bg ?>">
+          <?php if ($hasImg): ?>
+          <img src="<?= htmlspecialchars($imgFile) ?>" alt="<?= $title ?>"
+               class="w-full h-full object-cover absolute inset-0"/>
+          <div class="absolute inset-0 bg-[#0D1B2A]/40"></div>
+          <div class="absolute bottom-4 left-6">
+            <p class="font-mono text-[9px] tracking-[.2em] uppercase text-[#C8A951]"><?= $district ?></p>
           </div>
+          <?php else: ?>
+          <div class="h-full min-h-[280px] flex items-center justify-center">
+            <div class="text-center px-8">
+              <div class="w-12 h-[3px] bg-[#C8A951] mx-auto mb-4"></div>
+              <p class="font-mono text-[9.5px] tracking-[.2em] uppercase text-[#C8A951]"><?= $district ?></p>
+            </div>
+          </div>
+          <?php endif; ?>
         </div>
         <div class="lg:col-span-3 p-8 lg:p-10">
           <div class="flex flex-wrap items-center gap-3 mb-4">
             <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-white bg-[#C8A951] px-2.5 py-1"><?= $cat ?></span>
-            <span class="font-mono text-[9.5px] tracking-[.18em] uppercase text-[#C8A951]"><?= $status ?></span>
+            <span class="font-mono text-[11px] font-medium tracking-[.15em] uppercase text-[#C8A951]"><?= $status ?></span>
           </div>
           <h2 class="font-display text-2xl lg:text-3xl font-bold text-[#0D1B2A] mb-4"><?= $title ?></h2>
           <p class="text-gray-500 leading-relaxed mb-6"><?= $desc ?></p>
@@ -82,7 +94,7 @@ include 'includes/header.php';
             ];
             foreach ($details as [$k, $v]): ?>
             <div>
-              <p class="font-mono text-[9px] tracking-[.2em] uppercase text-[#C8A951] mb-0.5"><?= $k ?></p>
+              <p class="font-mono text-[10px] font-medium tracking-[.18em] uppercase text-[#C8A951] mb-0.5"><?= $k ?></p>
               <p class="text-sm font-medium text-[#0D1B2A]"><?= $v ?></p>
             </div>
             <?php endforeach; ?>

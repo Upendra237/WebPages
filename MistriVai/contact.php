@@ -193,4 +193,20 @@ include 'includes/header.php';
   </div>
 </section>
 
+<!-- ═══════════════════  MAP  ═══════════════════ -->
+<section class="bg-[#F6F5F1] pb-16">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="font-mono text-[#C8A951] text-[11px] font-semibold tracking-[.25em] uppercase mb-4">Find Us</p>
+    <div class="overflow-hidden rounded-sm border border-gray-200 shadow-sm">
+      <iframe
+        src="https://www.google.com/maps?q=Liwali%2C+Bhaktapur%2C+Nepal&hl=en&z=15&output=embed"
+        width="100%" height="380" style="border:0;display:block"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mistri Vai Engineering — Liwali, Bhaktapur">
+      </iframe>
+    </div>
+  </div>
+</section>
+
 <?php include 'includes/footer.php'; ?>

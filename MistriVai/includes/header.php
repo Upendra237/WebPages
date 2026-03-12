@@ -78,9 +78,12 @@ function navItem(string $page, string $label, string $href = ''): string {
             />
           </div>
           <div class="leading-none">
-            <!-- Mobile: single line -->
-            <p class="sm:hidden text-white font-semibold text-[12px] tracking-wide whitespace-nowrap leading-none">Mistri Vai Engineering</p>
-            <!-- sm+: two stacked lines -->
+            <!-- Mobile: two bold branded lines -->
+            <div class="sm:hidden">
+              <p class="text-white font-bold text-[15px] tracking-wide leading-none">Mistri Vai</p>
+              <p class="text-[#C8A951] font-mono text-[9px] font-semibold tracking-[.2em] uppercase mt-[3px]">Engineering</p>
+            </div>
+            <!-- sm+: same two-line layout -->
             <div class="hidden sm:block">
               <p class="text-white font-semibold text-[13px] tracking-wide leading-none">Mistri Vai</p>
               <p class="text-[#C8A951] font-mono text-[9.5px] tracking-[.18em] uppercase mt-[3px]">Engineering</p>
