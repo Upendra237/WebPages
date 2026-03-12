@@ -120,18 +120,4 @@ include 'includes/header.php';
 </section>
 
 
-<!-- ═══════════════════  CTA  ═══════════════════ -->
-<section class="bg-[#C8A951] py-14">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-    <div>
-      <h2 class="font-display text-2xl font-bold text-[#0D1B2A]">Meet the team behind the work.</h2>
-      <p class="text-[#0D1B2A]/60 text-sm mt-1">Five qualified engineers, one shared mission.</p>
-    </div>
-    <a href="team.php"
-       class="shrink-0 bg-[#0D1B2A] hover:bg-[#172840] text-white font-bold text-xs tracking-[.16em] uppercase px-8 py-4 rounded-sm transition-colors">
-      View Team
-    </a>
-  </div>
-</section>
-
 <?php include 'includes/footer.php'; ?>

@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "nawadurga-devghad",
     "title": "Nawadurga Devghad Bhaban",
@@ -25,7 +25,5 @@
     "accent": "#172840",
     "district_label": "Kavre",
     "image": "assets/projects/KeraGhariResidentialBuilding.png"
-  }
-]
   }
 ]

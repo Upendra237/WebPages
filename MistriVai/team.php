@@ -49,9 +49,9 @@ include 'includes/header.php';
           $hasImg  = $imgFile && file_exists(__DIR__ . '/' . $imgFile);
         ?>
         <?php if ($hasImg): ?>
-        <div class="h-52 overflow-hidden">
+        <div class="h-64 overflow-hidden">
           <img src="<?= htmlspecialchars($imgFile) ?>" alt="<?= $name ?>"
-               class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"/>
+               class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"/>
         </div>
         <?php else: ?>
         <div class="h-44 flex items-center justify-center" style="background-color:<?= $bg ?>">
@@ -93,19 +93,5 @@ include 'includes/header.php';
   </div>
 </section>
 
-
-<!-- ═══════════════════  CTA  ═══════════════════ -->
-<section class="bg-[#C8A951] py-14">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-    <div>
-      <h2 class="font-display text-2xl font-bold text-[#0D1B2A]">Work with our team.</h2>
-      <p class="text-[#0D1B2A]/60 text-sm mt-1">Reach out and discuss your project today.</p>
-    </div>
-    <a href="contact.php"
-       class="shrink-0 bg-[#0D1B2A] hover:bg-[#172840] text-white font-bold text-xs tracking-[.16em] uppercase px-8 py-4 rounded-sm transition-colors">
-      Contact Us
-    </a>
-  </div>
-</section>
 
 <?php include 'includes/footer.php'; ?>

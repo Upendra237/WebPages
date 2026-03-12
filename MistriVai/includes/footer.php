@@ -81,9 +81,15 @@
       <!-- Quick links -->
       <div>
         <h4 class="text-white text-[10px] font-mono tracking-[.2em] uppercase mb-4">Pages</h4>
-        <div class="text-sm leading-relaxed">
-          <a href="index.php"    class="hover:text-[#C8A951] transition-colors">Home</a><span class="text-white/20 mx-2">&middot;</span><a href="about.php"    class="hover:text-[#C8A951] transition-colors">About</a><span class="text-white/20 mx-2">&middot;</span><a href="services.php" class="hover:text-[#C8A951] transition-colors">Services</a><span class="text-white/20 mx-2">&middot;</span><a href="projects.php" class="hover:text-[#C8A951] transition-colors">Projects</a><span class="text-white/20 mx-2">&middot;</span><a href="gallery.php"  class="hover:text-[#C8A951] transition-colors">Gallery</a><span class="text-white/20 mx-2">&middot;</span><a href="team.php"     class="hover:text-[#C8A951] transition-colors">Team</a><span class="text-white/20 mx-2">&middot;</span><a href="contact.php"  class="hover:text-[#C8A951] transition-colors">Contact</a>
-        </div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.php"    class="hover:text-[#C8A951] transition-colors">Home</a></li>
+          <li><a href="about.php"    class="hover:text-[#C8A951] transition-colors">About</a></li>
+          <li><a href="services.php" class="hover:text-[#C8A951] transition-colors">Services</a></li>
+          <li><a href="projects.php" class="hover:text-[#C8A951] transition-colors">Projects</a></li>
+          <li><a href="gallery.php"  class="hover:text-[#C8A951] transition-colors">Gallery</a></li>
+          <li><a href="team.php"     class="hover:text-[#C8A951] transition-colors">Team</a></li>
+          <li><a href="contact.php"  class="hover:text-[#C8A951] transition-colors">Contact</a></li>
+        </ul>
       </div>
 
       <!-- Contact -->
