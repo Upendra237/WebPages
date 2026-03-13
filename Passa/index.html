@@ -1,1252 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pasang Tamang — Architecture Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Suisse+Int%27l:wght@300;400&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --bg: #f5f3ef;
-    --ink: #1a1a18;
-    --ink-muted: #7a7870;
-    --accent: #c8a96e;
-    --border: #e0ddd7;
-    --white: #ffffff;
-    --gap: 6px;
-  }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+:root {
+  --bg:       #f4f2ee;
+  --ink:      #1b1b19;
+  --muted:    #7c7a72;
+  --accent:   #c8a96e;
+  --border:   #e2dfd9;
+  --nav-h:    66px;
+  --pad:      52px;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    cursor: none;
-  }
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  cursor: none;
+}
 
-  /* Custom cursor */
-  .cursor {
-    position: fixed;
-    width: 8px; height: 8px;
-    background: var(--ink);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width .2s, height .2s, background .2s;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px; height: 36px;
-    border: 1px solid var(--ink);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: all .12s ease;
-    opacity: 0.5;
-  }
-  body:has(a:hover) .cursor, body:has(.proj-item:hover) .cursor {
-    width: 14px; height: 14px;
-    background: var(--accent);
-  }
+/* ─── CUSTOM CURSOR ─────────────────────────────────── */
+.cur-dot {
+  position: fixed; width: 7px; height: 7px;
+  background: var(--ink); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .15s, height .15s, background .15s;
+}
+.cur-ring {
+  position: fixed; width: 32px; height: 32px;
+  border: 1px solid rgba(27,27,25,.35); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+}
+body:has(a:hover) .cur-dot,
+body:has(button:hover) .cur-dot { width: 12px; height: 12px; background: var(--accent); }
 
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 28px 52px;
-    mix-blend-mode: normal;
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--ink);
-  }
-  .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
-  .nav-links a {
-    font-size: .72rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-links a.nav-active { color: var(--ink); }
+/* ─── NAV ───────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h); z-index: 300;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
 
-  /* ─── HERO ─── */
-  #hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 52px 64px;
-    overflow: hidden;
-  }
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 400;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  cursor: pointer;
+}
 
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(160deg, #ede9e2 0%, #d6d0c4 100%);
-    z-index: 0;
-  }
+.nav-links {
+  display: flex; gap: 40px; list-style: none; align-items: center;
+}
+.nav-links button {
+  font-family: 'Raleway', sans-serif;
+  font-size: .62rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--muted);
+  background: none; border: none; cursor: pointer;
+  padding: 6px 0; border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-links button:hover { color: var(--ink); }
+.nav-links button.nav-active { color: var(--ink); border-bottom-color: var(--ink); }
 
-  /* Decorative lines */
-  .hero-lines {
-    position: absolute; inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-lines::before {
-    content: '';
-    position: absolute;
-    top: 15%; left: 55%;
-    width: 1px; height: 60%;
-    background: var(--border);
-  }
-  .hero-lines::after {
-    content: '';
-    position: absolute;
-    top: 30%; left: 0; right: 0;
-    height: 1px;
-    background: var(--border);
-  }
+/* ─── VIEWS ─────────────────────────────────────────── */
+.view {
+  position: fixed;
+  top: var(--nav-h); left: 0; right: 0; bottom: 0;
+  overflow-y: auto; overflow-x: hidden;
+  opacity: 0; pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity .5s cubic-bezier(.4,0,.2,1),
+              transform .5s cubic-bezier(.4,0,.2,1);
+}
+.view.is-active {
+  opacity: 1; pointer-events: all; transform: translateY(0);
+}
+.view.is-leaving {
+  opacity: 0; transform: translateY(-10px);
+  transition: opacity .28s ease, transform .28s ease;
+}
+.view::-webkit-scrollbar { width: 3px; }
+.view::-webkit-scrollbar-track { background: transparent; }
+.view::-webkit-scrollbar-thumb { background: var(--border); }
 
-  .hero-label {
-    position: absolute;
-    top: 50%; right: 52px;
-    transform: translateY(-50%);
-    z-index: 2;
-    writing-mode: vertical-rl;
-    font-size: .65rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
+/* ─── SECTION HEADER (shared) ────────────────────────── */
+.sec-head {
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  padding: 60px var(--pad) 44px;
+  border-bottom: 1px solid var(--border);
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 300; letter-spacing: -.01em;
+}
+.sec-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--ink); color: var(--bg);
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: .55rem; letter-spacing: .08em;
+  margin-left: 10px; vertical-align: middle;
+}
+.sec-meta {
+  font-size: .6rem; letter-spacing: .25em;
+  text-transform: uppercase; color: var(--muted);
+}
 
-  .hero-year {
-    position: absolute;
-    top: 32%; left: 57%;
-    z-index: 2;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: .8rem;
-    color: var(--ink-muted);
-    letter-spacing: .1em;
-  }
+/* ─── VIEW FOOTER ────────────────────────────────────── */
+.view-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px var(--pad);
+  display: flex; justify-content: space-between;
+  margin-top: 80px;
+}
+.view-footer p {
+  font-size: .58rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--muted);
+}
 
-  .hero-content { position: relative; z-index: 2; }
+/* ═══════════════════════════════════════════════════════
+   HERO VIEW
+═══════════════════════════════════════════════════════ */
+#view-hero {
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--pad) 56px;
+  background: linear-gradient(152deg, #edeae3 0%, #d5d0c6 100%);
+  min-height: calc(100vh - var(--nav-h));
+  position: relative;
+}
 
-  .hero-eyebrow {
-    font-size: .68rem;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp .8s .2s forwards;
-  }
+/* decorative construction lines */
+.hero-lines {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-lines::before {
+  content: ''; position: absolute;
+  top: 14%; left: 54%; width: 1px; height: 58%;
+  background: rgba(195,185,170,.45);
+}
+.hero-lines::after {
+  content: ''; position: absolute;
+  top: 30%; left: 0; right: 0; height: 1px;
+  background: rgba(195,185,170,.45);
+}
 
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 9vw, 8.5rem);
-    font-weight: 300;
-    line-height: .92;
-    letter-spacing: -.01em;
-    color: var(--ink);
-    opacity: 0;
-    animation: fadeUp .9s .35s forwards;
-  }
-  .hero-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
+.hero-aside {
+  position: absolute; top: 50%; right: var(--pad);
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-size: .58rem; letter-spacing: .34em;
+  text-transform: uppercase; color: var(--muted);
+}
+.hero-corner-year {
+  position: absolute; top: 32.5%; left: 56.5%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .72rem; color: var(--muted); letter-spacing: .1em;
+}
 
-  .hero-sub {
-    margin-top: 36px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    opacity: 0;
-    animation: fadeUp .8s .55s forwards;
-  }
-  .hero-sub p {
-    font-size: .8rem;
-    color: var(--ink-muted);
-    max-width: 280px;
-    line-height: 1.7;
-    letter-spacing: .03em;
-  }
-  .hero-scroll {
-    display: flex; align-items: center; gap: 12px;
-    font-size: .65rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    cursor: pointer;
-  }
-  .scroll-line {
-    width: 48px; height: 1px;
-    background: var(--ink-muted);
-    transition: width .3s;
-  }
-  .hero-scroll:hover .scroll-line { width: 72px; background: var(--accent); }
+.hero-content { position: relative; z-index: 1; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+.hero-eyebrow {
+  font-size: .6rem; letter-spacing: .4em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 22px;
+  opacity: 0; animation: fadeUp .8s .2s forwards;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.8rem, 8.5vw, 8rem);
+  font-weight: 300; line-height: .91; letter-spacing: -.01em;
+  opacity: 0; animation: fadeUp .9s .35s forwards;
+}
+.hero-title em { font-style: italic; color: var(--accent); }
 
-  /* ─── SECTION HEADER ─── */
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    padding: 80px 52px 48px;
-    border-top: 1px solid var(--border);
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
-    font-weight: 300;
-    letter-spacing: -.01em;
-  }
-  .section-meta {
-    font-size: .68rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
+.hero-sub {
+  margin-top: 40px; display: flex;
+  align-items: flex-end; gap: 40px;
+  opacity: 0; animation: fadeUp .8s .52s forwards;
+}
+.hero-tagline {
+  font-size: .8rem; color: var(--muted);
+  max-width: 260px; line-height: 1.78; letter-spacing: .025em;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: .6rem; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--muted);
+  transition: color .2s; padding: 0; flex-shrink: 0;
+}
+.cta-line {
+  width: 42px; height: 1px; background: currentColor;
+  transition: width .3s;
+}
+.hero-cta:hover { color: var(--ink); }
+.hero-cta:hover .cta-line { width: 64px; }
 
-  /* ─── LOADING STATE ─── */
-  .loading-state {
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 80px 0;
-    color: var(--ink-muted);
-  }
-  .loading-state p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-style: italic;
-    font-weight: 300;
-  }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-  /* ─── GALLERY FILTERS ─── */
-  .gallery-filters {
-    display: flex;
-    gap: 32px;
-    padding: 0 52px 36px;
-  }
-  .filter-btn {
-    font-size: .65rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px 0;
-    border-bottom: 1px solid transparent;
-    transition: all .2s;
-  }
-  .filter-btn.active, .filter-btn:hover {
-    color: var(--ink);
-    border-bottom-color: var(--ink);
-  }
+/* ═══════════════════════════════════════════════════════
+   PROJECTS VIEW
+═══════════════════════════════════════════════════════ */
+#view-projects { }
 
-  /* ─── GALLERY GRID ─── */
-  #gallery {
-    padding: 0 52px 120px;
-    columns: 5;
-    column-gap: var(--gap);
-  }
+.proj-list { padding: 8px var(--pad) 0; }
 
-  .proj-item {
-    break-inside: avoid;
-    margin-bottom: var(--gap);
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    background: var(--border);
-  }
+/* accordion */
+.acc-item { border-bottom: 1px solid var(--border); }
+.acc-item.is-first { border-top: 1px solid var(--border); margin-top: 16px; }
 
-  .proj-item img {
-    width: 100%;
-    display: block;
-    transition: transform .7s cubic-bezier(.25,.46,.45,.94), filter .5s ease;
-    filter: grayscale(100%) saturate(0);
-  }
-  .proj-item:hover img {
-    transform: scale(1.04);
-    filter: grayscale(0%) saturate(1.1);
-  }
+.acc-trigger {
+  width: 100%; display: flex; align-items: center;
+  padding: 22px 0; background: none; border: none;
+  cursor: pointer; text-align: left; color: var(--ink);
+  transition: padding-left .22s; gap: 0;
+}
+.acc-trigger:hover { padding-left: 5px; }
+.acc-item.is-open .acc-trigger { padding-left: 0; }
 
-  .proj-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(26,26,24,.75) 0%, transparent 55%);
-    opacity: 0;
-    transition: opacity .35s;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 22px;
-  }
-  .proj-item:hover .proj-overlay { opacity: 1; }
+.acc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .9rem; color: var(--border);
+  min-width: 46px; letter-spacing: .06em;
+  flex-shrink: 0; transition: color .3s;
+}
+.acc-trigger:hover .acc-num,
+.acc-item.is-open .acc-num { color: var(--accent); }
 
-  .proj-overlay h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: #fff;
-    letter-spacing: .02em;
-  }
-  .proj-overlay p {
-    font-size: .62rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.6);
-    margin-top: 4px;
-  }
+.acc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.38rem; font-weight: 300;
+  flex: 1; letter-spacing: -.01em; line-height: 1;
+}
+.acc-label {
+  font-size: .56rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--muted);
+  margin-right: 26px; flex-shrink: 0;
+}
+.acc-plus {
+  font-size: 1rem; font-weight: 200; color: var(--muted);
+  width: 20px; text-align: center; flex-shrink: 0;
+  transition: transform .4s cubic-bezier(.34,1.2,.64,1), color .2s;
+}
+.acc-item.is-open .acc-plus { transform: rotate(45deg); color: var(--accent); }
 
-  .proj-remove {
-    position: absolute;
-    top: 10px; right: 10px;
-    background: rgba(26,26,24,.7);
-    color: #fff;
-    border: none;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    font-size: .9rem;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity .2s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .proj-item:hover .proj-remove { opacity: 1; }
+/* body animation via grid */
+.acc-body {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows .42s cubic-bezier(.4,0,.2,1);
+}
+.acc-item.is-open .acc-body { grid-template-rows: 1fr; }
+.acc-body-inner { overflow: hidden; padding-left: 46px; }
+.acc-body-content { padding-bottom: 26px; }
 
-  /* ─── EMPTY STATE ─── */
-  .empty-state {
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 80px 0;
-    color: var(--ink-muted);
-  }
-  .empty-state p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-style: italic;
-    font-weight: 300;
-  }
-  .empty-state span {
-    display: block;
-    font-size: .65rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    margin-top: 12px;
-    opacity: .5;
-  }
+.acc-meta {
+  display: flex; gap: 36px; flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.acc-m { display: flex; flex-direction: column; gap: 4px; }
+.acc-m-label {
+  font-size: .5rem; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--muted); opacity: .6;
+}
+.acc-m-val { font-size: .76rem; color: var(--muted); }
 
-  /* ─── LIGHTBOX ─── */
-  .lightbox {
-    position: fixed; inset: 0;
-    background: rgba(26,26,24,.95);
-    z-index: 1000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-  }
-  .lightbox.open { display: flex; }
-  .lightbox img {
-    max-width: 88vw;
-    max-height: 88vh;
-    object-fit: contain;
-    animation: lbFade .3s ease;
-  }
-  @keyframes lbFade {
-    from { opacity: 0; transform: scale(.97); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-  .lb-close {
-    position: absolute; top: 32px; right: 40px;
-    background: none; border: none;
-    color: rgba(255,255,255,.6); font-size: 1.4rem;
-    cursor: pointer; letter-spacing: .15em;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 200;
-    transition: color .2s;
-  }
-  .lb-close:hover { color: #fff; }
-  .lb-nav {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: none; border: none;
-    color: rgba(255,255,255,.4);
-    font-size: 1.5rem; cursor: pointer;
-    padding: 20px;
-    transition: color .2s;
-  }
-  .lb-nav:hover { color: #fff; }
-  .lb-prev { left: 20px; }
-  .lb-next { right: 20px; }
-  .lb-counter {
-    position: absolute; bottom: 32px;
-    font-size: .65rem; letter-spacing: .3em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.35);
-  }
+.acc-desc {
+  font-size: .84rem; line-height: 1.84;
+  color: var(--muted); max-width: 560px; margin-bottom: 14px;
+}
+.acc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.acc-tags span {
+  font-size: .52rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--border); padding-bottom: 2px;
+}
 
-  /* ─── COUNT BADGE ─── */
-  .count-badge {
-    display: inline-block;
-    background: var(--ink);
-    color: var(--bg);
-    font-size: .6rem;
-    letter-spacing: .15em;
-    padding: 3px 9px;
-    border-radius: 20px;
-    margin-left: 10px;
-    vertical-align: middle;
-  }
+/* hidden extra projects */
+.acc-item.acc-hidden { display: none; }
 
-  /* ─── FOOTER ─── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 40px 52px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  footer p {
-    font-size: .65rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
+.proj-more {
+  padding: 36px var(--pad) 24px;
+}
+.proj-more-btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: .6rem; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--muted);
+  transition: color .2s; padding: 0;
+}
+.proj-more-btn:hover { color: var(--ink); }
+.proj-more-line {
+  width: 34px; height: 1px;
+  background: currentColor; transition: width .3s;
+}
+.proj-more-btn:hover .proj-more-line { width: 58px; }
+.proj-more-count {
+  color: var(--accent); margin-left: 2px;
+}
 
-  /* ─── PROJECTS ─── */
-  #projects {
-    padding-bottom: 80px;
-  }
+/* ═══════════════════════════════════════════════════════
+   GALLERY VIEW
+═══════════════════════════════════════════════════════ */
+.gal-filters {
+  display: flex; gap: 26px; flex-wrap: wrap;
+  padding: 26px var(--pad) 20px; align-items: center;
+}
+.filter-btn {
+  font-size: .58rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--muted);
+  background: none; border: none; cursor: pointer;
+  padding: 5px 0; border-bottom: 1px solid transparent;
+  transition: color .18s, border-color .18s;
+}
+.filter-btn:hover, .filter-btn.active {
+  color: var(--ink); border-bottom-color: var(--ink);
+}
 
-  .proj-category-label {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 0 52px 32px;
-    margin-top: 8px;
-  }
-  .cat-rule {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .cat-text {
-    font-size: .62rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    white-space: nowrap;
-  }
+#gal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 224px;
+  gap: 6px;
+  padding: 0 var(--pad) 80px;
+}
 
-  .proj-card {
-    display: flex;
-    gap: 0;
-    border-top: 1px solid var(--border);
-    margin: 0 52px;
-    padding: 40px 0;
-    transition: background .2s;
-    position: relative;
-  }
-  .proj-card:last-of-type { border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-  .proj-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    margin: 0 -52px;
-    transition: background .3s;
-    pointer-events: none;
-  }
-  .proj-card:hover::before {
-    background: rgba(200,169,110,.04);
-  }
+.gal-item {
+  overflow: hidden; position: relative;
+  cursor: pointer; background: var(--border);
+  grid-column: span 1; grid-row: span 1;
+}
+.gal-item.w2 { grid-column: span 2; }
+.gal-item.tall { grid-row: span 2; }
 
-  .proj-card-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4.5rem;
-    font-weight: 300;
-    color: var(--border);
-    line-height: 1;
-    min-width: 100px;
-    padding-top: 4px;
-    letter-spacing: -.02em;
-    transition: color .3s;
-  }
-  .proj-card:hover .proj-card-num { color: var(--accent); }
+.gal-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: grayscale(100%) saturate(0);
+  transition: transform .72s cubic-bezier(.25,.46,.45,.94),
+              filter .5s ease;
+}
+.gal-item:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0%) saturate(1.12);
+}
 
-  .proj-card-body { flex: 1; }
+.gal-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,26,24,.78) 0%, transparent 52%);
+  opacity: 0; transition: opacity .32s;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 16px 18px;
+}
+.gal-item:hover .gal-overlay { opacity: 1; }
+.gal-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 300;
+  color: #fff; letter-spacing: .02em; line-height: 1.2;
+}
+.gal-cat {
+  font-size: .52rem; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(255,255,255,.5);
+  margin-top: 4px;
+}
 
-  .proj-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
+.gal-empty {
+  grid-column: 1/-1; padding: 80px 0;
+  text-align: center; color: var(--muted);
+}
+.gal-empty p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-style: italic;
+}
+.gal-empty span {
+  display: block; font-size: .6rem; letter-spacing: .22em;
+  text-transform: uppercase; margin-top: 10px; opacity: .5;
+}
 
-  .proj-card-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
-    font-weight: 300;
-    letter-spacing: -.01em;
-    line-height: 1.1;
-  }
-  .proj-card-sub {
-    font-size: .66rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-top: 5px;
-  }
+/* ═══════════════════════════════════════════════════════
+   ABOUT VIEW
+═══════════════════════════════════════════════════════ */
+#view-about { }
 
-  .proj-card-tags {
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
-    margin-left: 20px;
-    align-items: flex-start;
-  }
-  .tag {
-    font-size: .58rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    color: var(--ink-muted);
-    border-radius: 2px;
-  }
-  .tag-type { border-color: var(--accent); color: var(--accent); }
-  .tag-pro { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-  .tag-status { border-color: var(--ink-muted); }
-  .tag-done { background: var(--ink); color: var(--bg); border-color: var(--ink); opacity: .6; }
+.about-top {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 60px;
+  padding: 72px var(--pad) 56px;
+  border-bottom: 1px solid var(--border);
+  min-height: calc(100vh - var(--nav-h) - 100px);
+}
+.about-bio {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 300; font-style: italic;
+  line-height: 1.62; color: var(--ink); max-width: 540px;
+}
+.about-expand-btn {
+  display: flex; align-items: center; gap: 12px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: .58rem; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--muted);
+  transition: color .2s; padding: 0; flex-shrink: 0;
+}
+.about-expand-btn:hover { color: var(--ink); }
+.about-expand-icon {
+  font-size: 1rem; font-weight: 200;
+  transition: transform .42s cubic-bezier(.34,1.2,.64,1);
+}
+.about-expand-btn.open .about-expand-icon { transform: rotate(45deg); }
 
-  .proj-card-meta-row {
-    display: flex;
-    gap: 36px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-  .proj-meta-item {
-    font-size: .68rem;
-    color: var(--ink-muted);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .meta-label {
-    font-size: .55rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--border);
-    display: block;
-  }
+/* sliding detail panel */
+.about-detail {
+  display: grid; grid-template-rows: 0fr; overflow: hidden;
+  transition: grid-template-rows .55s cubic-bezier(.4,0,.2,1);
+}
+.about-detail.open { grid-template-rows: 1fr; }
+.about-detail-wrap { min-height: 0; }
 
-  .proj-card-desc {
-    font-size: .88rem;
-    line-height: 1.78;
-    color: var(--ink-muted);
-    max-width: 680px;
-    margin-bottom: 20px;
-  }
+.about-cols {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+}
+.about-col {
+  padding: 48px var(--pad);
+  border-right: 1px solid var(--border);
+}
+.about-col:last-child { border-right: none; }
 
-  .proj-card-concepts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .proj-card-concepts span {
-    font-size: .58rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    padding: 3px 0;
-    border-bottom: 1px solid var(--border);
-  }
+.about-col-h {
+  font-size: .57rem; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 24px;
+}
 
-  /* ─── ABOUT ─── */
-  #about { padding-bottom: 80px; }
+/* education rows */
+.about-row { margin-bottom: 16px; }
+.about-row-lbl {
+  font-size: .52rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--muted);
+  opacity: .62; display: block; margin-bottom: 3px;
+}
+.about-row-val {
+  font-size: .82rem; line-height: 1.55; color: var(--ink);
+}
 
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 64px;
-    padding: 0 52px 60px;
-  }
+/* software list */
+.about-sw {
+  font-size: .82rem; line-height: 2.1;
+  color: var(--muted); list-style: none;
+}
+.about-sw li { position: relative; padding-left: 14px; }
+.about-sw li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--accent); font-size: .7rem;
+}
 
-  .about-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.55rem;
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.55;
-    letter-spacing: -.005em;
-    color: var(--ink);
-    position: sticky;
-    top: 100px;
-  }
-  .about-quote-src {
-    display: block;
-    margin-top: 20px;
-    font-size: .62rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
+/* practice items */
+.prac-item { margin-bottom: 20px; }
+.prac-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 300;
+  color: var(--ink); margin-bottom: 4px;
+}
+.prac-desc {
+  font-size: .76rem; line-height: 1.7; color: var(--muted);
+}
 
-  .about-bio {
-    font-size: .9rem;
-    line-height: 1.82;
-    color: var(--ink-muted);
-    margin-bottom: 28px;
-  }
-  .about-bio em { font-style: italic; color: var(--ink); }
+/* ═══════════════════════════════════════════════════════
+   CONTACT VIEW
+═══════════════════════════════════════════════════════ */
+#view-contact { }
 
-  .about-details {
-    border-top: 1px solid var(--border);
-    padding-top: 24px;
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .about-detail-item {
-    display: flex;
-    gap: 24px;
-    align-items: baseline;
-    font-size: .82rem;
-  }
-  .about-detail-label {
-    font-size: .6rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    min-width: 90px;
-    flex-shrink: 0;
-  }
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; padding: 64px var(--pad) 0; align-items: start;
+}
+.contact-statement {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 300; line-height: 1.55;
+  color: var(--ink); margin-bottom: 20px;
+}
+.contact-note {
+  font-size: .84rem; line-height: 1.78; color: var(--muted);
+}
 
-  .skills-block {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--border);
-    margin: 0 52px;
-  }
-  .skills-col {
-    padding: 40px 32px 40px 0;
-    border-right: 1px solid var(--border);
-  }
-  .skills-col:first-child { padding-left: 0; }
-  .skills-col:last-child { border-right: none; padding-right: 0; padding-left: 32px; }
+.contact-links { padding-top: 4px; }
+.c-row {
+  display: flex; align-items: baseline; gap: 18px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+  transition: padding-left .22s;
+}
+.c-row:first-child { border-top: 1px solid var(--border); }
+.c-row:hover { padding-left: 7px; }
+.c-row.static:hover { padding-left: 0; }
+.c-lbl {
+  font-size: .52rem; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--muted); min-width: 54px;
+}
+.c-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.08rem; font-weight: 300; flex: 1;
+  transition: color .2s;
+}
+a.c-row:hover .c-val { color: var(--accent); }
+.c-arrow {
+  font-size: .8rem; color: var(--muted);
+  opacity: 0; transform: translateX(-6px);
+  transition: opacity .2s, transform .2s;
+}
+a.c-row:hover .c-arrow { opacity: 1; transform: none; }
 
-  .skills-col-title {
-    font-size: .6rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 20px;
-  }
-  .skills-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .skills-list li {
-    font-size: .82rem;
-    line-height: 1.4;
-    color: var(--ink);
-    padding-left: 14px;
-    position: relative;
-  }
-  .skills-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: .7rem;
-  }
+/* ═══════════════════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════════════════ */
+.lightbox {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(20,20,18,.95);
+  display: none; align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 88vw; max-height: 88vh;
+  object-fit: contain;
+  animation: lbIn .3s ease;
+}
+@keyframes lbIn {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.lb-close {
+  position: absolute; top: 26px; right: 34px;
+  background: none; border: none;
+  color: rgba(255,255,255,.45); cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2rem; font-weight: 200; letter-spacing: .14em;
+  transition: color .2s;
+}
+.lb-close:hover { color: #fff; }
+.lb-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,.3); font-size: 1.4rem;
+  padding: 20px; transition: color .2s;
+}
+.lb-nav:hover { color: #fff; }
+.lb-prev { left: 14px; }
+.lb-next { right: 14px; }
+.lb-counter {
+  position: absolute; bottom: 26px;
+  font-size: .58rem; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(255,255,255,.28);
+}
 
-  /* ─── CONTACT ─── */
-  #contact { padding-bottom: 80px; }
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 1100px) {
+  #gal-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 900px) {
+  :root { --pad: 28px; }
+  .nav-links { gap: 22px; }
+  #gal-grid { grid-template-columns: repeat(3, 1fr); }
+  .gal-item.w2 { grid-column: span 1; }
+  .about-top { min-height: auto; flex-direction: column; align-items: flex-start; gap: 28px; padding: 48px var(--pad); }
+  .about-cols { grid-template-columns: 1fr; }
+  .about-col { border-right: none; border-bottom: 1px solid var(--border); padding: 32px var(--pad); }
+  .about-col:last-child { border-bottom: none; }
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; padding-top: 44px; }
+  .acc-label { display: none; }
+}
+@media (max-width: 600px) {
+  #gal-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-title { font-size: 3.2rem; }
+  .nav-links { gap: 16px; }
+}
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding: 0 52px 60px;
-    align-items: start;
-  }
-
-  .contact-statement {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    line-height: 1.52;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
-  .contact-statement--sm {
-    font-size: 1rem;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    color: var(--ink-muted);
-    line-height: 1.7;
-    margin-bottom: 0;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: inherit;
-    transition: padding-left .25s;
-  }
-  .contact-link:first-child { border-top: 1px solid var(--border); }
-  .contact-link:hover { padding-left: 8px; }
-  .contact-link--static { cursor: default; }
-  .contact-link--static:hover { padding-left: 0; }
-
-  .contact-link-label {
-    font-size: .58rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    min-width: 60px;
-  }
-  .contact-link-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 300;
-    flex: 1;
-    transition: color .2s;
-  }
-  .contact-link:hover .contact-link-value { color: var(--accent); }
-  .contact-link-arrow {
-    font-size: .9rem;
-    color: var(--ink-muted);
-    opacity: 0;
-    transition: opacity .2s, transform .2s;
-    transform: translateX(-6px);
-  }
-  .contact-link:hover .contact-link-arrow {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* ─── RESPONSIVE additions ─── */
-  @media (max-width: 900px) {
-    .proj-card { margin: 0 28px; padding: 28px 0; }
-    .proj-card-num { font-size: 3rem; min-width: 70px; }
-    .proj-card-title { font-size: 1.5rem; }
-    .proj-category-label { padding-left: 28px; padding-right: 28px; }
-    .about-grid { grid-template-columns: 1fr; gap: 36px; padding: 0 28px 40px; }
-    .about-quote { position: static; }
-    .skills-block { grid-template-columns: 1fr 1fr; margin: 0 28px; }
-    .skills-col { padding: 24px 20px 24px 0; }
-    .skills-col:nth-child(2) { border-right: none; }
-    .skills-col:nth-child(3) { border-right: 1px solid var(--border); padding-left: 0; }
-    .skills-col:last-child { padding-left: 20px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 36px; padding: 0 28px 40px; }
-  }
-  @media (max-width: 560px) {
-    .skills-block { grid-template-columns: 1fr; }
-    .skills-col { border-right: none !important; padding: 20px 0 !important; border-bottom: 1px solid var(--border); }
-    .proj-card-header { flex-direction: column; gap: 10px; }
-    .proj-card-tags { margin-left: 0; }
-    .proj-card-meta-row { gap: 16px; }
-  }
-
-  /* ─── SCROLL REVEAL ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity .65s ease, transform .65s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-
-  @media (max-width: 1200px) {
-    #gallery { columns: 4; }
-  }
-  @media (max-width: 900px) {
-    nav { padding: 24px 28px; }
-    .nav-links { display: none; }
-    #hero { padding: 0 28px 52px; }
-    .section-header, .upload-zone, #gallery, .gallery-filters, footer {
-      padding-left: 28px;
-      padding-right: 28px;
-    }
-    #gallery { columns: 3; }
-  }
-  @media (max-width: 560px) {
-    #gallery { columns: 2; }
-    .hero-title { font-size: 3.2rem; }
-  }
 </style>
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
+<!-- Cursor -->
+<div class="cur-dot" id="cur-dot"></div>
+<div class="cur-ring" id="cur-ring"></div>
 
 <!-- Nav -->
 <nav>
-  <a href="#hero" class="nav-logo">Pasang Tamang</a>
+  <span class="nav-logo" onclick="goTo('view-hero')">Pasang Tamang</span>
   <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#work">Gallery</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><button data-view="view-projects" onclick="goTo('view-projects')">Projects</button></li>
+    <li><button data-view="view-gallery"  onclick="goTo('view-gallery')">Gallery</button></li>
+    <li><button data-view="view-about"   onclick="goTo('view-about')">About</button></li>
+    <li><button data-view="view-contact" onclick="goTo('view-contact')">Contact</button></li>
   </ul>
 </nav>
 
-<!-- Hero -->
-<section id="hero">
-  <div class="hero-bg"></div>
+<!-- ═══════════ HERO ═══════════ -->
+<div class="view is-active" id="view-hero">
   <div class="hero-lines"></div>
-  <span class="hero-label">Architecture &amp; Design</span>
-  <span class="hero-year">Est. 2024</span>
+  <span class="hero-aside">Architecture &amp; Design</span>
+  <span class="hero-corner-year">2021 — Present</span>
 
   <div class="hero-content">
     <p class="hero-eyebrow">Selected Works</p>
     <h1 class="hero-title">Space<br><em>crafted</em><br>with intent.</h1>
     <div class="hero-sub">
-      <p>Architecture that begins with listening — to place, to light, to the quiet demands of how people live.</p>
-      <div class="hero-scroll" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">
-        <div class="scroll-line"></div>
-        Explore work
-      </div>
+      <p class="hero-tagline">Architecture that begins with listening — to place, to light, to the quiet demands of how people live.</p>
+      <button class="hero-cta" onclick="goTo('view-projects')">
+        <span class="cta-line"></span>
+        View Work
+      </button>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Work / Gallery -->
-<section id="work">
-  <div class="section-header">
-    <h2 class="section-title">Gallery <span class="count-badge" id="count-badge">0</span></h2>
-    <span class="section-meta">assets/gallery/</span>
+<!-- ═══════════ PROJECTS ═══════════ -->
+<div class="view" id="view-projects">
+  <div class="sec-head">
+    <h2 class="sec-title">
+      Projects
+      <span class="sec-badge" id="proj-badge">—</span>
+    </h2>
+    <span class="sec-meta" id="proj-meta">Loading…</span>
   </div>
 
-
-
-  <!-- Filters -->
-  <div class="gallery-filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="residential">Residential</button>
-    <button class="filter-btn" data-filter="public">Public</button>
-    <button class="filter-btn" data-filter="interior">Interior</button>
+  <div class="proj-list" id="proj-list">
+    <!-- Accordion items injected by JS -->
   </div>
 
-  <!-- Gallery -->
-  <div id="gallery">
-    <div class="empty-state" id="empty-state">
-      <p>Loading gallery…</p>
-      <span>Place images in assets/gallery/ then refresh</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
-<section id="projects">
-
-  <div class="section-header">
-    <h2 class="section-title">Projects</h2>
-    <span class="section-meta">Academic + Professional</span>
+  <div class="proj-more" id="proj-more" style="display:none">
+    <button class="proj-more-btn" id="proj-more-btn">
+      <span class="proj-more-line"></span>
+      View all projects
+      <span class="proj-more-count" id="proj-more-count"></span>
+    </button>
   </div>
 
-  <!-- Category label -->
-  <div class="proj-category-label">
-    <span class="cat-rule"></span>
-    <span class="cat-text">Academic Work</span>
-    <span class="cat-rule"></span>
+  <div class="view-footer">
+    <p>© 2026 Pasang Tamang</p>
+    <p>All rights reserved</p>
+  </div>
+</div>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<div class="view" id="view-gallery">
+  <div class="sec-head">
+    <h2 class="sec-title">
+      Gallery
+      <span class="sec-badge" id="gal-badge">0</span>
+    </h2>
+    <span class="sec-meta">assets/gallery/</span>
   </div>
 
-  <!-- 01 Woods Interior -->
-  <article class="proj-card" data-num="01">
-    <div class="proj-card-num">01</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Woods Interior</h3>
-          <p class="proj-card-sub">Furniture Factory</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag">Semester 6</span>
-          <span class="tag tag-type">Industrial</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Madhyapur Thimi, Bhaktapur</span>
-        <span class="proj-meta-item"><span class="meta-label">Area</span>6,423.68 sq.m</span>
-        <span class="proj-meta-item"><span class="meta-label">Type</span>Manufacturing + Showroom</span>
-      </div>
-      <p class="proj-card-desc">A functional complex interlinking manufacturing, assembly, painting, storage, display and administrative units through a central semi-open courtyard — bridging interior and exterior realms while guiding visitors seamlessly toward the showroom.</p>
-      <div class="proj-card-concepts">
-        <span>Central Courtyard</span>
-        <span>Functional Flow</span>
-        <span>Workers Quarter</span>
-        <span>Product Gallery</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 02 Reassessing Master Architect -->
-  <article class="proj-card" data-num="02">
-    <div class="proj-card-num">02</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Reassessing Master Architect</h3>
-          <p class="proj-card-sub">Residence Design</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag">Semester 3</span>
-          <span class="tag tag-type">Residential</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Budanilkantha, Kathmandu</span>
-        <span class="proj-meta-item"><span class="meta-label">Area</span>11,392.78 sq.ft</span>
-        <span class="proj-meta-item"><span class="meta-label">Influence</span>Frank Gehry</span>
-      </div>
-      <p class="proj-card-desc">Inspired by Gehry's approach to irregular geometry, the boundary lines of the site become the form-generator. Three trapezoidal blocks rotated southward to maximise solar gain — creating a home that fosters familial connection across generations.</p>
-      <div class="proj-card-concepts">
-        <span>Site-Derived Geometry</span>
-        <span>Solar Orientation</span>
-        <span>Multi-generational</span>
-        <span>Art Studio</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 03 Shree Shiladevi -->
-  <article class="proj-card" data-num="03">
-    <div class="proj-card-num">03</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Shree Shiladevi Primary School</h3>
-          <p class="proj-card-sub">Sustainable School Design</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag">Semester 4</span>
-          <span class="tag tag-type">Public</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Dhokshan, Kathmandu</span>
-        <span class="proj-meta-item"><span class="meta-label">Area</span>1,888.77 sq.m</span>
-        <span class="proj-meta-item"><span class="meta-label">Type</span>Educational</span>
-      </div>
-      <p class="proj-card-desc">A curvilinear form that embodies the playful nature of children — voids puncture the building mass for airflow and diffused light, while internal play spaces break the monotony of classroom corridors and blur the boundary between indoors and outdoors.</p>
-      <div class="proj-card-concepts">
-        <span>Curvilinear Form</span>
-        <span>Indoor Play Spaces</span>
-        <span>Amphitheatre</span>
-        <span>Passive Ventilation</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- Professional Category -->
-  <div class="proj-category-label" style="margin-top: 20px;">
-    <span class="cat-rule"></span>
-    <span class="cat-text">Professional — Sarosh Pradhan &amp; Associates</span>
-    <span class="cat-rule"></span>
+  <div class="gal-filters" id="gal-filters">
+    <!-- Filter buttons injected by JS -->
   </div>
 
-  <!-- 04 Bhraka Village -->
-  <article class="proj-card proj-card--pro" data-num="04">
-    <div class="proj-card-num">04</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Bhraka Village Resort</h3>
-          <p class="proj-card-sub">Hospitality Interior</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag tag-pro">SPA</span>
-          <span class="tag tag-status">Ongoing</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Bhraka, Manang</span>
-        <span class="proj-meta-item"><span class="meta-label">Context</span>Himalayan Trek Route</span>
-        <span class="proj-meta-item"><span class="meta-label">Theme</span>Milarepa · Gangapurna · Marsyangdi</span>
-      </div>
-      <p class="proj-card-desc">A checkpoint resort for trekkers en route to Ice Lake and Tilicho Lake. Interior renovation drawing from Manang's elemental vocabulary — mud plaster, rough stone, wooden log cross-sections, traditional rugs — evoking the warmth of high-altitude shelter.</p>
-      <div class="proj-card-concepts">
-        <span>Mud Plaster Finish</span>
-        <span>Mountain Motifs</span>
-        <span>Slate Flooring</span>
-        <span>Vernacular Detail</span>
-      </div>
-    </div>
-  </article>
+  <div id="gal-grid">
+    <div class="gal-empty"><p>Loading gallery…</p><span>Place images in assets/gallery/ then refresh</span></div>
+  </div>
+</div>
 
-  <!-- 05 Khatry Residence -->
-  <article class="proj-card proj-card--pro" data-num="05">
-    <div class="proj-card-num">05</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Khatry Residence</h3>
-          <p class="proj-card-sub">Contemporary Residence</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag tag-pro">SPA</span>
-          <span class="tag tag-status">Under Construction</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Bhaisepati, Lalitpur</span>
-        <span class="proj-meta-item"><span class="meta-label">Site</span>8,306.5 sq.ft</span>
-        <span class="proj-meta-item"><span class="meta-label">Client</span>Kenya-based</span>
-      </div>
-      <p class="proj-card-desc">A luxurious family home that bridges cultural aesthetics and contemporary sensibility. Involved municipal drawing documentation, bathroom design with warm-toned materials — cream porcelain, brown vinyl, backdrop-lit mirrors — and multiple site supervision visits.</p>
-      <div class="proj-card-concepts">
-        <span>Cultural Fusion</span>
-        <span>Warm Materiality</span>
-        <span>Site Supervision</span>
-        <span>Detail Drawings</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 06 Sams One Tree -->
-  <article class="proj-card proj-card--pro" data-num="06">
-    <div class="proj-card-num">06</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Sam's One Tree Café</h3>
-          <p class="proj-card-sub">Restaurant Interior</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag tag-pro">SPA</span>
-          <span class="tag tag-status">Conceptual</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>International Club, Sanepa</span>
-        <span class="proj-meta-item"><span class="meta-label">Type</span>F&amp;B Interior</span>
-        <span class="proj-meta-item"><span class="meta-label">Concept</span>Wabi-Sabi · Nature</span>
-      </div>
-      <p class="proj-card-desc">Extension of the Durbarmarg flagship into a colonial-era International Club building. The design respects existing arched structure while introducing lattice partitions (tiki jhya), terracotta flooring, black-and-white tile, and a bar with dark teak ceiling — weaving Nepali character into a contemporary café experience.</p>
-      <div class="proj-card-concepts">
-        <span>Tiki Jhya Lattice</span>
-        <span>Terracotta Floor</span>
-        <span>Mood Board Design</span>
-        <span>BOQ + Detailing</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 07 Shikhar Insurance -->
-  <article class="proj-card proj-card--pro" data-num="07">
-    <div class="proj-card-num">07</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">Shikhar Insurance</h3>
-          <p class="proj-card-sub">Office Interior Renovation</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag tag-pro">SPA</span>
-          <span class="tag tag-done">Completed</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Bhaisepati, Lalitpur</span>
-        <span class="proj-meta-item"><span class="meta-label">Floor</span>5th Floor Office</span>
-        <span class="proj-meta-item"><span class="meta-label">Challenge</span>Circulation + Natural Light</span>
-      </div>
-      <p class="proj-card-desc">A complete layout overhaul of a crowded 5th-floor office — reorganising circulation, introducing exposed grid false ceilings for easy maintenance, and designing a brand-anchored reception table using the company's orange-and-black identity.</p>
-      <div class="proj-card-concepts">
-        <span>Circulation Redesign</span>
-        <span>Brand Identity</span>
-        <span>Exposed Ceiling</span>
-        <span>Colour Palette</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- 08 World Bank -->
-  <article class="proj-card proj-card--pro" data-num="08">
-    <div class="proj-card-num">08</div>
-    <div class="proj-card-body">
-      <div class="proj-card-header">
-        <div>
-          <h3 class="proj-card-title">World Bank Office</h3>
-          <p class="proj-card-sub">Office Interior — CMU Renovation</p>
-        </div>
-        <div class="proj-card-tags">
-          <span class="tag tag-pro">SPA</span>
-          <span class="tag tag-status">Ongoing</span>
-        </div>
-      </div>
-      <div class="proj-card-meta-row">
-        <span class="proj-meta-item"><span class="meta-label">Location</span>Hotel Yak &amp; Yeti, Kathmandu</span>
-        <span class="proj-meta-item"><span class="meta-label">Scope</span>CMU Supporting Office</span>
-        <span class="proj-meta-item"><span class="meta-label">Type</span>Institutional Interior</span>
-      </div>
-      <p class="proj-card-desc">Country Management Unit renovation — condensing three workstations into two, introducing a comfortable corner lounge for informal meetings, with Kathmandu skyline sticker murals on glass partitions referencing World Bank's own visual language.</p>
-      <div class="proj-card-concepts">
-        <span>Space Optimisation</span>
-        <span>Kathmandu Murals</span>
-        <span>Two Partition Options</span>
-        <span>Informal Lounge</span>
-      </div>
-    </div>
-  </article>
-
-</section>
-
-<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
-<section id="about">
-  <div class="section-header">
-    <h2 class="section-title">About</h2>
-    <span class="section-meta">Pasang Tamang</span>
+<!-- ═══════════ ABOUT ═══════════ -->
+<div class="view" id="view-about">
+  <div class="about-top">
+    <p class="about-bio">Architecture student at Himalaya College of Engineering, Kathmandu — drawn to spaces that begin with listening, to place, to light, to how people actually live.</p>
+    <button class="about-expand-btn" id="about-expand-btn">
+      Background &amp; Skills
+      <span class="about-expand-icon">+</span>
+    </button>
   </div>
 
-  <div class="about-grid">
-    <div class="about-left">
-      <p class="about-quote">"Architecture should be a manifestation of a person's world view — the way in which it makes sense of the space of this world."</p>
-      <span class="about-quote-src">Simon Unwin — a guiding principle</span>
-    </div>
-    <div class="about-right">
-      <p class="about-bio">I am an architectural student at Himalaya College of Engineering, driven by a passion for design innovation and sustainability. My approach combines creativity with a deep understanding of functional needs — aiming to create spaces that resonate with both present and future demands.</p>
-      <p class="about-bio">My practicum at <em>Sarosh Pradhan &amp; Associates</em> was one of the most formative experiences of my life — not just as a designer, but as a person. Working across hospitality, residential, commercial and office typologies gave me fluency in the full arc from concept brainstorming to site supervision and bill of quantities.</p>
-      <div class="about-details">
-        <div class="about-detail-item">
-          <span class="about-detail-label">Education</span>
-          <span>B.Arch — Himalaya College of Engineering, Chyasal, Lalitpur</span>
+  <div class="about-detail" id="about-detail">
+    <div class="about-detail-wrap">
+      <div class="about-cols">
+
+        <!-- Education -->
+        <div class="about-col">
+          <h4 class="about-col-h">Education</h4>
+          <div class="about-row">
+            <span class="about-row-lbl">Degree</span>
+            <span class="about-row-val">B.Arch — ongoing</span>
+          </div>
+          <div class="about-row">
+            <span class="about-row-lbl">Institution</span>
+            <span class="about-row-val">Himalaya College of Engineering<br>Chyasal, Lalitpur</span>
+          </div>
+          <div class="about-row">
+            <span class="about-row-lbl">Period</span>
+            <span class="about-row-val">2021 — Present</span>
+          </div>
+          <div class="about-row" style="margin-top:20px">
+            <span class="about-row-lbl">Internship</span>
+            <span class="about-row-val">Sarosh Pradhan &amp; Associates<br>Jyatha Marg, Kathmandu</span>
+          </div>
+          <div class="about-row">
+            <span class="about-row-lbl">Membership</span>
+            <span class="about-row-val">AASTHA Architecture Club of HCOE</span>
+          </div>
         </div>
-        <div class="about-detail-item">
-          <span class="about-detail-label">Internship</span>
-          <span>Sarosh Pradhan &amp; Associates (SPA), Jyatha Marg, Kathmandu</span>
+
+        <!-- Software -->
+        <div class="about-col">
+          <h4 class="about-col-h">Software</h4>
+          <ul class="about-sw">
+            <li>AutoCAD</li>
+            <li>SketchUp</li>
+            <li>Enscape</li>
+            <li>Photoshop</li>
+            <li>Illustrator</li>
+            <li>Autodesk Sketchbook</li>
+            <li>MS Office Suite</li>
+          </ul>
         </div>
-        <div class="about-detail-item">
-          <span class="about-detail-label">Memberships</span>
-          <span>AASTHA — Architecture Club of HCOE</span>
+
+        <!-- Practice -->
+        <div class="about-col">
+          <h4 class="about-col-h">Practice</h4>
+          <div class="prac-item">
+            <div class="prac-name">Functional Minimalism</div>
+            <div class="prac-desc">Layouts built around the natural movement of people — eliminating friction, honouring light.</div>
+          </div>
+          <div class="prac-item">
+            <div class="prac-name">Vernacular Sensitivity</div>
+            <div class="prac-desc">Materials drawn from Nepali craft — mud plaster, slate, timber, tiki jhya lattice.</div>
+          </div>
+          <div class="prac-item">
+            <div class="prac-name">Interior–Exterior Dialogue</div>
+            <div class="prac-desc">Courtyards and voids that dissolve the boundary between built form and open sky.</div>
+          </div>
+          <div class="prac-item">
+            <div class="prac-name">Sustainable Intent</div>
+            <div class="prac-desc">Passive ventilation and natural light as foundations of every design, not afterthoughts.</div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- Skills -->
-  <div class="skills-block">
-    <div class="skills-col">
-      <h4 class="skills-col-title">Software</h4>
-      <ul class="skills-list">
-        <li>AutoCAD</li>
-        <li>SketchUp</li>
-        <li>Enscape</li>
-        <li>Photoshop</li>
-        <li>Illustrator</li>
-        <li>Autodesk Sketchbook</li>
-        <li>MS Office Suite</li>
-      </ul>
-    </div>
-    <div class="skills-col">
-      <h4 class="skills-col-title">Technical</h4>
-      <ul class="skills-list">
-        <li>Architectural Graphics &amp; Sketching</li>
-        <li>Design Development</li>
-        <li>Physical Model Making</li>
-        <li>Detail &amp; Working Drawings</li>
-        <li>Bill of Quantities</li>
-        <li>Municipal Drawings</li>
-        <li>Site Supervision</li>
-      </ul>
-    </div>
-    <div class="skills-col">
-      <h4 class="skills-col-title">Workshops</h4>
-      <ul class="skills-list">
-        <li>Model Making — 2022</li>
-        <li>CAD &amp; SketchUp — 2023</li>
-        <li>Photoshop &amp; Illustrator — 2024</li>
-        <li>Thesis Model Making — 2022–Present</li>
-      </ul>
-    </div>
-    <div class="skills-col">
-      <h4 class="skills-col-title">Interests</h4>
-      <ul class="skills-list">
-        <li>Watercolour Painting</li>
-        <li>Charcoal Sketching</li>
-        <li>Architectural Photography</li>
-        <li>Sustainable Design</li>
-        <li>Interior Detailing</li>
-      </ul>
-    </div>
+  <div class="view-footer">
+    <p>© 2026 Pasang Tamang</p>
+    <p>All rights reserved</p>
   </div>
-</section>
+</div>
 
-<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
-<section id="contact">
-  <div class="section-header">
-    <h2 class="section-title">Contact</h2>
-    <span class="section-meta">Open for Opportunities</span>
+<!-- ═══════════ CONTACT ═══════════ -->
+<div class="view" id="view-contact">
+  <div class="sec-head">
+    <h2 class="sec-title">Contact</h2>
+    <span class="sec-meta">Open for Opportunities</span>
   </div>
-  <div class="contact-grid">
-    <div class="contact-left">
+
+  <div class="contact-layout">
+    <div>
       <p class="contact-statement">Interested in architecture that listens — to place, to material, to the quiet logic of how people inhabit space.</p>
-      <p class="contact-statement contact-statement--sm">Currently based in Kathmandu. Available for internships, collaborations and design conversations.</p>
+      <p class="contact-note">Currently based in Kathmandu. Available for internships, collaborations and design conversations.</p>
     </div>
-    <div class="contact-right">
-      <a href="mailto:pasang9864@gmail.com" class="contact-link">
-        <span class="contact-link-label">Email</span>
-        <span class="contact-link-value">pasang9864@gmail.com</span>
-        <span class="contact-link-arrow">→</span>
+    <div class="contact-links">
+      <a href="mailto:pasang9864@gmail.com" class="c-row">
+        <span class="c-lbl">Email</span>
+        <span class="c-val">pasang9864@gmail.com</span>
+        <span class="c-arrow">→</span>
       </a>
-      <a href="tel:+9779864396272" class="contact-link">
-        <span class="contact-link-label">Phone</span>
-        <span class="contact-link-value">+977 986 439 6272</span>
-        <span class="contact-link-arrow">→</span>
+      <a href="tel:+9779864396272" class="c-row">
+        <span class="c-lbl">Phone</span>
+        <span class="c-val">+977 986 439 6272</span>
+        <span class="c-arrow">→</span>
       </a>
-      <div class="contact-link contact-link--static">
-        <span class="contact-link-label">Based</span>
-        <span class="contact-link-value">Kathmandu, Nepal</span>
+      <div class="c-row static">
+        <span class="c-lbl">Based</span>
+        <span class="c-val">Kathmandu, Nepal</span>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Footer -->
-<footer>
-  <p>© 2026 Pasang Tamang</p>
-  <p>All rights reserved</p>
-</footer>
+  <div class="view-footer">
+    <p>© 2026 Pasang Tamang</p>
+    <p>All rights reserved</p>
+  </div>
+</div>
 
-<!-- Lightbox -->
+<!-- ═══════════ LIGHTBOX ═══════════ -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lb-close">✕ Close</button>
   <button class="lb-nav lb-prev" id="lb-prev">‹</button>
@@ -1256,199 +813,308 @@
 </div>
 
 <script>
-  // ── Cursor ──────────────────────────────────────────────
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() {
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-    rx += (mx - rx) * .15; ry += (my - ry) * .15;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(animCursor);
-  }
-  animCursor();
+'use strict';
 
-  // ── State ────────────────────────────────────────────────
-  let images = []; // { src, name }
-  let lightboxIndex = 0;
+/* ── Cursor ─────────────────────────────────────────── */
+const dot  = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function tick() {
+  dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+  rx += (mx - rx) * .14; ry += (my - ry) * .14;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(tick);
+})();
 
-  const gallery    = document.getElementById('gallery');
-  const emptyState = document.getElementById('empty-state');
-  const countBadge = document.getElementById('count-badge');
+/* ── View switcher ──────────────────────────────────── */
+let activeId = 'view-hero';
 
-  function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
+function goTo(id) {
+  if (id === activeId) return;
+  const prev = document.getElementById(activeId);
+  const next = document.getElementById(id);
 
-  function capitalize(str) {
-    return str.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-  }
+  prev.classList.add('is-leaving');
+  prev.classList.remove('is-active');
 
-  // ── Render Gallery ───────────────────────────────────────
-  function renderGallery() {
-    gallery.querySelectorAll('.proj-item').forEach(el => el.remove());
-    countBadge.textContent = images.length;
+  setTimeout(() => {
+    prev.classList.remove('is-leaving');
+    next.scrollTop = 0;
+    next.classList.add('is-active');
+    activeId = id;
+    updateNav(id);
+  }, 300);
+}
 
-    if (images.length === 0) {
-      emptyState.style.display = 'block';
-      return;
-    }
-    emptyState.style.display = 'none';
+function updateNav(id) {
+  document.querySelectorAll('.nav-links button').forEach(btn => {
+    btn.classList.toggle('nav-active', btn.dataset.view === id);
+  });
+}
 
-    const shuffled = shuffle([...images]);
+/* ── Projects ───────────────────────────────────────── */
+async function loadProjects() {
+  let data = { featured: 4, projects: [] };
+  try {
+    const r = await fetch('assets/projects/projects.json');
+    if (r.ok) data = await r.json();
+  } catch (_) {}
 
-    shuffled.forEach((img, idx) => {
-      const item = document.createElement('div');
-      item.className = 'proj-item';
+  const list    = document.getElementById('proj-list');
+  const badge   = document.getElementById('proj-badge');
+  const metaEl  = document.getElementById('proj-meta');
+  const moreWrap = document.getElementById('proj-more');
+  const moreBtn  = document.getElementById('proj-more-btn');
+  const moreCt   = document.getElementById('proj-more-count');
 
-      item.innerHTML = `
-        <img src="${img.src}" alt="${img.name}" loading="lazy"/>
-        <div class="proj-overlay">
-          <h3>${img.name}</h3>
-          <p>Architecture · 2024</p>
-        </div>
-      `;
+  const total    = data.projects.length;
+  const featured = Math.min(data.featured || 4, total);
+  const extra    = total - featured;
 
-      item.addEventListener('click', () => openLightbox(shuffled.indexOf(img)));
+  badge.textContent  = total;
+  metaEl.textContent = `${total} Works`;
 
-      gallery.appendChild(item);
+  data.projects.forEach((proj, i) => {
+    const item = makeAccItem(proj, i + 1, i >= featured);
+    list.appendChild(item);
+  });
 
-      // Staggered reveal
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(20px)';
-      item.style.transition = 'opacity .5s ease, transform .5s ease';
-      setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateY(0)';
-      }, idx * 55);
+  if (extra > 0) {
+    moreWrap.style.display = 'block';
+    moreCt.textContent = `+${extra}`;
+    moreBtn.addEventListener('click', () => {
+      list.querySelectorAll('.acc-item.acc-hidden').forEach(el => {
+        el.classList.remove('acc-hidden');
+      });
+      moreWrap.style.display = 'none';
     });
   }
+}
 
-  // ── Load from assets/gallery/ ────────────────────────────
-  // Fetches the directory listing served by Python's HTTP server,
-  // parses it for image links, then loads each image.
-  async function loadGalleryFromFolder() {
-    const GALLERY_PATH = 'assets/gallery/';
-    const IMAGE_EXTS   = /\.(jpe?g|png|webp|gif|avif)$/i;
+function makeAccItem(proj, idx, hidden) {
+  const el = document.createElement('article');
+  el.className = 'acc-item' + (idx === 1 ? ' is-first' : '') + (hidden ? ' acc-hidden' : '');
 
-    try {
-      const res  = await fetch(GALLERY_PATH);
-      const html = await res.text();
+  const metaHTML = [
+    proj.location ? `<div class="acc-m"><span class="acc-m-label">Location</span><span class="acc-m-val">${proj.location}</span></div>` : '',
+    proj.area && proj.area !== '—' ? `<div class="acc-m"><span class="acc-m-label">Area</span><span class="acc-m-val">${proj.area}</span></div>` : '',
+    proj.typology ? `<div class="acc-m"><span class="acc-m-label">Type</span><span class="acc-m-val">${proj.typology}</span></div>` : '',
+  ].join('');
 
-      // Parse directory listing HTML for href links
-      const parser = new DOMParser();
-      const doc    = parser.parseFromString(html, 'text/html');
-      const links  = Array.from(doc.querySelectorAll('a[href]'));
+  const tagsHTML = proj.concepts
+    ? `<div class="acc-tags">${proj.concepts.map(c => `<span>${c}</span>`).join('')}</div>`
+    : '';
 
-      const imageFiles = links
-        .map(a => a.getAttribute('href'))
-        .filter(href => IMAGE_EXTS.test(href))
-        .map(href => href.split('/').pop()); // filename only
+  el.innerHTML = `
+    <button class="acc-trigger" aria-expanded="false">
+      <span class="acc-num">${String(idx).padStart(2,'0')}</span>
+      <span class="acc-name">${proj.name}</span>
+      <span class="acc-label">${proj.label || proj.type || ''}</span>
+      <span class="acc-plus">+</span>
+    </button>
+    <div class="acc-body">
+      <div class="acc-body-inner">
+        <div class="acc-body-content">
+          ${metaHTML ? `<div class="acc-meta">${metaHTML}</div>` : ''}
+          ${proj.description ? `<p class="acc-desc">${proj.description}</p>` : ''}
+          ${tagsHTML}
+        </div>
+      </div>
+    </div>`;
 
-      if (imageFiles.length === 0) {
-        emptyState.querySelector('p').textContent = 'No images found';
-        emptyState.querySelector('span').textContent = `Add images to assets/gallery/ and refresh`;
-        renderGallery();
-        return;
-      }
-
-      images = imageFiles.map(file => ({
-        src:  GALLERY_PATH + file,
-        name: capitalize(file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '))
-      }));
-
-      renderGallery();
-
-    } catch (err) {
-      emptyState.querySelector('p').textContent = 'Run the local server';
-      emptyState.querySelector('span').textContent = 'Open terminal → run: python3 -m http.server 8080';
-      emptyState.style.display = 'block';
+  el.querySelector('.acc-trigger').addEventListener('click', () => {
+    const open = el.classList.contains('is-open');
+    document.querySelectorAll('.acc-item.is-open').forEach(x => {
+      x.classList.remove('is-open');
+      x.querySelector('.acc-trigger').setAttribute('aria-expanded','false');
+    });
+    if (!open) {
+      el.classList.add('is-open');
+      el.querySelector('.acc-trigger').setAttribute('aria-expanded','true');
     }
-  }
-
-  // ── Lightbox ─────────────────────────────────────────────
-  const lightbox  = document.getElementById('lightbox');
-  const lbImg     = document.getElementById('lb-img');
-  const lbCounter = document.getElementById('lb-counter');
-
-  function openLightbox(idx) {
-    lightboxIndex = idx;
-    lbImg.src = images[idx].src;
-    lbCounter.textContent = `${idx + 1} / ${images.length}`;
-    lightbox.classList.add('open');
-  }
-
-  document.getElementById('lb-close').addEventListener('click', () => lightbox.classList.remove('open'));
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-
-  document.getElementById('lb-prev').addEventListener('click', () => {
-    lightboxIndex = (lightboxIndex - 1 + images.length) % images.length;
-    lbImg.src = images[lightboxIndex].src;
-    lbCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
-  });
-  document.getElementById('lb-next').addEventListener('click', () => {
-    lightboxIndex = (lightboxIndex + 1) % images.length;
-    lbImg.src = images[lightboxIndex].src;
-    lbCounter.textContent = `${lightboxIndex + 1} / ${images.length}`;
   });
 
-  document.addEventListener('keydown', e => {
-    if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') lightbox.classList.remove('open');
-    if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
-    if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
-  });
+  return el;
+}
 
-  // ── Filter buttons reshuffle ─────────────────────────────
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+/* ── Gallery ────────────────────────────────────────── */
+const GALLERY_PATH = 'assets/gallery/';
+const IMG_EXT = /\.(jpe?g|png|webp|gif|avif)$/i;
+
+let galItems      = [];  // { file, name, category, colspan, tall, inJson }
+let galFiltered   = [];  // currently displayed
+let currentFilter = 'all';
+let lbImages      = [];  // lightbox source list
+let lbIdx         = 0;
+
+async function loadGallery() {
+  let json = { categories: [], images: [] };
+
+  /* 1. Load JSON metadata */
+  try {
+    const r = await fetch(GALLERY_PATH + 'gallery.json');
+    if (r.ok) json = await r.json();
+  } catch (_) {}
+
+  /* 2. Scan folder for all image files */
+  let folderFiles = [];
+  try {
+    const r    = await fetch(GALLERY_PATH);
+    const html = await r.text();
+    const doc  = new DOMParser().parseFromString(html, 'text/html');
+    folderFiles = Array.from(doc.querySelectorAll('a[href]'))
+      .map(a => a.getAttribute('href'))
+      .map(h => h.split('/').pop())
+      .filter(f => IMG_EXT.test(f));
+  } catch (_) {}
+
+  /* 3. Merge: JSON items first, then unlisted folder files */
+  const jsonSet = new Set(json.images.map(i => i.file));
+
+  galItems = [
+    ...json.images.map(img => ({
+      file:    img.file,
+      name:    img.name    || null,
+      category:img.category|| null,
+      colspan: img.colspan || 1,
+      tall:    img.tall    || false,
+      inJson:  true,
+    })),
+    ...folderFiles
+      .filter(f => !jsonSet.has(f))
+      .map(f => ({
+        file: f, name: null, category: null,
+        colspan: 1, tall: false, inJson: false,
+      })),
+  ];
+
+  /* 4. Build filter buttons from JSON categories */
+  buildFilters(['all', ...(json.categories || [])]);
+
+  /* 5. Render */
+  renderGallery();
+}
+
+function buildFilters(cats) {
+  const wrap = document.getElementById('gal-filters');
+  wrap.innerHTML = '';
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (cat === 'all' ? ' active' : '');
+    btn.textContent = cat === 'all' ? 'All' : cat;
+    btn.dataset.cat = cat;
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      currentFilter = cat;
+      wrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderGallery();
     });
+    wrap.appendChild(btn);
+  });
+}
+
+function renderGallery() {
+  const grid = document.getElementById('gal-grid');
+  grid.innerHTML = '';
+
+  galFiltered = galItems.filter(img => {
+    if (currentFilter === 'all') return true;
+    return img.category === currentFilter;
   });
 
-  // ── Scroll Reveal ───────────────────────────────────────
-  const revealEls = document.querySelectorAll(
-    '.proj-card, .about-quote, .about-right, .skills-col, .contact-left, .contact-right, .contact-link'
-  );
-  revealEls.forEach(el => el.classList.add('reveal'));
+  document.getElementById('gal-badge').textContent = galFiltered.length;
 
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        entry.target.style.transitionDelay = (i * 0.04) + 's';
-        entry.target.classList.add('visible');
-        revealObs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+  if (galFiltered.length === 0) {
+    grid.innerHTML = `<div class="gal-empty">
+      <p>No images here yet.</p>
+      <span>Add images to assets/gallery/ and update gallery.json</span>
+    </div>`;
+    return;
+  }
 
-  revealEls.forEach(el => revealObs.observe(el));
+  /* Rebuild lightbox list for current filter */
+  lbImages = galFiltered.map(img => ({
+    src:  GALLERY_PATH + img.file,
+    name: img.name,
+    cat:  img.category,
+  }));
 
-  // ── Active nav ───────────────────────────────────────────
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const sections = document.querySelectorAll('section[id]');
+  galFiltered.forEach((img, idx) => {
+    const item = document.createElement('div');
+    item.className = 'gal-item';
+    if (img.colspan >= 2) item.classList.add('w2');
+    if (img.tall)         item.classList.add('tall');
 
-  const navObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('nav-active'));
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('nav-active');
-      }
-    });
-  }, { rootMargin: '-40% 0px -40% 0px' });
+    const picture = document.createElement('img');
+    picture.src     = GALLERY_PATH + img.file;
+    picture.alt     = img.name || img.file;
+    picture.loading = 'lazy';
+    item.appendChild(picture);
 
-  sections.forEach(s => navObs.observe(s));
+    /* Only show overlay if there's a name or category */
+    if (img.name || img.category) {
+      const ov = document.createElement('div');
+      ov.className = 'gal-overlay';
+      ov.innerHTML =
+        (img.name     ? `<div class="gal-name">${img.name}</div>` : '') +
+        (img.category ? `<div class="gal-cat">${img.category}</div>` : '');
+      item.appendChild(ov);
+    }
 
-  // ── Boot ─────────────────────────────────────────────────
-  loadGalleryFromFolder();
+    item.addEventListener('click', () => openLb(idx));
+
+    /* Staggered reveal */
+    item.style.cssText = 'opacity:0;transform:translateY(14px);transition:opacity .48s ease,transform .48s ease';
+    setTimeout(() => {
+      item.style.opacity   = '1';
+      item.style.transform = 'none';
+    }, idx * 42 + 60);
+
+    grid.appendChild(item);
+  });
+}
+
+/* ── Lightbox ───────────────────────────────────────── */
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+
+function openLb(idx) {
+  lbIdx = idx;
+  lbImg.src = lbImages[idx].src;
+  lbCounter.textContent = `${idx + 1} / ${lbImages.length}`;
+  lightbox.classList.add('open');
+}
+function closeLb() { lightbox.classList.remove('open'); }
+function lbStep(dir) {
+  lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
+  lbImg.src = lbImages[lbIdx].src;
+  lbCounter.textContent = `${lbIdx + 1} / ${lbImages.length}`;
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLb);
+document.getElementById('lb-prev').addEventListener('click', () => lbStep(-1));
+document.getElementById('lb-next').addEventListener('click', () => lbStep(1));
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape')      closeLb();
+  if (e.key === 'ArrowLeft')   lbStep(-1);
+  if (e.key === 'ArrowRight')  lbStep(1);
+});
+
+/* ── About expand ───────────────────────────────────── */
+const aboutBtn    = document.getElementById('about-expand-btn');
+const aboutDetail = document.getElementById('about-detail');
+aboutBtn.addEventListener('click', () => {
+  const open = aboutDetail.classList.toggle('open');
+  aboutBtn.classList.toggle('open', open);
+});
+
+/* ── Boot ───────────────────────────────────────────── */
+loadProjects();
+loadGallery();
 </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+{
+  "categories": ["Academic Drawings", "Models", "Photography", "Professional"],
+  "images": [
+    {
+      "file": "model-residence.png",
+      "name": "Reassessing Master Architect — Physical Model",
+      "category": "Models",
+      "colspan": 1,
+      "tall": true
+    },
+    {
+      "file": "elevation-school.png",
+      "name": "North East Elevation — Shree Shiladevi School",
+      "category": "Academic Drawings",
+      "colspan": 2,
+      "tall": false
+    },
+    {
+      "file": "masterplan-woods.png",
+      "name": "Master Plan — Woods Interior",
+      "category": "Academic Drawings",
+      "colspan": 1,
+      "tall": false
+    },
+    {
+      "file": "kathmandu-street.png",
+      "name": "Kathmandu Old City",
+      "category": "Photography",
+      "colspan": 1,
+      "tall": true
+    },
+    {
+      "file": "charcoal-hand.png",
+      "name": "Study in Light — Charcoal",
+      "category": "Photography",
+      "colspan": 1,
+      "tall": true
+    },
+    {
+      "file": "bhraka-render.png",
+      "name": "Bhraka Village — Reception Render",
+      "category": "Professional",
+      "colspan": 2,
+      "tall": false
+    }
+  ]
+}

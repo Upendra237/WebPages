@@ -1,0 +1,93 @@
+{
+  "featured": 4,
+  "projects": [
+    {
+      "num": "01",
+      "name": "Woods Interior",
+      "type": "Furniture Factory",
+      "label": "Semester 6",
+      "location": "Madhyapur Thimi, Bhaktapur",
+      "area": "6,423.68 sq.m",
+      "typology": "Industrial",
+      "description": "A functional complex interlinking manufacturing, assembly, painting, storage, display and administrative units through a central semi-open courtyard — bridging interior and exterior realms while guiding visitors seamlessly toward the showroom.",
+      "concepts": ["Central Courtyard", "Functional Flow", "Workers Quarter", "Product Gallery"]
+    },
+    {
+      "num": "02",
+      "name": "Reassessing Master Architect",
+      "type": "Residence Design",
+      "label": "Semester 3",
+      "location": "Budanilkantha, Kathmandu",
+      "area": "11,392.78 sq.ft",
+      "typology": "Residential",
+      "description": "Inspired by Gehry's approach to irregular geometry, the boundary lines of the site become the form-generator. Three trapezoidal blocks rotated southward to maximise solar gain — creating a home that fosters familial connection across generations.",
+      "concepts": ["Site-Derived Geometry", "Solar Orientation", "Multi-generational", "Art Studio"]
+    },
+    {
+      "num": "03",
+      "name": "Shree Shiladevi Primary School",
+      "type": "Sustainable School",
+      "label": "Semester 4",
+      "location": "Dhokshan, Kathmandu",
+      "area": "1,888.77 sq.m",
+      "typology": "Educational",
+      "description": "A curvilinear form that embodies the playful nature of children — voids puncture the building mass for airflow and diffused light, while internal play spaces blur the boundary between indoors and outdoors.",
+      "concepts": ["Curvilinear Form", "Indoor Play Spaces", "Amphitheatre", "Passive Ventilation"]
+    },
+    {
+      "num": "04",
+      "name": "Bhraka Village Resort",
+      "type": "Hospitality Interior",
+      "label": "Ongoing",
+      "location": "Bhraka, Manang",
+      "area": "—",
+      "typology": "Hospitality",
+      "description": "A checkpoint resort for trekkers en route to Ice Lake and Tilicho Lake. Interior renovation drawing from Manang's elemental vocabulary — mud plaster, rough stone, wooden log cross-sections, traditional rugs — evoking the warmth of high-altitude shelter.",
+      "concepts": ["Mud Plaster", "Mountain Motifs", "Slate Flooring", "Vernacular Detail"]
+    },
+    {
+      "num": "05",
+      "name": "Khatry Residence",
+      "type": "Contemporary Residence",
+      "label": "Under Construction",
+      "location": "Bhaisepati, Lalitpur",
+      "area": "8,306.5 sq.ft",
+      "typology": "Residential",
+      "description": "A luxurious family home bridging cultural aesthetics and contemporary sensibility. Involved municipal drawing documentation, bathroom design with warm-toned materials, and multiple site supervision visits observing foundation and structural work.",
+      "concepts": ["Cultural Fusion", "Warm Materiality", "Site Supervision", "Detail Drawings"]
+    },
+    {
+      "num": "06",
+      "name": "Sam's One Tree Café",
+      "type": "Restaurant Interior",
+      "label": "Conceptual",
+      "location": "International Club, Sanepa",
+      "area": "—",
+      "typology": "F&B Interior",
+      "description": "Extension of the Durbarmarg flagship into a colonial-era building. Tiki jhya lattice partitions, terracotta flooring, and a dark teak bar ceiling weave Nepali character into a contemporary café experience.",
+      "concepts": ["Tiki Jhya Lattice", "Terracotta Floor", "Mood Board", "BOQ + Detailing"]
+    },
+    {
+      "num": "07",
+      "name": "Shikhar Insurance",
+      "type": "Office Renovation",
+      "label": "Completed",
+      "location": "Bhaisepati, Lalitpur",
+      "area": "—",
+      "typology": "Office Interior",
+      "description": "A complete layout overhaul reorganising circulation and introducing exposed grid false ceilings — with a brand-anchored reception table drawing from the company's orange-and-black identity.",
+      "concepts": ["Circulation Redesign", "Brand Identity", "Exposed Ceiling"]
+    },
+    {
+      "num": "08",
+      "name": "World Bank Office",
+      "type": "CMU Renovation",
+      "label": "Ongoing",
+      "location": "Hotel Yak & Yeti, Kathmandu",
+      "area": "—",
+      "typology": "Institutional Interior",
+      "description": "Country Management Unit renovation — condensing three workstations into two with a comfortable corner lounge, and Kathmandu skyline glass murals referencing the World Bank's visual language.",
+      "concepts": ["Space Optimisation", "Kathmandu Murals", "Informal Lounge"]
+    }
+  ]
+}
