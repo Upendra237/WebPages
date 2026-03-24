@@ -1,0 +1,112 @@
+[
+  {
+    "id": "japan",
+    "name": "Japan",
+    "flag": "🇯🇵",
+    "badge": "Primary Focus",
+    "badge_type": "primary",
+    "tagline": "Land of Innovation & Opportunity",
+    "hero_color": "#FEF6F0",
+    "universities": "120+",
+    "description": "Japan is our primary destination with the highest number of partner institutions. Known for world-class education, safe environment, and excellent part-time work opportunities for students.",
+    "why": [
+      "Affordable tuition compared to USA, UK, Australia",
+      "Part-time work up to 28 hours/week allowed",
+      "High quality of life and safety",
+      "Rich culture and global career opportunities",
+      "MEXT and JASSO scholarship availability"
+    ],
+    "intakes": ["April", "October"],
+    "requirements": ["JLPT N5 or above (most schools)", "High school completion", "Financial documents", "Medical certificate"],
+    "cost_range": "NPR 1,600,000 – 2,900,000 (total first year)",
+    "popular_cities": ["Tokyo", "Osaka", "Kyoto", "Sapporo", "Fukuoka", "Nagoya"]
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "flag": "🇦🇺",
+    "badge": "Available",
+    "badge_type": "secondary",
+    "tagline": "World-Class Education, Vibrant Lifestyle",
+    "hero_color": "#EFF4FE",
+    "universities": "40+",
+    "description": "Australia is a top choice for students seeking English-medium education with excellent post-study work opportunities and a multicultural environment.",
+    "why": [
+      "Post-study work visa up to 4 years",
+      "English-medium instruction",
+      "Multicultural and welcoming society",
+      "Strong STEM and business programs",
+      "High graduate employment rates"
+    ],
+    "intakes": ["February", "July"],
+    "requirements": ["IELTS 6.0+ or PTE equivalent", "High school completion", "Financial documents", "Health insurance (OSHC)"],
+    "cost_range": "NPR 2,500,000 – 4,000,000 (total first year)",
+    "popular_cities": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"]
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "badge": "Available",
+    "badge_type": "secondary",
+    "tagline": "Pathway to Permanent Residency",
+    "hero_color": "#EDFAF3",
+    "universities": "35+",
+    "description": "Canada offers exceptional education with a clear immigration pathway. Its welcoming immigration policies make it an ideal destination for students planning long-term residency.",
+    "why": [
+      "Post-graduation work permit (PGWP)",
+      "Clear PR pathway through Express Entry",
+      "Affordable compared to USA",
+      "Bilingual (English & French) opportunities",
+      "Safe and inclusive environment"
+    ],
+    "intakes": ["January", "May", "September"],
+    "requirements": ["IELTS 6.0+ or equivalent", "High school completion", "Financial proof", "Statement of purpose"],
+    "cost_range": "NPR 2,800,000 – 4,500,000 (total first year)",
+    "popular_cities": ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa"]
+  },
+  {
+    "id": "uk",
+    "name": "United Kingdom",
+    "flag": "🇬🇧",
+    "badge": "Available",
+    "badge_type": "secondary",
+    "tagline": "Prestige Education, Historic Culture",
+    "hero_color": "#F3EFFE",
+    "universities": "30+",
+    "description": "The UK is home to some of the world's most prestigious universities. Shorter degree programs mean less time and cost, while still gaining a globally recognized qualification.",
+    "why": [
+      "1-year master's programs save time and money",
+      "Graduate Route visa (2 years post-study work)",
+      "Globally top-ranked universities",
+      "Rich academic tradition",
+      "Central location for Europe travel"
+    ],
+    "intakes": ["September", "January"],
+    "requirements": ["IELTS 6.0–6.5 (varies by university)", "High school or bachelor's degree", "Financial documents", "Personal statement"],
+    "cost_range": "NPR 3,000,000 – 5,000,000 (total first year)",
+    "popular_cities": ["London", "Manchester", "Birmingham", "Edinburgh", "Bristol"]
+  },
+  {
+    "id": "korea",
+    "name": "South Korea",
+    "flag": "🇰🇷",
+    "badge": "Available",
+    "badge_type": "secondary",
+    "tagline": "K-Culture, Modern Technology",
+    "hero_color": "#FEF0F6",
+    "universities": "20+",
+    "description": "South Korea is an emerging destination for Nepali students, offering affordable fees, scholarship opportunities, and a dynamic modern culture.",
+    "why": [
+      "Low tuition fees",
+      "Korean Government Scholarship (GKS)",
+      "Strong technology and engineering programs",
+      "Growing job market for internationals",
+      "Vibrant student culture"
+    ],
+    "intakes": ["March", "September"],
+    "requirements": ["TOPIK Level 2+ (some programs)", "High school completion", "Financial proof", "Motivation letter"],
+    "cost_range": "NPR 1,200,000 – 2,200,000 (total first year)",
+    "popular_cities": ["Seoul", "Busan", "Incheon", "Daejeon", "Daegu"]
+  }
+]

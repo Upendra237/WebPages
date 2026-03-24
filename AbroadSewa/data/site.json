@@ -1,0 +1,22 @@
+{
+  "name": "Abroad Sewa",
+  "tagline": "Your Trusted Gateway to Japan & Beyond",
+  "description": "Abroad Sewa is Nepal's leading education consultancy specializing in Japan placements. We provide end-to-end support — from university selection to post-arrival care.",
+  "established": "2010",
+  "phone": "+977-1-4567890",
+  "mobile": "+977-9841234567",
+  "email": "info@abroadsewa.com.np",
+  "address": "Dillibazar, Kathmandu, Nepal",
+  "map_embed": "https://maps.google.com/maps?q=Dillibazar,Kathmandu&output=embed",
+  "social": {
+    "facebook": "https://facebook.com/abroadsewa",
+    "instagram": "https://instagram.com/abroadsewa",
+    "youtube": "https://youtube.com/abroadsewa"
+  },
+  "stats": {
+    "students_placed": "3500+",
+    "visa_success": "98%",
+    "partner_universities": "120+",
+    "years_experience": "14+"
+  }
+}

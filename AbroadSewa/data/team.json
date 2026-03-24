@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Ramesh Prasad Sharma",
+    "role": "Founder & CEO",
+    "bio": "With over 14 years in international education consulting, Ramesh established Abroad Sewa with a mission to make quality overseas education accessible to every Nepali student.",
+    "initials": "RS"
+  },
+  {
+    "id": 2,
+    "name": "Sunita Gurung",
+    "role": "Head of Japan Division",
+    "bio": "Sunita lived and studied in Tokyo for 6 years and brings first-hand experience to every Japan consultation. She speaks fluent Japanese and has a deep network of university contacts.",
+    "initials": "SG"
+  },
+  {
+    "id": 3,
+    "name": "Bikram Thapa",
+    "role": "Visa & Documentation Specialist",
+    "bio": "Bikram has processed over 2,000 student visa applications with a 98% success rate. He is an expert in Japanese COE applications and Australian student visas.",
+    "initials": "BT"
+  },
+  {
+    "id": 4,
+    "name": "Priti Shrestha",
+    "role": "Japanese Language Instructor",
+    "bio": "Priti holds JLPT N1 certification and has taught Japanese language to over 500 students. Her structured teaching method takes students from zero to N3 in under a year.",
+    "initials": "PS"
+  }
+]

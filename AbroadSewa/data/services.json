@@ -1,0 +1,62 @@
+[
+  {
+    "id": "university-selection",
+    "number": "01",
+    "category": "Placement",
+    "title": "University Selection",
+    "short": "Personalized university matching based on your academic profile, budget, and career goals.",
+    "description": "We analyze your academic background, language proficiency, budget, and career aspirations to match you with the most suitable universities and colleges in Japan and other countries. Our counselors have in-depth knowledge of hundreds of institutions.",
+    "icon": "graduation",
+    "features": ["Academic profile assessment", "Budget-based shortlisting", "Course and institution comparison", "Application support"]
+  },
+  {
+    "id": "visa-documentation",
+    "number": "02",
+    "category": "Legal",
+    "title": "Visa & Documentation",
+    "short": "Complete visa preparation and embassy support with a 98% approval rate.",
+    "description": "Our experienced visa team prepares every document required for student and work visas. We handle Certificate of Eligibility (COE), financial statements, personal statements, and embassy submissions — giving you the best chance of approval.",
+    "icon": "document",
+    "features": ["COE application support", "Financial documentation", "Personal statement writing", "Embassy interview prep"]
+  },
+  {
+    "id": "jlpt-coaching",
+    "number": "03",
+    "category": "Language",
+    "title": "Japanese Language (JLPT)",
+    "short": "Structured JLPT coaching from N5 beginner level to N2 advanced level.",
+    "description": "Our certified Japanese language instructors teach classes from N5 to N2 level. Daily classes, mock tests, and one-on-one sessions ensure you meet the language requirements for your chosen institution.",
+    "icon": "language",
+    "features": ["N5 to N2 level classes", "Daily grammar & vocabulary", "Mock JLPT exams", "JFT-Basic preparation"]
+  },
+  {
+    "id": "scholarship-guidance",
+    "number": "04",
+    "category": "Finance",
+    "title": "Scholarship Guidance",
+    "short": "Expert support for MEXT, JASSO, and private scholarship applications.",
+    "description": "Japan offers some of the world's most generous scholarships including MEXT (Japanese Government Scholarship) and JASSO. We identify the right scholarships for your profile and guide you through the entire application process.",
+    "icon": "scholarship",
+    "features": ["MEXT scholarship support", "JASSO application help", "University grants guidance", "Essay and portfolio review"]
+  },
+  {
+    "id": "pre-departure",
+    "number": "05",
+    "category": "Logistics",
+    "title": "Pre-Departure Support",
+    "short": "Accommodation search, travel planning, and full cultural orientation.",
+    "description": "Before you fly, we prepare you for life abroad. We assist with finding suitable accommodation (dormitory, shared housing, or apartments), booking flights, cultural orientation sessions, and packing checklists so you arrive with confidence.",
+    "icon": "plane",
+    "features": ["Accommodation assistance", "Flight booking support", "Cultural orientation sessions", "Packing and checklist guide"]
+  },
+  {
+    "id": "post-arrival",
+    "number": "06",
+    "category": "Ongoing",
+    "title": "Post-Arrival Care",
+    "short": "Continued support once you land so you settle in with full confidence.",
+    "description": "Our support doesn't end when you board the plane. We have alumni networks and partner contacts in Japan who help you with city registration, bank account opening, SIM card, and getting used to daily life.",
+    "icon": "support",
+    "features": ["City hall registration help", "Bank account guidance", "SIM and internet setup", "Alumni network access"]
+  }
+]

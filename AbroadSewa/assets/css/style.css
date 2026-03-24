@@ -1,0 +1,89 @@
+/* Abroad Sewa – custom styles */
+* { box-sizing: border-box; }
+
+body { background: #F4F1EC; }
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Section spacing utility */
+.section-pad { padding: 64px 0; }
+
+/* Orange CTA button */
+.btn-orange {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #E8630A; color: #fff;
+  font-size: 13px; font-weight: 700;
+  padding: 12px 24px; border-radius: 8px;
+  text-decoration: none; transition: background 0.2s;
+}
+.btn-orange:hover { background: #C04E08; }
+
+/* Navy button */
+.btn-navy {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #1A2744; color: #fff;
+  font-size: 13px; font-weight: 700;
+  padding: 12px 24px; border-radius: 8px;
+  text-decoration: none; transition: background 0.2s;
+}
+.btn-navy:hover { background: #E8630A; }
+
+/* Ghost button */
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #F4F1EC; color: #1A2744;
+  font-size: 13px; font-weight: 600;
+  padding: 12px 24px; border-radius: 8px;
+  text-decoration: none; border: 1px solid #E8E4DC;
+  transition: background 0.2s;
+}
+.btn-ghost:hover { background: #E8E4DC; }
+
+/* Section tag */
+.sec-tag {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #E8630A; margin-bottom: 8px; display: block;
+}
+
+/* Section heading */
+.sec-h {
+  font-size: 30px; font-weight: 800;
+  color: #1A2744; letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+/* Card */
+.card {
+  background: #fff; border-radius: 12px;
+  border: 1px solid #E8E4DC;
+}
+
+/* Ribbon bar */
+.ribbon-bar {
+  background: #1A2744;
+  overflow: hidden;
+}
+
+/* Accordion */
+.faq-item summary { cursor: pointer; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* Toast */
+#toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 100;
+  background: #1A2744; color: #fff;
+  padding: 14px 22px; border-radius: 10px;
+  font-size: 14px; font-weight: 500;
+  transform: translateY(80px); opacity: 0;
+  transition: all 0.3s ease; pointer-events: none;
+}
+#toast.show { transform: translateY(0); opacity: 1; }

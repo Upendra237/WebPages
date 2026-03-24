@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /includes/
+Disallow: /contact-submit
+
+Sitemap: https://www.abroadsewa.com.np/sitemap.xml
