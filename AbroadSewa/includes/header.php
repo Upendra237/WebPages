@@ -29,32 +29,32 @@ tailwind.config = {
   }
 }
 </script>
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="<?= url('/assets/css/style.css') ?>">
 </head>
 <body class="font-sans bg-cream text-navy antialiased">
 
 <!-- NAV -->
 <header class="bg-white border-b border-border sticky top-0 z-50">
   <nav class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
-    <a href="/" class="text-[18px] font-extrabold tracking-tight text-navy">
+    <a href="<?= url('/') ?>" class="text-[18px] font-extrabold tracking-tight text-navy">
       Abroad<span class="text-[#E8630A]">Sewa</span>
     </a>
     <!-- Desktop nav -->
     <ul class="hidden md:flex items-center gap-6">
       <?php
       $nav = [
-        'home' => ['/', 'Home'],
-        'about' => ['/about', 'About Us'],
-        'services' => ['/services', 'Services'],
-        'destinations' => ['/destinations', 'Destinations'],
-        'testimonials' => ['/testimonials', 'Stories'],
-        'contact' => ['/contact', 'Contact'],
+        'home'         => [url('/'),             'Home'],
+        'about'        => [url('/about'),         'About Us'],
+        'services'     => [url('/services'),      'Services'],
+        'destinations' => [url('/destinations'),  'Destinations'],
+        'testimonials' => [url('/testimonials'),  'Stories'],
+        'contact'      => [url('/contact'),       'Contact'],
       ];
       foreach ($nav as $key => [$href, $label]): ?>
         <li><a href="<?= $href ?>" class="text-[13px] font-medium <?= $page === $key ? 'text-[#E8630A]' : 'text-gray-500 hover:text-navy' ?> transition-colors"><?= $label ?></a></li>
       <?php endforeach; ?>
     </ul>
-    <a href="/contact" class="hidden md:inline-flex items-center bg-navy text-white text-[13px] font-bold px-5 py-2.5 rounded-lg hover:bg-[#E8630A] transition-colors">
+    <a href="<?= url('/contact') ?>" class="hidden md:inline-flex items-center bg-navy text-white text-[13px] font-bold px-5 py-2.5 rounded-lg hover:bg-[#E8630A] transition-colors">
       Free Consultation
     </a>
     <!-- Mobile menu button -->
@@ -67,6 +67,6 @@ tailwind.config = {
     <?php foreach ($nav as $key => [$href, $label]): ?>
       <a href="<?= $href ?>" class="block py-3 text-[14px] font-medium border-b border-border last:border-0 <?= $page === $key ? 'text-[#E8630A]' : 'text-gray-600' ?>"><?= $label ?></a>
     <?php endforeach; ?>
-    <a href="/contact" class="mt-3 block text-center bg-navy text-white text-[13px] font-bold px-5 py-3 rounded-lg">Free Consultation</a>
+    <a href="<?= url('/contact') ?>" class="mt-3 block text-center bg-navy text-white text-[13px] font-bold px-5 py-3 rounded-lg">Free Consultation</a>
   </div>
 </header>

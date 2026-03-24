@@ -10,8 +10,8 @@ require_once 'includes/header.php';
     <h1 class="text-[28px] font-extrabold text-navy mb-3">Page not found</h1>
     <p class="text-[14px] text-gray-400 mb-8 max-w-sm mx-auto">The page you are looking for doesn't exist or may have been moved.</p>
     <div class="flex flex-wrap justify-center gap-3">
-      <a href="/" class="btn-navy">Go to Homepage</a>
-      <a href="/contact" class="btn-ghost">Contact Us</a>
+      <a href="<?= url('/') ?>" class="btn-navy">Go to Homepage</a>
+      <a href="<?= url('/contact') ?>" class="btn-ghost">Contact Us</a>
     </div>
   </div>
 </section>

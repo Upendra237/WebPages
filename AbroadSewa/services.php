@@ -77,7 +77,7 @@ $faqs = load_json('faqs.json');
       <h2 class="text-[28px] font-extrabold text-white tracking-tight mb-2">Not sure where to start?</h2>
       <p class="text-[13px] text-white/50">Book a free session and we will guide you through everything — no obligation.</p>
     </div>
-    <a href="/contact" class="btn-orange whitespace-nowrap">Book Free Consultation →</a>
+    <a href="<?= url('/contact') ?>" class="btn-orange whitespace-nowrap">Book Free Consultation →</a>
   </div>
 </section>
 

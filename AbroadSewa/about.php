@@ -125,7 +125,7 @@ $team = load_json('team.json');
       <h2 class="text-[28px] font-extrabold text-white tracking-tight mb-2">Ready to start your journey?</h2>
       <p class="text-[13px] text-white/50">Talk to one of our expert counselors today — it's completely free.</p>
     </div>
-    <a href="/contact" class="btn-orange whitespace-nowrap">Book Free Consultation →</a>
+    <a href="<?= url('/contact') ?>" class="btn-orange whitespace-nowrap">Book Free Consultation →</a>
   </div>
 </section>
 

@@ -1,4 +1,11 @@
 <?php
+// Detect base path automatically (works in root or subdirectory)
+define('BASE_PATH', rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/'));
+
+function url($path = '/') {
+    return BASE_PATH . $path;
+}
+
 function load_json($file) {
     $path = __DIR__ . '/../data/' . $file;
     if (!file_exists($path)) return [];
@@ -12,8 +19,14 @@ function site_data() {
 function current_page() {
     $uri = strtok($_SERVER['REQUEST_URI'], '?');
     $uri = rtrim($uri, '/');
-    if ($uri === '' || $uri === '/') return 'home';
-    return ltrim($uri, '/');
+    // Strip base path
+    $base = BASE_PATH;
+    if ($base && strpos($uri, $base) === 0) {
+        $uri = substr($uri, strlen($base));
+    }
+    $uri = ltrim($uri, '/');
+    if ($uri === '' || $uri === 'home') return 'home';
+    return $uri;
 }
 
 function is_active($page) {

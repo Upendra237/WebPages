@@ -2,6 +2,12 @@
 // Front controller / router
 $uri = strtok($_SERVER['REQUEST_URI'], '?');
 $uri = rtrim($uri, '/');
+
+// Strip subdirectory base path so routes work in /AbroadSewa/ as well as root
+$base = '/AbroadSewa';
+if ($uri === $base || strpos($uri, $base . '/') === 0) {
+    $uri = substr($uri, strlen($base));
+}
 if ($uri === '') $uri = '/';
 
 // Static assets — let Apache handle

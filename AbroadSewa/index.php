@@ -23,8 +23,8 @@ $testimonials = array_slice(load_json('testimonials.json'), 0, 3);
         We help ambitious students navigate university placement, visa approvals, scholarships, and language training — mostly Japan, and across the world.
       </p>
       <div class="flex flex-wrap gap-3">
-        <a href="/contact" class="btn-orange">Start Your Journey →</a>
-        <a href="/destinations" class="btn-ghost">Explore Universities</a>
+        <a href="<?= url('/contact') ?>" class="btn-orange">Start Your Journey →</a>
+        <a href="<?= url('/destinations') ?>" class="btn-ghost">Explore Universities</a>
       </div>
     </div>
     <div class="bg-cream rounded-2xl p-7 border border-border">
@@ -67,7 +67,7 @@ $testimonials = array_slice(load_json('testimonials.json'), 0, 3);
     <p class="text-[13px] text-gray-400 font-medium mb-8">Primarily Japan — with trusted pathways to other top study destinations</p>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       <?php foreach ($destinations as $dest): ?>
-      <a href="/destinations/<?= $dest['id'] ?>" class="card hover:-translate-y-1 transition-transform overflow-hidden group fade-in">
+      <a href="<?= url('/destinations/' . $dest['id']) ?>" class="card hover:-translate-y-1 transition-transform overflow-hidden group fade-in">
         <div class="h-20 flex items-center justify-center text-[36px]" style="background:<?= $dest['hero_color'] ?>">
           <?= $dest['flag'] ?>
         </div>
@@ -123,7 +123,7 @@ $testimonials = array_slice(load_json('testimonials.json'), 0, 3);
       <?php endforeach; ?>
     </div>
     <div class="mt-8 text-center">
-      <a href="/services" class="btn-navy">View All Services →</a>
+      <a href="<?= url('/services') ?>" class="btn-navy">View All Services →</a>
     </div>
   </div>
 </section>
@@ -147,7 +147,7 @@ $testimonials = array_slice(load_json('testimonials.json'), 0, 3);
       <?php endforeach; ?>
     </div>
     <div class="mt-8 text-center">
-      <a href="/testimonials" class="btn-ghost">Read All Stories →</a>
+      <a href="<?= url('/testimonials') ?>" class="btn-ghost">Read All Stories →</a>
     </div>
   </div>
 </section>
@@ -159,7 +159,7 @@ $testimonials = array_slice(load_json('testimonials.json'), 0, 3);
       <h2 class="text-[30px] font-extrabold text-white tracking-tight mb-2">Ready to study in Japan?</h2>
       <p class="text-[13px] text-white/50">Book a free counselling session — no obligation, no pressure.</p>
     </div>
-    <a href="/contact" class="btn-orange whitespace-nowrap">Book a Free Session →</a>
+    <a href="<?= url('/contact') ?>" class="btn-orange whitespace-nowrap">Book a Free Session →</a>
   </div>
 </section>
 

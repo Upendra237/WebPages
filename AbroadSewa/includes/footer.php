@@ -22,7 +22,14 @@
     <div>
       <h4 class="text-[12px] font-bold uppercase tracking-widest text-gray-500 mb-4">Quick Links</h4>
       <ul class="space-y-2.5">
-        <?php foreach ([['/', 'Home'], ['/about', 'About Us'], ['/services', 'Services'], ['/destinations', 'Destinations'], ['/testimonials', 'Student Stories'], ['/contact', 'Contact']] as [$href, $label]): ?>
+        <?php foreach ([
+          [url('/'),             'Home'],
+          [url('/about'),        'About Us'],
+          [url('/services'),     'Services'],
+          [url('/destinations'), 'Destinations'],
+          [url('/testimonials'), 'Student Stories'],
+          [url('/contact'),      'Contact'],
+        ] as [$href, $label]): ?>
           <li><a href="<?= $href ?>" class="text-[13px] text-gray-400 hover:text-white transition-colors"><?= $label ?></a></li>
         <?php endforeach; ?>
       </ul>
@@ -31,8 +38,14 @@
     <div>
       <h4 class="text-[12px] font-bold uppercase tracking-widest text-gray-500 mb-4">Destinations</h4>
       <ul class="space-y-2.5">
-        <?php foreach ([['japan','🇯🇵 Japan'], ['australia','🇦🇺 Australia'], ['canada','🇨🇦 Canada'], ['uk','🇬🇧 United Kingdom'], ['korea','🇰🇷 South Korea']] as [$id, $label]): ?>
-          <li><a href="/destinations/<?= $id ?>" class="text-[13px] text-gray-400 hover:text-white transition-colors"><?= $label ?></a></li>
+        <?php foreach ([
+          ['japan',     '🇯🇵 Japan'],
+          ['australia', '🇦🇺 Australia'],
+          ['canada',    '🇨🇦 Canada'],
+          ['uk',        '🇬🇧 United Kingdom'],
+          ['korea',     '🇰🇷 South Korea'],
+        ] as [$id, $label]): ?>
+          <li><a href="<?= url('/destinations/' . $id) ?>" class="text-[13px] text-gray-400 hover:text-white transition-colors"><?= $label ?></a></li>
         <?php endforeach; ?>
       </ul>
     </div>
@@ -59,12 +72,12 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
       <p class="text-[12px] text-gray-600">&copy; <?= date('Y') ?> <?= htmlspecialchars($site['name']) ?>. All rights reserved.</p>
       <div class="flex gap-5">
-        <a href="/privacy" class="text-[12px] text-gray-600 hover:text-white">Privacy Policy</a>
-        <a href="/terms" class="text-[12px] text-gray-600 hover:text-white">Terms of Use</a>
+        <a href="<?= url('/privacy') ?>" class="text-[12px] text-gray-600 hover:text-white">Privacy Policy</a>
+        <a href="<?= url('/terms') ?>" class="text-[12px] text-gray-600 hover:text-white">Terms of Use</a>
       </div>
     </div>
   </div>
 </footer>
-<script src="/assets/js/main.js"></script>
+<script src="<?= url('/assets/js/main.js') ?>"></script>
 </body>
 </html>

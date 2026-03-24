@@ -26,7 +26,7 @@ endif;
 <!-- SINGLE DESTINATION -->
 <section class="bg-white border-b border-border py-14">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <a href="/destinations" class="inline-flex items-center gap-2 text-[12px] font-semibold text-gray-400 hover:text-navy mb-6 transition-colors">
+    <a href="<?= url('/destinations') ?>" class="inline-flex items-center gap-2 text-[12px] font-semibold text-gray-400 hover:text-navy mb-6 transition-colors">
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
       All Destinations
     </a>
@@ -46,7 +46,6 @@ endif;
   <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
     <!-- Main content -->
     <div class="lg:col-span-2 space-y-6">
-      <!-- Why study here -->
       <div class="bg-white rounded-xl border border-border p-7 fade-in">
         <h2 class="text-[18px] font-extrabold text-navy mb-5">Why study in <?= htmlspecialchars($current['name']) ?>?</h2>
         <ul class="space-y-3">
@@ -59,7 +58,6 @@ endif;
         </ul>
       </div>
 
-      <!-- Requirements -->
       <div class="bg-white rounded-xl border border-border p-7 fade-in">
         <h2 class="text-[18px] font-extrabold text-navy mb-5">Admission requirements</h2>
         <ul class="space-y-3">
@@ -72,7 +70,6 @@ endif;
         </ul>
       </div>
 
-      <!-- Cities -->
       <div class="bg-white rounded-xl border border-border p-7 fade-in">
         <h2 class="text-[18px] font-extrabold text-navy mb-5">Popular cities</h2>
         <div class="flex flex-wrap gap-2">
@@ -110,7 +107,7 @@ endif;
       <div class="bg-[#1A2744] rounded-xl p-6 fade-in">
         <h3 class="text-[14px] font-extrabold text-white mb-2">Interested in <?= htmlspecialchars($current['name']) ?>?</h3>
         <p class="text-[12px] text-white/50 mb-4 leading-relaxed">Book a free counselling session and we'll guide you through the full process.</p>
-        <a href="/contact" class="btn-orange w-full justify-center">Get Free Guidance →</a>
+        <a href="<?= url('/contact') ?>" class="btn-orange w-full justify-center">Get Free Guidance →</a>
       </div>
     </div>
   </div>
@@ -131,7 +128,7 @@ endif;
 <section class="py-16 bg-cream">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 space-y-5">
     <?php foreach ($destinations as $i => $dest): ?>
-    <a href="/destinations/<?= $dest['id'] ?>" class="block bg-white rounded-xl border border-border p-6 hover:-translate-y-0.5 transition-transform group fade-in">
+    <a href="<?= url('/destinations/' . $dest['id']) ?>" class="block bg-white rounded-xl border border-border p-6 hover:-translate-y-0.5 transition-transform group fade-in">
       <div class="flex items-center gap-6">
         <div class="w-16 h-16 rounded-xl flex items-center justify-center text-[40px] shrink-0" style="background:<?= $dest['hero_color'] ?>">
           <?= $dest['flag'] ?>
@@ -164,7 +161,7 @@ endif;
       <h2 class="text-[28px] font-extrabold text-white tracking-tight mb-2">Not sure which country is right for you?</h2>
       <p class="text-[13px] text-white/50">Our counselors will assess your profile and recommend the best destination.</p>
     </div>
-    <a href="/contact" class="btn-orange whitespace-nowrap">Get Expert Advice →</a>
+    <a href="<?= url('/contact') ?>" class="btn-orange whitespace-nowrap">Get Expert Advice →</a>
   </div>
 </section>
 
